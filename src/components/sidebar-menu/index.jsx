@@ -1,10 +1,20 @@
 import React from 'react'
-import { UserCircle,House,Heart,ShoppingCart } from '@phosphor-icons/react'
+import { UserCircle,House,Heart,ShoppingCart,X } from '@phosphor-icons/react'
+import { GlobalContext } from '../../context';
+import { GO_TO_CART,GO_TO_FAVORITES,GO_TO_LOGIN,GO_TO_SIGNUP } from '../../router/navigation';
+import { useNavigate } from 'react-router-dom';
 
 const SidebarMenu = () => {
 
+    const navigate = useNavigate()
+    const { modalMenu,setModalMenu } = React.useContext( GlobalContext )
+    const handleOutsideClick = ( e ) => {
+        if ( e.target === e.currentTarget ) setModalMenu( false )
+    }
+
     return (
         <div
+            onClick={handleOutsideClick}
             className='w-full h-[100dvh] max-md:h-[calc(100dvh-4rem)] bg-neutral-800/70 z-50 absolute max-md:top-[4rem] top-0 left-0'>
             <aside className='bg-blue-700 w-[20rem] h-full max-md:w-full'>
 
@@ -13,15 +23,30 @@ const SidebarMenu = () => {
                     <h1 className='text-neutral-200 text-[1.25rem] font-extrabold'>Olá. Faça seu login</h1>
                 </header>
 
-                <section className='w-full h-[3rem] flex items-center  pl-8 gap-4  '>
+                <section
+                    // onClick={() => {
+                    //     GO_TO_LOGIN( navigate )
+                    //     setModalMenu( false )
+                    // }}
+                    className='w-full h-[3rem] flex items-center  pl-8 gap-4  '>
                     <House weight='fill' size={22} className='fill-neutral-100' />
                     <h1 className='text-neutral-100 text-sm cursor-pointer'>Minha conta</h1>
                 </section>
-                <section className='w-full h-[3rem] flex items-center  pl-8 gap-4 '>
+                <section
+                    onClick={() => {
+                        GO_TO_FAVORITES( navigate )
+                        setModalMenu( false )
+                    }}
+                    className='w-full h-[3rem] flex items-center  pl-8 gap-4 '>
                     <Heart weight='fill' size={22} className='fill-neutral-100' />
                     <h1 className='text-neutral-100 text-sm cursor-pointer'>Favoritos</h1>
                 </section>
-                <section className='w-full h-[3rem] flex items-center  pl-8 gap-4 '>
+                <section
+                    onClick={() => {
+                        GO_TO_CART( navigate )
+                        setModalMenu( false )
+                    }}
+                    className='w-full h-[3rem] flex items-center  pl-8 gap-4 '>
                     <ShoppingCart weight='fill' size={22} className='fill-neutral-100' />
                     <h1 className='text-neutral-100 text-sm cursor-pointer'>Carrinho</h1>
                 </section>
@@ -30,15 +55,28 @@ const SidebarMenu = () => {
 
                     <section className=' w-11/12 rounded-md bg-orange-600  justify-center h-[3rem] flex items-center '>
 
-                        <h1 className='text-neutral-100  cursor-pointer font-semibold text-lg'>ENTRAR</h1>
+                        <h1
+                            onClick={() => {
+                                GO_TO_LOGIN( navigate )
+                                setModalMenu( false )
+                            }}
+                            className='text-neutral-100  cursor-pointer font-semibold text-lg'>ENTRAR</h1>
                     </section>
                     <section className='w-11/12 rounded-md  justify-center h-[3rem] flex items-center '>
 
-                        <h1 className='text-neutral-100  cursor-pointer font-semibold text-lg'>CADASTRO</h1>
+                        <h1
+                            onClick={() => {
+                                GO_TO_SIGNUP( navigate )
+                                setModalMenu( false )
+                            }}
+                            className='text-neutral-100  cursor-pointer font-semibold text-lg'>CADASTRO</h1>
                     </section>
 
                 </footer>
             </aside>
+            <div className='w-10 h-10 absolute max-md:hidden  left-[20.2rem] top-[20px] cursor-pointer '>
+                <X onClick={() => setModalMenu( !modalMenu )} size={36} className='fill-neutral-100' />
+            </div>
         </div>
     )
 }

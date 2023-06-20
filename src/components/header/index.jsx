@@ -1,21 +1,23 @@
 import React from 'react'
 import cabum_logo from '../../assets/images/cabum-logo.png'
-import { UserCircle,Heart,ShoppingCart,List } from '@phosphor-icons/react'
+import { UserCircle,Heart,ShoppingCart,List,  X } from '@phosphor-icons/react'
 import { GO_TO_CART,GO_TO_FAVORITES,GO_TO_HOME,GO_TO_LOGIN,GO_TO_SIGNUP } from '../../router/navigation'
 import { useNavigate } from 'react-router-dom'
 import SidebarMenu from '../sidebar-menu'
+import { GlobalContext } from '../../context'
 
 const Header = () => {
 
     const navigate = useNavigate()
+    const { modalMenu,setModalMenu } = React.useContext( GlobalContext )
 
     return (
         <header
-        className='bg-blue-700  h-[7rem] max-md:h-[4rem] max-md:justify-around flex items-center relative  justify-center gap-4 md:gap-8 lg:px-8  max-md:px-2 flex-wrap'>
+            className='bg-blue-700  h-[7rem] max-md:h-[4rem] max-md:justify-around flex items-center relative  justify-center gap-4 md:gap-8 lg:px-8  max-md:px-2 flex-wrap'>
+            <List onClick={() => setModalMenu( !modalMenu )} size={40} weight='regular' className=' fill-neutral-300 cursor-pointer' />
             <img onClick={() => GO_TO_HOME( navigate )} className='max-md:hidden cursor-pointer' width={170} src={cabum_logo} alt="cabum logo" />
-            <List size={40} weight='regular' className='md:hidden fill-neutral-300 cursor-pointer' />
 
-            <div className='w-[30%] max-md:w-[60%] max-w-[40rem]'>
+            <div className='w-[25%] max-md:w-[60%] max-w-[50rem]'>
                 <input placeholder='Busque aqui' className=' w-full bg-neutral-100 pl-4 h-[2.25rem]  text-neutral-600 border focus:border-orange-500 rounded-sm placeholder:text-sm' type="text" />
             </div>
 
@@ -36,7 +38,7 @@ const Header = () => {
                 </div>
             </div>
 
-            <SidebarMenu />
+            {modalMenu && <SidebarMenu />}
         </header>
     )
 }
