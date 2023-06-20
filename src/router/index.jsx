@@ -4,6 +4,8 @@ import Homepage from '../pages/homepage';
 import SignIn from '../pages/signin';
 import GlobalProvider from '../context';
 import Header from '../components/header';
+import Favorites from '../pages/favorites';
+import Cart from '../pages/cart';
 
 
 const RouterConfig = () => {
@@ -15,8 +17,11 @@ const RouterConfig = () => {
                 <Header />
                 <Routes>
                     <Route path='/' element={<Homepage />} />
-                    <Route path='/login' element={<LogIn />} />
-                    <Route path='/sign-in' element={<SignIn />} />
+                    <Route path='/entrar' element={<LogIn />} />
+                    <Route path='/cadastro' element={<SignIn />} />
+
+                    <Route path='/favoritos' element={<Favorites />} />
+                    <Route path='/carrinho' element={<Cart />} />
                 </Routes>
             </GlobalProvider>
         </BrowserRouter>
