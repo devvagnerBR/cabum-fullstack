@@ -5,7 +5,7 @@ const SidebarMenu = () => {
 
     return (
         <div
-            className='w-full h-screen max-md:h-[calc(100vh-4rem)] bg-neutral-800/70 z-50 absolute max-md:top-[4rem] top-0 left-0'>
+            className='w-full h-[100dvh] max-md:h-[calc(100dvh-4rem)] bg-neutral-800/70 z-50 absolute max-md:top-[4rem] top-0 left-0'>
             <aside className='bg-blue-700 w-[20rem] h-full max-md:w-full'>
 
                 <header className='w-full h-[4rem] flex items-center pl-4 gap-4'>
