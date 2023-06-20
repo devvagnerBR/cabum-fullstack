@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 *{
-    @apply p-0 m-0 box-border outline-none scroll-smooth font-Poppins leading-4 text-neutral-600
+    @apply p-0 m-0 box-border outline-none scroll-smooth font-Poppins leading-4 text-neutral-600 
+}
+
+body{
+    @apply bg-blue-700  h-screen
 }

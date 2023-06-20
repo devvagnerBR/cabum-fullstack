@@ -1,4 +1,6 @@
 import React from 'react'
+import MainBanner from './banner'
+import OnOffer from './on-offer'
 
 
 const Homepage = () => {
@@ -6,8 +8,9 @@ const Homepage = () => {
 
 
     return (
-        <div>
-            <h1>Homepage</h1>
+        <div className='flex-col self-center h-full flex overflow-hidden'>
+            <MainBanner />
+            <OnOffer />
         </div>
     )
 }

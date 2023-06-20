@@ -4,6 +4,7 @@ import { GlobalContext } from '../../context';
 import { GO_TO_CART,GO_TO_FAVORITES,GO_TO_LOGIN,GO_TO_SIGNUP } from '../../router/navigation';
 import { useNavigate } from 'react-router-dom';
 
+
 const SidebarMenu = () => {
 
     const navigate = useNavigate()
@@ -15,6 +16,7 @@ const SidebarMenu = () => {
     return (
         <div
             onClick={handleOutsideClick}
+
             className='w-full h-[100dvh] max-md:h-[calc(100dvh-4rem)] bg-neutral-800/70 z-50 absolute max-md:top-[4rem] top-0 left-0'>
             <aside className='bg-blue-700 w-[20rem] h-full max-md:w-full'>
 
