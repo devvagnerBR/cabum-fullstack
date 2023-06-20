@@ -3,6 +3,7 @@ import LogIn from '../pages/login';
 import Homepage from '../pages/homepage';
 import SignIn from '../pages/signin';
 import GlobalProvider from '../context';
+import Header from '../components/header';
 
 
 const RouterConfig = () => {
@@ -11,7 +12,7 @@ const RouterConfig = () => {
 
         <BrowserRouter>
             <GlobalProvider>
-
+                <Header />
                 <Routes>
                     <Route path='/' element={<Homepage />} />
                     <Route path='/login' element={<LogIn />} />

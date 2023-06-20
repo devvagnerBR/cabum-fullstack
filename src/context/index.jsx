@@ -1,5 +1,5 @@
 import React from 'react'
-import { api } from './../services/base-url';
+
 
 
 
@@ -13,7 +13,7 @@ const GlobalProvider = ( { children } ) => {
 
     return (
         <GlobalContext.Provider
-            value={{ api }}>
+            value={{ oi: 'oi' }}>
             {children}
         </GlobalContext.Provider>
     )
