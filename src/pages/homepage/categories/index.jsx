@@ -17,9 +17,9 @@ const Categories = () => {
     return (
         <div
             className='w-10/12 max-2xl:w-full flex-col  self-center flex items-center bg-white  '>
-            <header className='w-full h-8 flex items-center gap-2 pl-4'>
+            <header className='w-full h-8 flex items-center gap-2 pl-4  max-[390px]:justify-center max-[390px]:mt-8 max-[390px]:pl-0'>
                 <Cube size={24} className='fill-orange-500' />
-                <h1 className='text-xl font-semibold text-neutral-600'>DEPARTAMENTOS</h1>
+                <h1 className='text-xl  font-semibold text-neutral-600'>DEPARTAMENTOS</h1>
             </header>
             {/* max-md:grid-cols-1 */}
             {/* max-[560px]:grid-cols-1 */}
