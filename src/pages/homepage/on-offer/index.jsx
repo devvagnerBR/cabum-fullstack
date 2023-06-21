@@ -75,7 +75,7 @@ const OnOffer = () => {
                 } )}
 
             </section>
-            <div className=' w-full h-12 max-sm:w-[100vw] cursor-pointer items-center bg-white flex justify-end pr-4'>
+            <div className=' w-full h-12 max-sm:w-[100vw] cursor-pointer items-center max-sm:justify-center bg-white flex justify-end pr-4'>
                 <button className='text-orange-500 font-semibold text-base'>VER TODOS</button>
                 <CaretRight className='fill-orange-500 ' weight='bold' size={16} />
             </div>
