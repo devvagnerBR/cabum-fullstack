@@ -1,22 +1,11 @@
 import React from 'react'
 import { Carousel } from 'antd';
-import banner1 from '../../../assets/banners/banner_1.webp'
-import banner2 from '../../../assets/banners/banner_2.webp'
-import banner3 from '../../../assets/banners/banner_3.webp'
-import banner4 from '../../../assets/banners/banner_4.webp'
-import banner5 from '../../../assets/banners/banner_5.webp'
 
 
 
-const MainBanner = () => {
 
-    const banners = [
-        { id: 1,image: banner1 },
-        { id: 2,image: banner2 },
-        { id: 3,image: banner3 },
-        { id: 4,image: banner4 },
-        { id: 5,image: banner5 },
-    ]
+const MainBanner = ( { banners } ) => {
+
 
 
     return (
@@ -25,6 +14,7 @@ const MainBanner = () => {
             <Carousel
                 dots={false}
                 autoplay
+                
             >
                 {banners.map( ( banner ) => {
                     return (

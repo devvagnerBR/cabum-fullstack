@@ -6,6 +6,7 @@ import GlobalProvider from '../context';
 import Header from '../components/header';
 import Favorites from '../pages/favorites';
 import Cart from '../pages/cart';
+import Footer from '../components/footer';
 
 
 const RouterConfig = () => {
@@ -23,6 +24,7 @@ const RouterConfig = () => {
                     <Route path='/favoritos' element={<Favorites />} />
                     <Route path='/carrinho' element={<Cart />} />
                 </Routes>
+                <Footer/>
             </GlobalProvider>
         </BrowserRouter>
     )

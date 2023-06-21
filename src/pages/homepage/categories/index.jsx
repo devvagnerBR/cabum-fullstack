@@ -18,24 +18,13 @@ const Categories = () => {
 
     return (
         <div
-            className='w-10/12 max-2xl:w-full flex-col  self-center flex items-center bg-white  '>
+            className='w-10/12 mb-16 mt-8 max-2xl:w-full flex-col  self-center flex items-center bg-white  '>
             <header className='w-full h-8 flex items-center gap-2 pl-4  max-[390px]:justify-center max-[390px]:mt-8 max-[390px]:pl-0'>
-                <Cube size={24} className='fill-orange-500' />
-                <h1 className='text-xl  font-semibold text-neutral-600'>DEPARTAMENTOS</h1>
+                <Cube size={24} weight='bold' className='fill-orange-500' />
+                <h1 className='text-xl  font-bold text-neutral-600'>DEPARTAMENTOS</h1>
             </header>
-            {/* max-md:grid-cols-1 */}
-            {/* max-[560px]:grid-cols-1 */}
             <section
                 className='w-full grid grid-cols-4  max-lg:grid-cols-3  lg:px-32   gap-4 place-items-center  max-sm:w-[85vw] max-[390px]:grid-cols-2    p-2 bg-white '>
-
-                {/* <div className='flex bg-orange-500 h-56 w-[310px]'></div>
-                <div className='flex bg-orange-500 h-56 w-[310px]'></div>
-                <div className='flex bg-orange-500 h-56 w-[310px]'></div>
-                <div className='flex bg-orange-500 h-56 w-[310px]'></div>
-                <div className='flex bg-orange-500 h-56 w-[310px]'></div>
-                <div className='flex bg-orange-500 h-56 w-[310px]'></div>
-                <div className='flex bg-orange-500 h-56 w-[310px]'></div>
-                <div className='flex bg-orange-500 h-56 w-[310px]'></div> */}
                 {categories?.map( ( category ) => {
                     return (
                         <div key={category.id} className='bg-white w-[16vw]  max-lg:w-[28vw]  h-fit flex p-2 flex-col items-center pb-4 rounded  cursor-pointer'>

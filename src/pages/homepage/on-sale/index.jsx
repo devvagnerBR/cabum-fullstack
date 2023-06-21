@@ -3,11 +3,6 @@ import { Star,Alarm,CaretRight } from '@phosphor-icons/react'
 import CardProduct from '../../../components/card-product'
 
 
-
-
-
-
-
 const OnOffer = () => {
 
 
@@ -45,6 +40,10 @@ const OnOffer = () => {
             quantity: 550
         }
     ]
+
+
+ 
+
 
 
 
