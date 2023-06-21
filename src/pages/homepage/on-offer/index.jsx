@@ -1,6 +1,6 @@
 import React from 'react'
-import { Star,Alarm,ShoppingCart } from '@phosphor-icons/react'
-import { GlobalContext } from '../../../context'
+import { Star,Alarm,CaretRight } from '@phosphor-icons/react'
+import CardProduct from '../../../components/card-product'
 
 
 
@@ -10,7 +10,7 @@ import { GlobalContext } from '../../../context'
 
 const OnOffer = () => {
 
-    const { textLimit } = React.useContext( GlobalContext )
+
 
 
     const products = [
@@ -52,7 +52,7 @@ const OnOffer = () => {
     return (
         <div
 
-            className='w-10/12 max-2xl:w-full flex-col  self-center flex items-center bg-white mb-8  '>
+            className='w-10/12 max-2xl:w-full flex-col  self-center flex items-center bg-white  '>
 
             <header className='flex  w-full bg-orange-500 h-16 items-center justify-between px-4 flex-wrap max-[580px]:justify-center'>
                 <div className='flex items-center gap-2'>
@@ -67,31 +67,18 @@ const OnOffer = () => {
             </header>
 
             <section
-                className='w-full grid grid-cols-5  max-xl:grid-cols-4 place-items-center max-[950px]:grid-cols-3  max-md:grid-cols-2  max-[560px]:grid-cols-1 gap-3 p-4 bg-neutral-100 '>
+                className='w-full grid grid-cols-5  max-xl:grid-cols-4 place-items-center max-[950px]:grid-cols-3  max-md:grid-cols-2  max-[560px]:grid-cols-1 gap-3 p-4 bg-white '>
                 {products?.map( ( product ) => {
                     return (
-                        <div key={product.id} className='h-fit flex items-center flex-col relative shadow-sm border bg-white max-[490px]:w-[80%] w-[1fr] p-2'>
-                            <div className='border border-orange-500 rounded absolute left-2 top-2 w-12 h-10 flex items-center justify-center flex-col'>
-                                <p className='text-[9px] text-orange-500 leading-3'>RESTAM</p>
-                                <p className='text-[12px] text-orange-500 font-bold leading-3'>{product.quantity}</p>
-                                <p className='text-[9px] text-orange-500 leading-3'>UNID.</p>
-                            </div>
-                            <img src={product.image_url} className='w-[9rem] mt-8' alt="" />
-                            <div className=''>
-                                <h1 className='text-sm  font-semibold flex flex-wrap w-11/12  h-[5rem] pl-2 leading-4 max-[560px]:w-[100%] max-[560px]:max-w-[300px]'>{textLimit( product.name,66 )}</h1>
-                                <h2 className=' text-orange-500 font-bold text-2xl pl-2'>R$ 119,99</h2>
-                                <h2 className='font-light text-xs pl-2'>À vista no PIX</h2>
-                                <div className='flex items-center gap-2 justify-center bg-orange-500 p-3 rounded mt-8 cursor-pointer'>
-                                    <ShoppingCart className='fill-neutral-50 ' weight='fill' size={20} />
-                                    <p className='text-neutral-50 font-semibold text-sm'>COMPRAR</p>
-
-                                </div>
-                            </div>
-                        </div>
+                        <CardProduct product={product} key={product.id} />
                     )
                 } )}
-            </section>
 
+            </section>
+            <div className=' w-full h-12 max-sm:w-[100vw] cursor-pointer items-center bg-white flex justify-end pr-4'>
+                <button className='text-orange-500 font-semibold text-base'>VER TODOS</button>
+                <CaretRight className='fill-orange-500 ' weight='bold' size={16} />
+            </div>
         </div>
     )
 
