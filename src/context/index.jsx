@@ -1,4 +1,5 @@
 import React from 'react'
+import { textLimit } from './../util/text-limit';
 
 
 
@@ -24,7 +25,7 @@ const GlobalProvider = ( { children } ) => {
 
     return (
         <GlobalContext.Provider
-            value={{ modalMenu,setModalMenu }}>
+            value={{ modalMenu,setModalMenu,textLimit }}>
             {children}
         </GlobalContext.Provider>
     )
