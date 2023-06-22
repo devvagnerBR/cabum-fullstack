@@ -2,18 +2,22 @@ import React from 'react'
 import { Warning } from '@phosphor-icons/react'
 
 
-const Input = ( { name,type,label,register,error,placeholder } ) => {
+
+const Input = ( { name,type,label,register,error,placeholder,onChange,...props } ) => {
 
 
 
     return (
-        <label className='flex flex-col pt-4 w-[23rem] max-[500px]:w-[90vw] text-orange-500' htmlFor="">
+        <label className='flex flex-col pt-4 w-[23rem] max-[500px]:w-[90vw] text-orange-500'>
             {label}
             <input
+                {...props}
+                onChange={onChange}
                 type={type}
                 className='border focus:border-orange-400  pl-2 w-full mt-3 h-[3.125rem] border-neutral-400 rounded-sm'
                 placeholder={placeholder}
                 {...register( name )}
+                autoComplete='off'
             />
             <p
                 className={`mt-2  leading-3 ${error ? '' : 'invisible'} text-sm flex items-center gap-2 text-red-500`}>
