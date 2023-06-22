@@ -1,29 +1,21 @@
 import React from 'react'
 import Input from '../../components/Input/Index'
 import { SignIn,GoogleLogo } from '@phosphor-icons/react'
-import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { GlobalContext } from '../../context'
+import { myContext } from '../../hooks/useContext'
 
 
 
 const LogIn = () => {
 
-    const { formLoginValidade } = React.useContext( GlobalContext )
+    const { formLoginValidade } = myContext()
 
-    const {
-        // watch,
-        handleSubmit,
-        register,
-        formState: { errors }
-    } = useForm( {
-        resolver: zodResolver( formLoginValidade )
-    } )
-
+    const { handleSubmit,register,formState: { errors } } = useForm( { resolver: zodResolver( formLoginValidade ) } )
 
     const handleLogin = ( data ) => {
         //console.log( data );
+
     }
 
 
