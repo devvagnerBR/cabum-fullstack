@@ -1,5 +1,5 @@
 import React from 'react'
-import Input from '../../components/Input/Index'
+import Input from '../../components/input'
 import { SignIn,GoogleLogo } from '@phosphor-icons/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
