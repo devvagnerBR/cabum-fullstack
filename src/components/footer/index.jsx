@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <footer className='w-full bg-blue-700 items-center justify-center gap-4 h-44  flex flex-col'>
 
-            <section className='flex    w-full justify-center gap-8  items-center'>
+            <section className='flex  justify-center gap-8  items-center'>
 
                 <div>
                     <h1 className='text-white text-sm font-semibold pb-2'>CONTATO</h1>

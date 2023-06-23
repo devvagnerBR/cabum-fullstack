@@ -5,12 +5,11 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { myContext } from '../../hooks/useContext'
 
-
 const SignIn = () => {
 
     const [customError,setCustomError] = React.useState( null )
     const { formSignUpValidade } = myContext()
-    const { handleSubmit,register,formState: { errors } } = useForm( { resolver: zodResolver( formSignUpValidade ) } )
+    const { watch,handleSubmit,register,formState: { errors } } = useForm( { resolver: zodResolver( formSignUpValidade ) } )
 
 
     const handleCreateAccount = ( data ) => {
@@ -22,7 +21,7 @@ const SignIn = () => {
                 setCustomError( null )
             },2000 )
         } else {
-            console.log( 'é igual' );
+            console.log( data );
         }
 
     }
@@ -31,8 +30,9 @@ const SignIn = () => {
 
 
 
+  
     return (
-        <div className='flex flex-col items-center justify-center  min-h-[760px] pt-4 max-md:h-fit h-[calc(100dvh-18rem)] '>
+        <div className='flex flex-col items-center justify-start  min-h-[660px] pt-4 max-md:h-fit h-[calc(100dvh-18rem)] '>
             <header>
                 <h1 className='text-orange-500 text-2xl font-bold'>CRIAR CONTA</h1>
             </header>
@@ -49,13 +49,18 @@ const SignIn = () => {
 
                 />
                 <Input
+                    hasMask={true}
+                    mask="999.999.999-99"
+                    maskChar="_"
                     label='CPF*'
                     name='cpf'
                     type='text'
                     register={register}
                     error={errors.cpf && errors.cpf.message}
                     placeholder='___.___.___-__'
+
                 />
+
                 <Input
                     label='Data de nascimento*'
                     name='birthday'
@@ -64,14 +69,18 @@ const SignIn = () => {
                     error={errors.birthday && errors.birthday.message}
                     placeholder='Digite o seu email cadastrado'
                 />
+
                 <Input
+                    hasMask={true}
+                    mask="(99) 99999-9999"
+                    maskChar={"_"}
                     label='Telefone celular*'
                     name='phone_number'
                     type='text'
                     register={register}
                     error={errors.phone_number && errors.phone_number.message}
                     placeholder='(__) _____-____'
-                    maxLength={12}
+
                 />
                 <Input
                     label='Email*'

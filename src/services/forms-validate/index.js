@@ -21,11 +21,11 @@ const formsValidate = () => {
 
         cpf: z.string().nonempty( 'Campo CPF está vazio' )
             .nonempty()
-            .max( 11 ),
+            .max( 14 ),
 
         birthday: z.string( 'Insira uma senha válida' ).nonempty( 'Campo data de nascimento está vazio' ),
 
-        phone_number: z.string().max( 12,'' ).nonempty( 'O campo telefone está vazio' ),
+        phone_number: z.string().max( 15,'' ).nonempty( 'O campo telefone está vazio' ),
 
         email: z.string()
             .nonempty( 'O campo email está vazio' )

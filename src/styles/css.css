@@ -6,9 +6,7 @@
     @apply p-0 m-0 box-border outline-none scroll-smooth font-Poppins leading-4 text-neutral-600 
 }
 
-body,html{
-    @apply   h-screen 
-}
+
 
 input:-webkit-autofill {
   -webkit-text-fill-color: #f97316;
