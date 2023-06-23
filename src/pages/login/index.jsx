@@ -9,14 +9,20 @@ import { myContext } from '../../hooks/useContext'
 
 const LogIn = () => {
 
-    const { formLoginValidade } = myContext()
+    const {
+        formLoginValidade,
+        signInWithEmailAndPassword,
+        awaitLoading,
+        loading
+    } = myContext()
 
     const { handleSubmit,register,formState: { errors } } = useForm( { resolver: zodResolver( formLoginValidade ) } )
 
-    const handleLogin = ( data ) => {
-        console.log( data );
-
+    const handleLogin = async ( data ) => {
+        await awaitLoading()
+        await signInWithEmailAndPassword( data.email,data.password )
     }
+
 
     return (
 
@@ -45,7 +51,8 @@ const LogIn = () => {
                     error={errors.password && errors.password.message}
                 />
                 <button
-                    className='hover:bg-orange-400 transition-all mt-6 h-[3.125rem] flex items-center justify-center gap-2 rounded-sm text-white font-semibold bg-orange-500 w-full'>
+                    disabled={loading === true}
+                    className={`hover:bg-orange-400 transition-all mt-6 h-[3.125rem] flex items-center justify-center gap-2 rounded-sm text-white font-semibold bg-orange-500 w-full ${loading && 'bg-orange-300'}`}>
                     <SignIn
                         size={28}
                         weight='regular'
@@ -54,20 +61,7 @@ const LogIn = () => {
                     ENTRAR
                 </button>
             </form>
-            <section
-                className=' flex flex-col mt-2 items-center w-[23rem] max-[500px]:w-[90vw]'>
-                <p
-                    className='text-neutral-500 text-sm'>Ou</p>
-                <button
-                    className='border flex items-center justify-center gap-2 text-neutral-500 border-orange-500 h-[3.125rem] w-full mt-2'>
-                    <GoogleLogo
-                        size={33}
-                        weight='bold'
-                        className='fill-orange-500'
-                    />
-                    Entrar com o Google
-                </button>
-            </section>
+
         </div>
     )
 }

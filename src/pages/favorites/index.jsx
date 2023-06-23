@@ -9,7 +9,7 @@ const Favorites = ( { favorites } ) => {
 
 
     return (
-        <div className={`flex flex-col items-center justify-start  pt-4 min-h-[600px]  h-[calc(100dvh-15rem)] `}>
+        <div className={`flex flex-col items-center justify-start  pt-4 min-h-[500px] max-md:h-[calc(100dvh-15rem)]  h-[calc(100dvh-18rem)] `}>
             <header className='w-full flex items-center pl-6 pt-4 '>
                 <CaretLeft size={22} weight='bold' className='fill-orange-500 cursor-pointer' />
                 <h1 className='font-bold text-2xl cursor-pointer'>FAVORITOS</h1>

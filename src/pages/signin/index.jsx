@@ -4,33 +4,43 @@ import Input from '../../components/input'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { myContext } from '../../hooks/useContext'
+import { GO_TO_HOME } from './../../router/navigation';
+import { useNavigate } from 'react-router-dom'
 
 const SignIn = () => {
 
+    const navigate = useNavigate()
     const [customError,setCustomError] = React.useState( null )
-    const { formSignUpValidade } = myContext()
-    const { handleSubmit,register,formState: { errors } } = useForm( { resolver: zodResolver( formSignUpValidade ) } )
+
+    const {
+        formSignUpValidade,
+        createAccount,
+        userErrorMessage
+    } = myContext()
 
 
-    const handleCreateAccount = ( data ) => {
+    const { handleSubmit,
+        register,
+        formState: { errors }
+    } = useForm( {
+        resolver: zodResolver( formSignUpValidade )
+    } )
+
+
+    const handleCreateAccount = async ( data ) => {
+
         const { password,password_confirm } = data;
-        const isEqual = password === password_confirm
+        const isEqual = await password === password_confirm
         if ( !isEqual ) {
             setCustomError( 'As senhas informadas não são iguais' )
-            setTimeout( () => {
-                setCustomError( null )
-            },2000 )
         } else {
-            console.log( data );
+            await createAccount( data );
+            GO_TO_HOME( navigate )
         }
 
     }
 
 
-
-
-
-  
     return (
         <div className='flex flex-col items-center justify-start  min-h-[660px] pt-4 max-md:h-fit h-[calc(100dvh-18rem)] '>
             <header>
@@ -117,7 +127,7 @@ const SignIn = () => {
                     ENTRAR
                 </button>
             </form>
-            <p className='h-8 flex pt-2'>{customError}</p>
+            <p className='h-8 flex pt-2 text-red-500'>{customError || userErrorMessage}</p>
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import firebase from 'firebase/app'
 import "firebase/firestore"
 import 'firebase/auth'
-
+import 'firebase/auth/dist/index.cjs';
 const settings = {
 
     apiKey: import.meta.env.VITE_API_KEY,
