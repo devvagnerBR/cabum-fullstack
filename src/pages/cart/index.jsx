@@ -6,7 +6,7 @@ const Cart = ( { products } ) => {
     const hasProducts = products === true
 
     return (
-        <div className={`flex flex-col items-center ${hasProducts ? 'justify-start' : 'justify-center'}  min-h-[400px] pt-4 max-md:h-fit h-[calc(100dvh-18rem)] `}>
+        <div className={`flex flex-col items-center ${hasProducts ? 'justify-start' : 'justify-center'}  min-h-[300px] pt-4  h-[calc(100dvh-15rem)] `}>
             {products ?
                 <section
                     className=''>

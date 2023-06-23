@@ -12,3 +12,18 @@ input:-webkit-autofill {
   -webkit-text-fill-color: #f97316;
   -webkit-box-shadow: 0 0 0px 1000px #ffffff inset; /* Cor de fundo */
 }
+
+body::-webkit-scrollbar {
+    width: 0px;
+}
+
+body::-webkit-scrollbar-track {
+
+    @apply bg-blue-300
+  
+}
+
+body::-webkit-scrollbar-thumb {
+    @apply bg-orange-500
+
+}

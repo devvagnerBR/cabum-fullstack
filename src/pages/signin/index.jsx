@@ -9,7 +9,7 @@ const SignIn = () => {
 
     const [customError,setCustomError] = React.useState( null )
     const { formSignUpValidade } = myContext()
-    const { watch,handleSubmit,register,formState: { errors } } = useForm( { resolver: zodResolver( formSignUpValidade ) } )
+    const { handleSubmit,register,formState: { errors } } = useForm( { resolver: zodResolver( formSignUpValidade ) } )
 
 
     const handleCreateAccount = ( data ) => {
