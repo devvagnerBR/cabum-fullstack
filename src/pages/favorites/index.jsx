@@ -9,10 +9,10 @@ const Favorites = ( { favorites } ) => {
 
 
     return (
-        <div className={`flex flex-col items-center justify-start  pt-4 min-h-[500px]  h-[calc(100dvh-15rem)] `}>
-            <header className='w-full flex items-center pl-6 pt-4'>
-                <CaretLeft size={22} weight='bold' className='fill-orange-500' />
-                <h1 className='font-bold text-2xl'>FAVORITOS</h1>
+        <div className={`flex flex-col items-center justify-start  pt-4 min-h-[600px]  h-[calc(100dvh-15rem)] `}>
+            <header className='w-full flex items-center pl-6 pt-4 '>
+                <CaretLeft size={22} weight='bold' className='fill-orange-500 cursor-pointer' />
+                <h1 className='font-bold text-2xl cursor-pointer'>FAVORITOS</h1>
             </header>
             {hasFavorites ?
                 <section>
