@@ -3,7 +3,11 @@ import { Star,Alarm,CaretRight } from '@phosphor-icons/react'
 import CardProduct from '../../../components/card-product'
 
 
-const onSale = ( {onSaleProducts} ) => {
+import { myContext } from './../../../hooks/useContext';
+
+const onSale = ( { onSaleProducts } ) => {
+
+    const { countdown } = myContext()
 
     return (
         <div
@@ -15,11 +19,15 @@ const onSale = ( {onSaleProducts} ) => {
                     <Star className='fill-neutral-100 max-[580px]:hidden' weight='fill' size={20} />
                     <h1 className='font-semibold text-neutral-100 text-xl  max-[580px]:text-3xl'>OFERTAS NINJAS</h1>
                 </div>
-                <div className='flex items-center gap-2 max-[580px]:hidden'>
-                    <h1 className='font-bold text-neutral-100 text-lg max-[580px]:text-sm'>TERMINA EM</h1>
-                    <Alarm className='fill-neutral-100 ' weight='fill' size={26} />
-                    <h1 className='font-bold tracking-wide text-neutral-100 text-2xl max-[580px]:text-sm'>02D 15 : 20 : 29</h1>
-                </div>
+                {countdown && <>
+
+                    <div className='flex items-center gap-2 max-[580px]:hidden'>
+                        <h1 className='font-bold text-neutral-100 text-lg max-[580px]:text-sm'>TERMINA EM</h1>
+                        <Alarm className='fill-neutral-100 ' weight='fill' size={26} />
+                        <h1 className='font-bold tracking-wide text-neutral-100 text-2xl max-[580px]:text-sm'> {countdown?.days}D {countdown?.hours}h : {countdown?.minutes} : {countdown?.seconds}</h1>
+                    </div>
+                </>
+                }
             </header>
 
             <section

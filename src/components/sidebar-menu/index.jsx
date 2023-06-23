@@ -26,13 +26,13 @@ const SidebarMenu = () => {
                 </header>
 
                 <section
-                    // onClick={() => {
+                    // onClick={() =-md
                     //     GO_TO_LOGIN( navigate )
                     //     setModalMenu( false )
                     // }}
                     className='w-full h-[3rem] flex items-center  pl-8 gap-4  '>
                     <House weight='fill' size={22} className='fill-neutral-100' />
-                    <h1 className='text-neutral-100 text-sm cursor-pointer'>Minha conta</h1>
+                    <h1 className='text-neutral-100 text-md cursor-pointer'>Minha conta</h1>
                 </section>
                 <section
                     onClick={() => {
@@ -41,7 +41,7 @@ const SidebarMenu = () => {
                     }}
                     className='w-full h-[3rem] flex items-center  pl-8 gap-4 '>
                     <Heart weight='fill' size={22} className='fill-neutral-100' />
-                    <h1 className='text-neutral-100 text-sm cursor-pointer'>Favoritos</h1>
+                    <h1 className='text-neutral-100 text-md cursor-pointer'>Favoritos</h1>
                 </section>
                 <section
                     onClick={() => {
@@ -50,7 +50,7 @@ const SidebarMenu = () => {
                     }}
                     className='w-full h-[3rem] flex items-center  pl-8 gap-4 '>
                     <ShoppingCart weight='fill' size={22} className='fill-neutral-100' />
-                    <h1 className='text-neutral-100 text-sm cursor-pointer'>Carrinho</h1>
+                    <h1 className='text-neutral-100 text-md cursor-pointer'>Carrinho</h1>
                 </section>
 
                 <footer className=' w-[20rem] flex flex-col items-center justify-center max-md:w-full h-[7rem] fixed bottom-0'>
