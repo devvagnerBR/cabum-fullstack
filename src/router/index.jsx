@@ -7,6 +7,7 @@ import Header from '../components/header';
 import Favorites from '../pages/favorites';
 import Cart from '../pages/cart';
 import Footer from '../components/footer';
+import MyAccount from '../pages/my-account';
 
 
 const RouterConfig = () => {
@@ -23,8 +24,9 @@ const RouterConfig = () => {
 
                     <Route path='/favoritos' element={<Favorites />} />
                     <Route path='/carrinho' element={<Cart />} />
+                    <Route path='/minha-conta' element={<MyAccount />} />
                 </Routes>
-                <Footer/>
+                <Footer />
             </GlobalProvider>
         </BrowserRouter>
     )

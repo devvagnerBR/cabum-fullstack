@@ -5,6 +5,7 @@ import formatPhone from './../util/convert-phone';
 import countdownTime from '../util/countdown';
 import USER_REQUESTS from '../services/requests/user-requests';
 import controlledLoading from '../util/controled-loading';
+import { auth } from '../services/firebase';
 
 
 
@@ -15,6 +16,7 @@ export const GlobalContext = React.createContext( '' )
 
 const GlobalProvider = ( { children } ) => {
 
+    const token = window.localStorage.getItem( 'token' )
     const [modalMenu,setModalMenu] = React.useState( false )
     const { countdown } = countdownTime()
     const { loading,awaitLoading } = controlledLoading()
@@ -26,7 +28,13 @@ const GlobalProvider = ( { children } ) => {
     } = formsValidate()
 
     const {
-        signInWithEmailAndPassword,createAccount,userErrorMessage
+        signInWithEmailAndPassword,
+        createAccount,
+        userErrorMessage,
+        getLoggedUser,
+        user,
+        userLogOut,
+        checkForUpdate,
     } = USER_REQUESTS()
 
 
@@ -42,6 +50,13 @@ const GlobalProvider = ( { children } ) => {
         }
     },[modalMenu] )
 
+
+    React.useEffect( () => {
+        getLoggedUser()
+        checkForUpdate()
+    },[token] )
+
+
     return (
         <GlobalContext.Provider
             value={{
@@ -53,8 +68,12 @@ const GlobalProvider = ( { children } ) => {
                 formatPhone,
                 countdown,
                 signInWithEmailAndPassword,
-                awaitLoading,loading,createAccount,userErrorMessage
-
+                awaitLoading,
+                loading,
+                createAccount,
+                userErrorMessage,
+                user,
+                userLogOut
             }}>
             {children}
         </GlobalContext.Provider>

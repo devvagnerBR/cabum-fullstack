@@ -1,13 +1,18 @@
 import React from 'react'
 import Input from '../../components/input'
-import { SignIn,GoogleLogo } from '@phosphor-icons/react'
+import { SignIn } from '@phosphor-icons/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { myContext } from '../../hooks/useContext'
+import { useNavigate } from 'react-router-dom'
+import { GO_TO_HOME } from './../../router/navigation';
 
 
 
 const LogIn = () => {
+
+
+    const navigate = useNavigate()
 
     const {
         formLoginValidade,
@@ -21,6 +26,7 @@ const LogIn = () => {
     const handleLogin = async ( data ) => {
         await awaitLoading()
         await signInWithEmailAndPassword( data.email,data.password )
+        GO_TO_HOME( navigate )
     }
 
 
@@ -52,7 +58,7 @@ const LogIn = () => {
                 />
                 <button
                     disabled={loading === true}
-                    className={`hover:bg-orange-400 transition-all mt-6 h-[3.125rem] flex items-center justify-center gap-2 rounded-sm text-white font-semibold bg-orange-500 w-full ${loading && 'bg-orange-300'}`}>
+                    className={`hover:bg-orange-400 transition-all mt-6 h-[3.125rem] flex items-center justify-center gap-2 rounded-sm text-white font-semibold bg-orange-500 w-full ${loading && 'bg-orange-200'}`}>
                     <SignIn
                         size={28}
                         weight='regular'

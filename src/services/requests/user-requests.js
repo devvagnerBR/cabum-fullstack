@@ -1,9 +1,14 @@
-import React from "react";
+import React,{ useRef } from "react";
 import { db_firestore,auth,provider } from "../firebase"
+import { useNavigate } from "react-router-dom";
+import { GO_TO_HOME } from "../../router/navigation";
+
 
 const USER_REQUESTS = () => {
 
     const [userErrorMessage,setUserErrorMessage] = React.useState( null )
+    const [user,setUser] = React.useState( null )
+
 
     const dataAlreadyExist = async ( itemName,item ) => {
         const userRef = db_firestore.collection( "users" );
@@ -22,17 +27,16 @@ const USER_REQUESTS = () => {
             }
 
             const res = await auth.createUserWithEmailAndPassword( email,password );
-            window.localStorage.setItem( 'token',res.user.uid )
             await db_firestore.collection( "users" ).doc( res.user.uid ).set( {
                 uid: res.user.uid,
                 name,
                 email,
-                password,
                 birthday,
                 cpf,
                 phone_number
             } )
 
+            window.localStorage.setItem( 'token',res.user.uid )
             console.log( 'cadastrado com sucesso' );
         } catch ( error ) {
             setUserErrorMessage( error.message );
@@ -57,10 +61,66 @@ const USER_REQUESTS = () => {
     }
 
 
+    const getLoggedUser = async () => {
+
+        const token = window.localStorage.getItem( 'token' )
+        if ( token ) {
+            try {
+
+                const userRef = db_firestore.collection( "users" ).doc( token )
+                userRef.onSnapshot( ( docs ) => {
+                    setUser( docs.data() )
+                } )
+
+            } catch ( error ) {
+                console.log( error );
+            }
+        }
+    }
+
+    const userLogOut = async () => {
+
+        try {
+
+            await auth.signOut()
+            window.localStorage.removeItem( 'token' )
+            window.location.reload()
+
+        } catch ( error ) {
+            console.log( error )
+
+        }
+    }
 
 
+    const checkForUpdate = async () => {
 
-    return { createAccount,signInWithEmailAndPassword,userErrorMessage }
+        auth.onAuthStateChanged( ( user ) => {
+
+            if ( user ) {
+                const userId = user.uid
+                const userRef = db_firestore
+                    .collection( "users" )
+                    .doc( userId )
+
+                userRef.onSnapshot( ( docs ) => {
+                    if ( docs.exists ) {
+                        setUser( docs.data() )
+                    }
+                } )
+            }
+        } )
+
+    }
+
+
+    return {
+        createAccount,
+        signInWithEmailAndPassword,
+        userErrorMessage,
+        getLoggedUser,
+        user,setUser,userLogOut,checkForUpdate
+    }
 
 }
 

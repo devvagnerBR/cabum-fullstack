@@ -1,19 +1,25 @@
 import React from 'react'
 import cabum_logo from '../../assets/images/cabum-logo.png'
 import { UserCircle,Heart,ShoppingCart,List,CaretLeft } from '@phosphor-icons/react'
-import { GO_TO_CART,GO_TO_FAVORITES,GO_TO_LOGIN,GO_TO_SIGNUP } from '../../router/navigation'
+import { GO_TO_CART,GO_TO_FAVORITES,GO_TO_LOGIN,GO_TO_MY_ACCOUNT,GO_TO_SIGNUP } from '../../router/navigation'
 import { useLocation,useNavigate } from 'react-router-dom'
 import SidebarMenu from '../sidebar-menu'
-import { GlobalContext } from '../../context'
 import { GO_TO_HOME } from './../../router/navigation';
+import { myContext } from '../../hooks/useContext'
+import profile_img from '../../assets/images/profile_ninja.png'
+
+
 
 const Header = () => {
 
-    const { pathname } = useLocation()
     const navigate = useNavigate()
-    const { modalMenu,setModalMenu } = React.useContext( GlobalContext )
+    const { pathname } = useLocation()
+    const token = window.localStorage.getItem( 'token' )
+    const { modalMenu,setModalMenu,user,userLogOut } = myContext()
 
     const isLoginAndSignUpPage = pathname === '/entrar' || pathname === '/cadastro'
+
+
 
     return (
         <header
@@ -30,15 +36,40 @@ const Header = () => {
 
             <div className='flex gap-8  '>
 
-                <div className='text-xs flex gap-2 items-center max-md:hidden'>
-                    <section>
-                        <UserCircle size={40} weight='fill' className=' fill-neutral-100' />
-                    </section>
-                    <section>
-                        <h1 className='text-neutral-100'>Faça <span onClick={() => GO_TO_LOGIN( navigate )} className='uppercase text-neutral-100 font-semibold hover:underline cursor-pointer transition-all'>Login</span> ou</h1>
-                        <h1 className='text-neutral-100'>crie seu <span onClick={() => GO_TO_SIGNUP( navigate )} className='text-neutral-100 font-semibold uppercase hover:underline cursor-pointer transition-all'>Cadastro</span></h1>
-                    </section>
-                </div>
+                {token ?
+                    <div className='text-xs flex gap-2 items-center max-md:hidden'>
+                        <section>
+                            <img src={profile_img} className='w-9  border-2 border-blue-500/80 rounded-full' alt="" />
+                        </section>
+                        <section>
+                            <h1
+                                className='text-neutral-100'>
+                                Olá,
+                                <span
+                                    className='capitalize pl-1 text-neutral-100 font-semibold'>
+                                    {user?.name}
+                                </span>
+                            </h1>
+                            <span
+                                onClick={() => GO_TO_MY_ACCOUNT( navigate )}
+                                className=' text-neutral-100 cursor-pointer hover:underline'>MINHA CONTA</span>
+                            <span
+                                className='text-neutral-100'> |<span onClick={() => {
+                                    userLogOut()
+                                    GO_TO_HOME( navigate )
+                                }} className='pl-1 text-neutral-50 hover:underline cursor-pointer'>SAIR</span> </span>
+                        </section>
+                    </div>
+                    :
+                    <div className='text-xs flex gap-2 items-center max-md:hidden'>
+                        <section>
+                            <UserCircle size={40} weight='fill' className=' fill-neutral-100' />
+                        </section>
+                        <section>
+                            <h1 className='text-neutral-100'>Faça <span onClick={() => GO_TO_LOGIN( navigate )} className='uppercase text-neutral-100 font-semibold hover:underline cursor-pointer transition-all'>Login</span> ou</h1>
+                            <h1 className='text-neutral-100'>crie seu <span onClick={() => GO_TO_SIGNUP( navigate )} className='text-neutral-100 font-semibold uppercase hover:underline cursor-pointer transition-all'>Cadastro</span></h1>
+                        </section>
+                    </div>}
                 <div className={`${isLoginAndSignUpPage && 'invisible'} flex items-center gap-4 max-[360px]:hidden`}>
                     <Heart onClick={() => GO_TO_FAVORITES( navigate )} size={22} weight='fill' className=' fill-neutral-100 cursor-pointer' />
                     <ShoppingCart onClick={() => GO_TO_CART( navigate )} size={22} weight='fill' className=' fill-neutral-100 cursor-pointer' />

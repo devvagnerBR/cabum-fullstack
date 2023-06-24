@@ -1,17 +1,21 @@
 import React from 'react'
 import { UserCircle,House,Heart,ShoppingCart,X } from '@phosphor-icons/react'
-import { GlobalContext } from '../../context';
-import { GO_TO_CART,GO_TO_FAVORITES,GO_TO_LOGIN,GO_TO_SIGNUP } from '../../router/navigation';
+import { GO_TO_CART,GO_TO_FAVORITES,GO_TO_LOGIN,GO_TO_MY_ACCOUNT,GO_TO_SIGNUP } from '../../router/navigation';
 import { useNavigate } from 'react-router-dom';
+import { myContext } from '../../hooks/useContext';
 
 
 const SidebarMenu = () => {
 
     const navigate = useNavigate()
-    const { modalMenu,setModalMenu } = React.useContext( GlobalContext )
+
+    const { modalMenu,setModalMenu,user } = myContext()
+
     const handleOutsideClick = ( e ) => {
         if ( e.target === e.currentTarget ) setModalMenu( false )
     }
+
+
 
     return (
         <div
@@ -22,14 +26,14 @@ const SidebarMenu = () => {
 
                 <header className='w-full h-[4rem] flex items-center pl-4 gap-4'>
                     <UserCircle size={40} weight='fill' className=' fill-neutral-100' />
-                    <h1 className='text-neutral-200 text-[1.25rem] font-extrabold'>Olá. Faça seu login</h1>
+                    <h1 className='text-neutral-200 text-[1.25rem] font-extrabold'>{`Olá, ${user.name}` || 'Olá. Faça seu login'}</h1>
                 </header>
 
                 <section
-                    // onClick={() =-md
-                    //     GO_TO_LOGIN( navigate )
-                    //     setModalMenu( false )
-                    // }}
+                    onClick={() => {
+                        GO_TO_MY_ACCOUNT( navigate )
+                        setModalMenu( false )
+                    }}
                     className='w-full h-[3rem] flex items-center  pl-8 gap-4  '>
                     <House weight='fill' size={22} className='fill-neutral-100' />
                     <h1 className='text-neutral-100 text-md cursor-pointer'>Minha conta</h1>
@@ -79,7 +83,7 @@ const SidebarMenu = () => {
             <div className='w-10 h-10 absolute max-md:hidden  left-[20.2rem] top-[20px] cursor-pointer '>
                 <X onClick={() => setModalMenu( !modalMenu )} size={36} className='fill-neutral-100' />
             </div>
-        </div>
+        </div >
     )
 }
 

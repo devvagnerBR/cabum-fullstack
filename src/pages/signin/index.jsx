@@ -36,6 +36,7 @@ const SignIn = () => {
         } else {
             await createAccount( data );
             GO_TO_HOME( navigate )
+
         }
 
     }
