@@ -29,14 +29,22 @@ const SignIn = () => {
 
     const handleCreateAccount = async ( data ) => {
 
-        const { password,password_confirm } = data;
-        const isEqual = await password === password_confirm
-        if ( !isEqual ) {
-            setCustomError( 'As senhas informadas não são iguais' )
-        } else {
-            await createAccount( data );
-            GO_TO_HOME( navigate )
+        try {
 
+            const { password,password_confirm } = data;
+            const isEqual = await password === password_confirm
+
+            if ( !isEqual ) {
+                setCustomError( 'As senhas informadas não são iguais' )
+            } else {
+                await createAccount( data );
+                
+                // GO_TO_HOME( navigate )
+
+            }
+
+        } catch ( error ) {
+            console.log( error.message );
         }
 
     }

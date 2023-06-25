@@ -7,7 +7,7 @@ const countdownTime = () => {
     const [countdown,setCountdown] = React.useState( null );
 
     React.useEffect( () => {
-        const futureDate = moment( '2023-06-30' ); // Substitua '2023-12-31' pela sua data futura
+        const futureDate = moment( '2023-06-30' );
         const interval = setInterval( () => {
             const now = moment();
             const diff = futureDate.diff( now );
