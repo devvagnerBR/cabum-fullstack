@@ -4,8 +4,8 @@ import formsValidate from '../services/forms-validate';
 import formatPhone from './../util/convert-phone';
 import countdownTime from '../util/countdown';
 import USER_REQUESTS from '../services/requests/user-requests';
-import controlledLoading from '../util/controled-loading';
-import { auth } from '../services/firebase';
+import controlledLoading from '../util/controlled-loading';
+import { getCookie,setCookie } from '../hooks/useCookie';
 
 
 
@@ -16,7 +16,7 @@ export const GlobalContext = React.createContext( '' )
 
 const GlobalProvider = ( { children } ) => {
 
-    const token = window.localStorage.getItem( 'token' )
+    const token = getCookie( 'token' )
     const [modalMenu,setModalMenu] = React.useState( false )
     const { countdown } = countdownTime()
     const { loading,awaitLoading } = controlledLoading()
@@ -52,9 +52,14 @@ const GlobalProvider = ( { children } ) => {
 
 
     React.useEffect( () => {
-        getLoggedUser()
         checkForUpdate()
+        getLoggedUser()
     },[token] )
+
+    React.useEffect( () => {
+        if ( user?.name ) setCookie( 'username',user?.name )
+    },[user] )
+
 
 
     return (

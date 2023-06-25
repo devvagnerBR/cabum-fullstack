@@ -7,17 +7,17 @@ import SidebarMenu from '../sidebar-menu'
 import { GO_TO_HOME } from './../../router/navigation';
 import { myContext } from '../../hooks/useContext'
 import profile_img from '../../assets/images/profile_ninja.png'
-
-
+import { getCookie } from '../../hooks/useCookie'
 
 const Header = () => {
 
     const navigate = useNavigate()
     const { pathname } = useLocation()
-    const token = window.localStorage.getItem( 'token' )
+    const token = getCookie( 'token' )
     const { modalMenu,setModalMenu,user,userLogOut } = myContext()
 
     const isLoginAndSignUpPage = pathname === '/entrar' || pathname === '/cadastro'
+    const displayName = getCookie( 'username' ) || user?.name
 
 
 
@@ -47,7 +47,7 @@ const Header = () => {
                                 Olá,
                                 <span
                                     className='capitalize pl-1 text-neutral-100 font-semibold'>
-                                    {user?.name}
+                                    {displayName}
                                 </span>
                             </h1>
                             <span

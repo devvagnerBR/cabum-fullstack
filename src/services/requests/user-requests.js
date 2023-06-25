@@ -1,7 +1,8 @@
 import React from "react";
-import { db_firestore,auth,provider } from "../firebase"
+import { db_firestore,auth } from "../firebase"
 import { GO_TO_HOME } from "../../router/navigation";
 import { useNavigate } from "react-router-dom";
+import { getCookie,removeCookie,setCookie } from "../../hooks/useCookie";
 
 
 
@@ -44,9 +45,10 @@ const USER_REQUESTS = () => {
                     phone_number
                 } )
 
-                window.localStorage.setItem( 'token',res.user.uid )
+                setCookie( 'token',res.user.uid,7 )
+                setCookie( 'username',name,7 )
                 console.log( 'cadastrado com sucesso' );
-                GO_TO_HOME(navigate)
+                GO_TO_HOME( navigate )
             }
         } catch ( error ) {
             setUserErrorMessage( error.message );
@@ -60,7 +62,8 @@ const USER_REQUESTS = () => {
 
             const res = await auth.signInWithEmailAndPassword( email,password );
             const user = res.user;
-            window.localStorage.setItem( 'token',user.uid )
+            setCookie( 'token',res.user.uid,7 )
+            console.log( user );
             console.log( 'logado com sucesso' );
 
         } catch ( error ) {
@@ -69,29 +72,32 @@ const USER_REQUESTS = () => {
         }
     }
 
-    const getLoggedUser = async () => {
+    const getLoggedUser = React.useCallback( async () => {
 
-        const token = window.localStorage.getItem( 'token' )
+        const token = getCookie( 'token' )
         if ( token ) {
             try {
 
                 const userRef = db_firestore.collection( "users" ).doc( token )
                 userRef.onSnapshot( ( docs ) => {
-                    setUser( docs.data() )
+                    setUser( oldUser => docs.data() )
+                    //setCookie( 'username',docs.data().name,7 )
+
                 } )
 
             } catch ( error ) {
                 console.log( error );
             }
         }
-    }
+    },[user] )
 
     const userLogOut = async () => {
 
         try {
 
             await auth.signOut()
-            window.localStorage.removeItem( 'token' )
+            removeCookie( 'token' )
+            removeCookie( 'username' )
             window.location.reload()
 
         } catch ( error ) {
