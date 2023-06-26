@@ -5,10 +5,6 @@ import CardProduct from '../../../components/card-product'
 
 const ProductsSection = ( { products,Icon,title = 'PRODUTOS' } ) => {
 
-
-
-
-
     return (
         <section className='w-10/12 max-2xl:w-full flex-col  self-center flex items-center bg-white  '>
             <header className='flex  w-full gap-2  h-16 items-center justify-start px-4 flex-wrap max-[580px]:justify-center'>

@@ -13,7 +13,7 @@ const USER_REQUESTS = () => {
     const [user,setUser] = React.useState( null )
 
 
-    const dataAlreadyExist = async ( itemName,item ) => {
+    const checkIfDataAlreadyExist = async ( itemName,item ) => {
         const userRef = db_firestore.collection( "users" );
         const q = await userRef.where( itemName,'==',item ).get();
         return !q.empty;
@@ -24,8 +24,8 @@ const USER_REQUESTS = () => {
         try {
 
             const { email,password,birthday,cpf,name,phone_number } = data
-            const cpfAlreadyRegistered = await dataAlreadyExist( 'cpf',cpf );
-            const emailAlreadyRegistered = await dataAlreadyExist( 'email',email );
+            const cpfAlreadyRegistered = await checkIfDataAlreadyExist( 'cpf',cpf );
+            const emailAlreadyRegistered = await checkIfDataAlreadyExist( 'email',email );
 
 
             if ( cpfAlreadyRegistered ) {
@@ -81,8 +81,6 @@ const USER_REQUESTS = () => {
                 const userRef = db_firestore.collection( "users" ).doc( token )
                 userRef.onSnapshot( ( docs ) => {
                     setUser( oldUser => docs.data() )
-                    //setCookie( 'username',docs.data().name,7 )
-
                 } )
 
             } catch ( error ) {

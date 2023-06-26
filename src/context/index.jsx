@@ -6,10 +6,8 @@ import countdownTime from '../util/countdown';
 import USER_REQUESTS from '../services/requests/user-requests';
 import controlledLoading from '../util/controlled-loading';
 import { getCookie,setCookie } from '../hooks/useCookie';
-
-
-
-
+import transformTittleInSlug from './../util/transform-tittle-in-slug';
+import PRODUCT_REQUESTS from '../services/requests/products-requests';
 
 export const GlobalContext = React.createContext( '' )
 
@@ -20,7 +18,6 @@ const GlobalProvider = ( { children } ) => {
     const [modalMenu,setModalMenu] = React.useState( false )
     const { countdown } = countdownTime()
     const { loading,awaitLoading } = controlledLoading()
-
 
     const {
         formLoginValidade,
@@ -37,6 +34,12 @@ const GlobalProvider = ( { children } ) => {
         checkForUpdate,
     } = USER_REQUESTS()
 
+    const {
+        getAllProducts,
+        products,
+        getProductDetails,
+        productDetails
+    } = PRODUCT_REQUESTS()
 
     React.useEffect( () => {
         if ( modalMenu ) {
@@ -54,12 +57,12 @@ const GlobalProvider = ( { children } ) => {
     React.useEffect( () => {
         checkForUpdate()
         getLoggedUser()
+        getAllProducts()
     },[token] )
 
     React.useEffect( () => {
         if ( user?.name ) setCookie( 'username',user?.name )
     },[user] )
-
 
 
     return (
@@ -78,7 +81,11 @@ const GlobalProvider = ( { children } ) => {
                 createAccount,
                 userErrorMessage,
                 user,
-                userLogOut
+                userLogOut,
+                transformTittleInSlug,
+                products,
+                getProductDetails,
+                productDetails
             }}>
             {children}
         </GlobalContext.Provider>

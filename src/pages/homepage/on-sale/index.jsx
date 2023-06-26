@@ -5,7 +5,7 @@ import CardProduct from '../../../components/card-product'
 
 import { myContext } from './../../../hooks/useContext';
 
-const onSale = ( { onSaleProducts } ) => {
+const OnSale = ( { onSaleProducts } ) => {
 
     const { countdown } = myContext()
 
@@ -16,7 +16,7 @@ const onSale = ( { onSaleProducts } ) => {
 
             <header className='flex  w-full bg-orange-500 h-16 items-center justify-between px-4 flex-wrap max-[580px]:justify-center'>
                 <div className='flex items-center gap-2'>
-    
+
                     <h1 className='font-semibold text-neutral-100 text-xl  max-[580px]:text-3xl'>OFERTAS NINJAS</h1>
                 </div>
                 {countdown && <>
@@ -49,4 +49,4 @@ const onSale = ( { onSaleProducts } ) => {
 
 }
 
-export default onSale
+export default OnSale
