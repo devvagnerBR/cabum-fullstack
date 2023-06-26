@@ -7,7 +7,7 @@ import { useNavigate,useParams } from 'react-router-dom'
 
 const CardProduct = ( { product } ) => {
 
-    const { textLimit,transformTittleInSlug,getProductDetails,productDetails } = myContext()
+    const { textLimit,transformTittleInSlug,getProductDetails } = myContext()
     const navigate = useNavigate()
 
     const goToProductDetails = async ( product ) => {

@@ -1,51 +1,99 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { myContext } from '../../hooks/useContext'
-import { ShoppingCart } from '@phosphor-icons/react'
+import { ShoppingCart,WarningCircle } from '@phosphor-icons/react'
 
 
 const ProductDetails = () => {
 
     const { id } = useParams()
-    const { productDetails } = myContext()
-
+    const { productDetails,getProductDetails } = myContext()
     const productPrice = productDetails?.price
+    const specs = productDetails?.specs
+    React.useEffect( () => {
 
+        if ( productDetails.length === 0 ) {
+            getProductDetails( id )
+        }
+
+    },[] )
+
+
+
+    // const specs = [
+    //     { title: 'Características',infos: ['Marca: Acer','Modelo: AN515-44-R629'] },
+    //     { title: 'Especificações',infos: ['Processador AMD Ryzen R7-4800H–Octa Core','Tela de 15,6” IPS de 144HZ com resolução Full HD','Sistema Operacional Windows 11','GPU Nvidia GeForce GTX 1650 com 4 GB de memória dedicada GDDR6'] },
+    //     { title: 'Sistema operacional',infos: ['Windows 11 Home 64-bits'] },
+    //     { title: 'CPU',infos: ['AMD Ryzen 7-4800H','Octa core (16 threads)','Frequência: 2.9 Ghz até 4.2 GHz'] },
+    // ]
+
+
+
+   
     if ( productDetails )
         return (
-            <div className={`flex flex-col items-center justify-start  pt-4 min-h-[500px] max-md:h-[calc(100dvh-15rem)]  h-[calc(100dvh-18rem)]`}>
-                <div className={`w-3/4 `}>
+            <div
+                className={`flex flex-col items-start justify-start 0   pt-4 min-h-[700px]  w-[1350px] max-xl:w-full m-auto`} >
+                <div
+                    className={`w-[100%] max-xl:w-[100vw] flex flex-col items-center justify-center   `}>
 
-                    <header className='w-full'>
-                        <h1 className='font-bold text-2xl'>{productDetails?.name}</h1>
+                    <header
+                        className='w-full text-start flex-wrap max-md:mt-2  mt-12 '>
+                        <h1
+                            className='font-bold text-2xl flex-wrap max-md:text-lg px-4'>{productDetails?.name}</h1>
                     </header>
 
-                    <section className='flex items-center w-full gap-10 pt-12 h-full'>
-
-                        <section className='w-[50rem]  flex  items-center justify-center'>
-                            <img className='w-[20rem]' src={productDetails?.image_url} alt="" />
+                    <section
+                        className='flex max-md:flex-col  items-center justify-start  w-full max-md:mt-2 mt-12 max-md:gap-2 gap-24 '>
+                        <section
+                            className='w-[25rem] max-md:w-[20-rem]   flex  items-center justify-center'>
+                            <img
+                                className='w-[25rem] max-md:w-[20rem]' src={productDetails?.image_url} alt={productDetails?.name}
+                            />
                         </section>
 
-                        <section className='w-full   h-full pt-6'>
-
-                            <h2 className='text-sm'>Vendido e entregue por: <span className='font-semibold'>KaBuM! </span>| <span className='text-green-600 font-semibold'> Em estoque</span> </h2>
-                            <h2 className='pt-2 font-bold text-4xl text-orange-500'>{( productPrice - ( productPrice * 0.05 ) )?.toLocaleString( 'pt-BR',{ style: 'currency',currency: 'BRL' } )}</h2>
-                            <h2 className='text-sm pt-2'>À vista no PIX com até <span className='font-semibold'>5% OFF</span></h2>
-                            <h2 className='text-sm pt-2 font-bold'>{productPrice?.toLocaleString( 'pt-BR',{ style: 'currency',currency: 'BRL' } )}</h2>
-                            <h2 className='text-sm'>Em até 10x de <span className='font-semibold'> {( productPrice / 10 )?.toLocaleString( 'pt-BR',{ style: 'currency',currency: 'BRL' } )} </span> sem juros no cartão</h2>
-                            <h2 className='text-sm'>Ou em 1x no cartão com até  <span className='font-semibold'>5% OFF</span></h2>
-                            <h3 className='underline cursor-pointer text-sm pt-2'>Ver mais opções de pagamento</h3>
-
-                            <button className='bg-orange-500 py-3 w-[20.5rem] hover:bg-orange-400 transition-all flex items-center justify-center gap-3 mt-6 rounded-sm text-white font-semibold tracking-wider'>
-                                <ShoppingCart size={26} className='fill-white ' weight='fill' />
+                        <section
+                            className='w-full flex flex-col i flex-1  p-2  max-md:justify-center max-md:items-center   h-full '>
+                            <h2
+                                className='text-sm'>Vendido e entregue por: <span className='font-semibold'>KaBuM! </span>| <span className='text-green-600 font-semibold'> Em estoque</span> </h2>
+                            <h2
+                                className='pt-2 font-bold text-4xl text-orange-500'>{( productPrice - ( productPrice * 0.05 ) )?.toLocaleString( 'pt-BR',{ style: 'currency',currency: 'BRL' } )}</h2>
+                            <h2
+                                className='text-sm pt-2'>À vista no PIX com até <span className='font-semibold'>5% OFF</span></h2>
+                            <h2
+                                className='text-sm pt-2 font-bold'>{productPrice?.toLocaleString( 'pt-BR',{ style: 'currency',currency: 'BRL' } )}</h2>
+                            <h2
+                                className='text-sm'>Em até 10x de <span className='font-semibold'> {( productPrice / 10 )?.toLocaleString( 'pt-BR',{ style: 'currency',currency: 'BRL' } )} </span> sem juros no cartão</h2>
+                            <h2
+                                className='text-sm'>Ou em 1x no cartão com até  <span className='font-semibold'>5% OFF</span></h2>
+                            <h3
+                                className='underline cursor-pointer text-sm pt-2'>Ver mais opções de pagamento</h3>
+                            <button
+                                className='bg-orange-500 py-3 w-[20.5rem] hover:bg-orange-400 transition-all flex items-center justify-center gap-3 mt-6 rounded-sm text-white font-semibold tracking-wider'>
+                                <ShoppingCart
+                                    size={26}
+                                    className='fill-white ' weight='fill' />
                                 COMPRAR
                             </button>
 
                         </section>
-
+                    </section>
+                    <section className='flex flex-col gap-4  w-full pb-28 mt-28 px-4'>
+                        <h1 className='text-2xl font-bold mb-10 flex items-center gap-2'><WarningCircle weight='fill' className='fill-orange-500' /> INFORMAÇÕES TÉCNICAS</h1>
+                        {specs?.map( ( itens,index ) => {
+                            return (
+                                <div key={index}>
+                                    <h1 className='font-bold text-sm'>{itens.tittle}</h1>
+                                    {itens.infos?.map( ( item,index ) => {
+                                        return <p key={index} className='text-sm'>{item}</p>
+                                    } )}
+                                </div>
+                            )
+                        } )}
                     </section>
                 </div>
-            </div>
+
+            </div >
         )
 }
 
