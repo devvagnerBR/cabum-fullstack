@@ -26,7 +26,7 @@ const SidebarMenu = () => {
 
                 <header className='w-full h-[4rem] flex items-center pl-4 gap-4'>
                     <UserCircle size={40} weight='fill' className=' fill-neutral-100' />
-                    <h1 className='text-neutral-200 text-[1.25rem] font-extrabold'>{`Olá, ${user.name}` || 'Olá. Faça seu login'}</h1>
+                    <h1 className='text-neutral-200 text-[1.25rem] font-extrabold'>{`Olá, ${user?.name}` || 'Olá. Faça seu login'}</h1>
                 </header>
 
                 <section
