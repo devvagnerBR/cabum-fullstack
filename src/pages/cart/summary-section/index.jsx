@@ -3,7 +3,7 @@ import React from 'react'
 
 const SummarySection = () => {
     return (
-        <div className='w-[320px] shrink-0 flex flex-col items-start justify-start  border rounded-sm shadow-sm py-4 px-6  '>
+        <div className='w-[320px] shrink-0 flex flex-col items-start justify-start  border rounded-sm shadow-sm py-4 px-6  sticky top-4 max-[1150px]:hidden '>
             <header className='flex items-center gap-2'>
                 <FileSearch weight='fill' size={16} className='fill-orange-500' />
                 <h1 className='font-bold text-neutral-600 text-lg'>RESUMO</h1>

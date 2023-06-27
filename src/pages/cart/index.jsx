@@ -11,7 +11,7 @@ const Cart = ( { products } ) => {
 
 
     return (
-        <div className={`flex flex-col items-center ${!hasProducts ? 'justify-start' : 'justify-center'}  min-h-[300px] px-4   h-[calc(100dvh-15rem)] `}>
+        <div className={`flex flex-col items-center ${!hasProducts ? 'justify-start' : 'justify-center'}  min-h-[300px] px-4   h-screen `}>
             {!products ?
 
 
