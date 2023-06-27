@@ -21,14 +21,6 @@ const ProductDetails = () => {
     },[] )
 
 
-    // const specs = [
-    //     { title: 'Características',infos: ['Marca: Acer','Modelo: AN515-44-R629'] },
-    //     { title: 'Especificações',infos: ['Processador AMD Ryzen R7-4800H–Octa Core','Tela de 15,6” IPS de 144HZ com resolução Full HD','Sistema Operacional Windows 11','GPU Nvidia GeForce GTX 1650 com 4 GB de memória dedicada GDDR6'] },
-    //     { title: 'Sistema operacional',infos: ['Windows 11 Home 64-bits'] },
-    //     { title: 'CPU',infos: ['AMD Ryzen 7-4800H','Octa core (16 threads)','Frequência: 2.9 Ghz até 4.2 GHz'] },
-    // ]
-
-
     if ( productDetails )
         return (
             <div
@@ -77,8 +69,10 @@ const ProductDetails = () => {
 
                         </section>
                     </section>
-                    <section className='flex flex-col gap-4  w-full pb-28 max-sm:mt-4 max-sm: mt-28 px-4'>
-                        <h1 className='text-2xl font-bold mb-10 flex items-center gap-2'><WarningCircle weight='fill' className='fill-orange-500' /> INFORMAÇÕES TÉCNICAS</h1>
+                    <section
+                        className='flex flex-col gap-4  w-full pb-28 max-sm:mt-4 max-sm: mt-28 px-4'>
+                        <h1
+                            className='text-2xl font-bold mb-10 flex items-center gap-2'><WarningCircle weight='fill' className='fill-orange-500' /> INFORMAÇÕES TÉCNICAS</h1>
                         {specs?.map( ( itens,index ) => {
                             return (
                                 <div key={index}>
@@ -92,18 +86,19 @@ const ProductDetails = () => {
 
                     </section>
 
-                    <div className='bg-blue-900  max-lg:flex-col flex items-center justify-center w-screen py-4 px-8 max-xl:px-2 max-lg:pb-6'>
-
-                        <div className='max-[1360px]:w-full max-lg:flex-col   w-[1350px] flex items-center'>
-
-
-                            <section className='flex flex-col w-48  max-lg:items-center max-lg:pb-2'>
-                                <h1 className='text-white text-xl font-bold'>CaBuM! News</h1>
-                                <h1 className='text-white text-xs'>Receba ofertas</h1>
+                    <div
+                        className='bg-blue-900  max-lg:flex-col flex items-center justify-center w-screen max-lg:py-4 px-8 max-xl:px-2 max-lg:pb-6'>
+                        <div
+                            className='max-[1360px]:w-full max-lg:flex-col   w-[1350px] flex items-center'>
+                            <section
+                                className='flex flex-col w-48  max-lg:items-center max-lg:pb-2'>
+                                <h1
+                                    className='text-white text-xl font-bold'>CaBuM! News</h1>
+                                <h1 c
+                                    lassName='text-white text-xs'>Receba ofertas</h1>
                             </section>
-                            <section className='grid grid-cols-3 max-lg:grid-cols-1 gap-4 max-lg:place-items-center py-4    w-full'>
-
-
+                            <section
+                                className='grid grid-cols-3 max-lg:grid-cols-1 gap-4 max-lg:place-items-center py-4    w-full'>
                                 <input
                                     className='py-3 rounded-sm max-lg:w-[95vw]  w-[100%] max-w-[28rem] max-lg:max-w-none  pl-2 border-2 focus:border-orange-500'
                                     type="text"
@@ -115,7 +110,7 @@ const ProductDetails = () => {
                                     placeholder='Qual o seu Email?'
                                 />
                                 <button
-                                    className='bg-orange-500 py-3 h-full max-lg:h-12 max-lg:w-[95vw]   max-lg:w-[28rem] rounded-sm text-white font-bold tracking-wider hover:bg-orange-400 transition-all'>
+                                    className='bg-orange-500 py-3 h-full max-lg:h-12 max-lg:w-[95vw] rounded-sm text-white font-bold tracking-wider hover:bg-orange-400 transition-all'>
                                     CADASTRAR
                                 </button>
 

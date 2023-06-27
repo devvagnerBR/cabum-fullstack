@@ -1,17 +1,42 @@
 import React from 'react'
 import { ShoppingCart } from '@phosphor-icons/react'
+import CEPSection from './cep-section'
+import SummarySection from './summary-section'
+import ProductsInCartSection from './products-section'
 
 const Cart = ( { products } ) => {
 
     const hasProducts = products === true
+    //lembrar de remover o !  ao final da estilização
+
 
     return (
-        <div className={`flex flex-col items-center ${hasProducts ? 'justify-start' : 'justify-center'}  min-h-[300px] pt-4  h-[calc(100dvh-15rem)] `}>
-            {products ?
+        <div className={`flex flex-col items-center ${!hasProducts ? 'justify-start' : 'justify-center'}  min-h-[300px] px-4   h-[calc(100dvh-15rem)] `}>
+            {!products ?
+
+
+
                 <section
-                    className=''>
+                    className='w-[1350px] py-4 h-full max-[1350px]:w-full flex items-start gap-4'>
+
+                    <section className='w-full'>
+                        <CEPSection />
+                        <ProductsInCartSection />
+                    </section>
+                    <SummarySection />
 
                 </section> :
+
+
+
+
+
+
+
+
+
+
+
                 <section
                     className='flex flex-col items-center'>
                     <h1 className='text-2xl font-bold'>O seu carrinho está vazio.</h1>
