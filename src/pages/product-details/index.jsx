@@ -10,6 +10,8 @@ const ProductDetails = () => {
     const { productDetails,getProductDetails } = myContext()
     const productPrice = productDetails?.price
     const specs = productDetails?.specs
+
+
     React.useEffect( () => {
 
         if ( productDetails.length === 0 ) {
@@ -17,7 +19,6 @@ const ProductDetails = () => {
         }
 
     },[] )
-
 
 
     // const specs = [
@@ -28,14 +29,12 @@ const ProductDetails = () => {
     // ]
 
 
-
-   
     if ( productDetails )
         return (
             <div
-                className={`flex flex-col items-start justify-start 0   pt-4 min-h-[700px]  w-[1350px] max-xl:w-full m-auto`} >
+                className={`flex flex-col items-start justify-start  pt-4 min-h-[700px] max-[1360px]:w-full  w-[1350px] max-xl:w-full m-auto`} >
                 <div
-                    className={`w-[100%] max-xl:w-[100vw] flex flex-col items-center justify-center   `}>
+                    className={`w-full max-xl:w-[100vw] flex flex-col items-center justify-center   `}>
 
                     <header
                         className='w-full text-start flex-wrap max-md:mt-2  mt-12 '>
@@ -46,7 +45,7 @@ const ProductDetails = () => {
                     <section
                         className='flex max-md:flex-col  items-center justify-start  w-full max-md:mt-2 mt-12 max-md:gap-2 gap-24 '>
                         <section
-                            className='w-[25rem] max-md:w-[20-rem]   flex  items-center justify-center'>
+                            className='w-[25rem] max-md:w-[20rem]   flex  items-center justify-center'>
                             <img
                                 className='w-[25rem] max-md:w-[20rem]' src={productDetails?.image_url} alt={productDetails?.name}
                             />
@@ -78,7 +77,7 @@ const ProductDetails = () => {
 
                         </section>
                     </section>
-                    <section className='flex flex-col gap-4  w-full pb-28 mt-28 px-4'>
+                    <section className='flex flex-col gap-4  w-full pb-28 max-sm:mt-4 max-sm: mt-28 px-4'>
                         <h1 className='text-2xl font-bold mb-10 flex items-center gap-2'><WarningCircle weight='fill' className='fill-orange-500' /> INFORMAÇÕES TÉCNICAS</h1>
                         {specs?.map( ( itens,index ) => {
                             return (
@@ -90,7 +89,39 @@ const ProductDetails = () => {
                                 </div>
                             )
                         } )}
+
                     </section>
+
+                    <div className='bg-blue-900  max-lg:flex-col flex items-center justify-center w-screen py-4 px-8 max-xl:px-2 max-lg:pb-6'>
+
+                        <div className='max-[1360px]:w-full max-lg:flex-col   w-[1350px] flex items-center'>
+
+
+                            <section className='flex flex-col w-48  max-lg:items-center max-lg:pb-2'>
+                                <h1 className='text-white text-xl font-bold'>CaBuM! News</h1>
+                                <h1 className='text-white text-xs'>Receba ofertas</h1>
+                            </section>
+                            <section className='grid grid-cols-3 max-lg:grid-cols-1 gap-4 max-lg:place-items-center py-4    w-full'>
+
+
+                                <input
+                                    className='py-3 rounded-sm max-lg:w-[95vw]  w-[100%] max-w-[28rem] max-lg:max-w-none  pl-2 border-2 focus:border-orange-500'
+                                    type="text"
+                                    placeholder='Qual o seu nome?'
+                                />
+                                <input
+                                    className='py-3 rounded-sm max-lg:w-[95vw]  w-[100%] max-w-[28rem] max-lg:max-w-none pl-2 border focus:border-orange-500'
+                                    type="email"
+                                    placeholder='Qual o seu Email?'
+                                />
+                                <button
+                                    className='bg-orange-500 py-3 h-full max-lg:h-12 max-lg:w-[95vw]   max-lg:w-[28rem] rounded-sm text-white font-bold tracking-wider hover:bg-orange-400 transition-all'>
+                                    CADASTRAR
+                                </button>
+
+                            </section>
+                        </div>
+                    </div>
                 </div>
 
             </div >
