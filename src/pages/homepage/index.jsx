@@ -1,6 +1,5 @@
 import React from 'react'
 import MainBanner from './main-banner'
-import OnOffer from './on-sale'
 import Categories from './categories'
 import { Lightning } from '@phosphor-icons/react'
 
@@ -16,6 +15,7 @@ import small_banner3 from '../../assets/banners/banner_small_3.webp'
 import ProductsSection from './products-section'
 import { myContext } from '../../hooks/useContext'
 import OnSale from './on-sale'
+
 
 
 const Homepage = () => {
@@ -36,6 +36,9 @@ const Homepage = () => {
         { id: 2,image: small_banner2 },
         { id: 3,image: small_banner3 },
     ]
+
+
+
 
     return (
         <div className='flex-col self-center h-full flex overflow-hidden'>

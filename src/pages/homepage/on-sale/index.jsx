@@ -8,7 +8,7 @@ import { myContext } from './../../../hooks/useContext';
 const OnSale = ( { onSaleProducts } ) => {
 
     const { countdown } = myContext()
-
+    
     return (
         <div
 
@@ -33,6 +33,7 @@ const OnSale = ( { onSaleProducts } ) => {
             <section
                 className='w-full grid grid-cols-5  max-xl:grid-cols-4 place-items-center max-[950px]:grid-cols-3  max-md:grid-cols-2  max-[560px]:grid-cols-1 gap-3 p-4 bg-white '>
                 {onSaleProducts?.map( ( product ) => {
+            
                     return (
                         <CardProduct product={product} key={product.id} />
                     )

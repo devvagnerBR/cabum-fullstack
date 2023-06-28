@@ -4,40 +4,43 @@ import CEPSection from './cep-section'
 import SummarySection from './summary-section'
 import ProductsInCartSection from './products-section'
 import SummaryModal from './modal-summary'
+import { myContext } from '../../hooks/useContext'
+import DeliveryOptions from './delivery-options'
 
-const Cart = ( { products } ) => {
+const Cart = () => {
+
+
+
+    const { products } = myContext()
 
     const [summaryModal,setSummaryModal] = React.useState( false )
     const hasProducts = products === true
-    //lembrar de remover o !  ao final da estilização
-
 
     return (
-        <div className={`flex flex-col items-center ${!hasProducts ? 'justify-start' : 'justify-center'}   px-4   h-fit `}>
-            {!products ?
-
-
-
+        <div className={`flex flex-col items-center ${hasProducts ? 'justify-start' : 'justify-center'}   px-4   h-fit `}>
+            {products ?
                 <section
                     className='w-[1350px] py-4 h-full max-[1350px]:w-full flex  max-[1150px]:flex-col  items-start gap-4'>
 
                     <section className='w-full'>
                         <CEPSection />
-                        <ProductsInCartSection summaryModal={summaryModal} />
+                        <ProductsInCartSection
+                            products={products}
+                            summaryModal={summaryModal}
+                        />
+                        <DeliveryOptions />
                     </section>
+
                     <SummarySection />
                     <SummaryModal
                         summaryModal={summaryModal}
                         setSummaryModal={setSummaryModal}
                     />
+                    <div>
+
+                    </div>
 
                 </section> :
-
-
-
-
-
-
                 <section
                     className='flex flex-col items-center'>
                     <h1 className='text-2xl font-bold'>O seu carrinho está vazio.</h1>
