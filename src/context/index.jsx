@@ -8,6 +8,7 @@ import controlledLoading from '../util/controlled-loading';
 import { getCookie,setCookie } from '../hooks/useCookie';
 import transformTittleInSlug from './../util/transform-tittle-in-slug';
 import PRODUCT_REQUESTS from '../services/requests/products-requests';
+import getPageWidth from '../util/get-page-width';
 
 export const GlobalContext = React.createContext( '' )
 
@@ -18,6 +19,8 @@ const GlobalProvider = ( { children } ) => {
     const [modalMenu,setModalMenu] = React.useState( false )
     const { countdown } = countdownTime()
     const { loading,awaitLoading } = controlledLoading()
+    const { size } = getPageWidth()
+
 
     const {
         formLoginValidade,
@@ -65,6 +68,8 @@ const GlobalProvider = ( { children } ) => {
     },[user] )
 
 
+
+
     return (
         <GlobalContext.Provider
             value={{
@@ -85,7 +90,8 @@ const GlobalProvider = ( { children } ) => {
                 transformTittleInSlug,
                 products,
                 getProductDetails,
-                productDetails
+                productDetails,
+                size
             }}>
             {children}
         </GlobalContext.Provider>

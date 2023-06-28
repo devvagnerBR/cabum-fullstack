@@ -2,6 +2,7 @@ import { FileSearch } from '@phosphor-icons/react'
 import React from 'react'
 
 const SummarySection = () => {
+    
     return (
         <div className='w-[320px] shrink-0 flex flex-col items-start justify-start  border rounded-sm shadow-sm py-4 px-6  sticky top-4 max-[1150px]:hidden '>
             <header className='flex items-center gap-2'>
@@ -46,9 +47,8 @@ const SummarySection = () => {
 
             <section className='flex flex-col w-full items-center justify-center gap-2 mt-7 '>
                 <button className='bg-orange-500 h-12 w-full rounded-sm text-white font-semibold hover:bg-orange-400'>IR PARA O PAGAMENTO</button>
-                <button className='border border-orange-500 h-12 w-full rounded-sm text-orange-500 font-semibold hover:bg-orange-50'>IR PARA O PAGAMENTO</button>
+                <button className='border border-orange-500 h-12 w-full rounded-sm text-orange-500 font-semibold hover:bg-orange-50'>CONTINUAR COMPRANDO</button>
             </section>
-
         </div>
     )
 }

@@ -3,34 +3,35 @@ import { ShoppingCart } from '@phosphor-icons/react'
 import CEPSection from './cep-section'
 import SummarySection from './summary-section'
 import ProductsInCartSection from './products-section'
+import SummaryModal from './modal-summary'
 
 const Cart = ( { products } ) => {
 
+    const [summaryModal,setSummaryModal] = React.useState( true )
     const hasProducts = products === true
     //lembrar de remover o !  ao final da estilização
 
 
     return (
-        <div className={`flex flex-col items-center ${!hasProducts ? 'justify-start' : 'justify-center'}  min-h-[300px] px-4   h-screen `}>
+        <div className={`flex flex-col items-center ${!hasProducts ? 'justify-start' : 'justify-center'}   px-4   h-fit `}>
             {!products ?
 
 
 
                 <section
-                    className='w-[1350px] py-4 h-full max-[1350px]:w-full flex items-start gap-4'>
+                    className='w-[1350px] py-4 h-full max-[1350px]:w-full flex  max-[1150px]:flex-col  items-start gap-4'>
 
                     <section className='w-full'>
                         <CEPSection />
-                        <ProductsInCartSection />
+                        <ProductsInCartSection summaryModal={summaryModal} />
                     </section>
                     <SummarySection />
+                    <SummaryModal
+                        summaryModal={summaryModal}
+                        setSummaryModal={setSummaryModal}
+                    />
 
                 </section> :
-
-
-
-
-
 
 
 
