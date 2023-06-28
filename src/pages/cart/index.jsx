@@ -7,7 +7,7 @@ import SummaryModal from './modal-summary'
 
 const Cart = ( { products } ) => {
 
-    const [summaryModal,setSummaryModal] = React.useState( true )
+    const [summaryModal,setSummaryModal] = React.useState( false )
     const hasProducts = products === true
     //lembrar de remover o !  ao final da estilização
 

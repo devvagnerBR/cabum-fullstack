@@ -9,6 +9,7 @@ import { getCookie,setCookie } from '../hooks/useCookie';
 import transformTittleInSlug from './../util/transform-tittle-in-slug';
 import PRODUCT_REQUESTS from '../services/requests/products-requests';
 import getPageWidth from '../util/get-page-width';
+import getCEP from '../util/get-cep';
 
 export const GlobalContext = React.createContext( '' )
 
@@ -69,7 +70,6 @@ const GlobalProvider = ( { children } ) => {
 
 
 
-
     return (
         <GlobalContext.Provider
             value={{
@@ -91,7 +91,10 @@ const GlobalProvider = ( { children } ) => {
                 products,
                 getProductDetails,
                 productDetails,
-                size
+                size,
+                getCEP
+
+
             }}>
             {children}
         </GlobalContext.Provider>

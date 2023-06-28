@@ -4,7 +4,6 @@ import Input from '../../components/input'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { myContext } from '../../hooks/useContext'
-import { GO_TO_HOME } from './../../router/navigation';
 import { useNavigate } from 'react-router-dom'
 
 const SignIn = () => {

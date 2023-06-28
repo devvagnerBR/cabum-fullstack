@@ -4,9 +4,6 @@ import React from 'react'
 const SummaryModal = ( { setSummaryModal,summaryModal } ) => {
 
 
-
-
-
     return (
         <div className={`min-[1150px]:hidden w-full  flex flex-col   px-4 fixed bottom-0 left-0 h-fit bg-white shadow-lg items-start pt-4 transition-all pb-4 shadow-black ${summaryModal && ''}`}>
             <div
