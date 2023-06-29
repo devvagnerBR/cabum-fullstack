@@ -2,6 +2,7 @@ import React from 'react'
 import { ShoppingCart,Heart } from '@phosphor-icons/react'
 import { myContext } from '../../hooks/useContext'
 import { useNavigate,useParams } from 'react-router-dom'
+import { GO_TO_CART } from '../../router/navigation'
 
 
 
@@ -17,6 +18,7 @@ const CardProduct = ( { product } ) => {
 
     const handleAddToCart = async ( product ) => {
         await addProductToCart( product )
+        GO_TO_CART( navigate )
     }
 
     const handleAddProductToFavorite = async () => {
@@ -37,7 +39,7 @@ const CardProduct = ( { product } ) => {
                     onClick={() => handleAddToCart( product )}
                     size={26}
                     weight='light'
-                    className='fill-neutral-300 absolute right-3 cursor-pointer'
+                    className={`${product?.inCart ? 'fill-orange-500' : 'fill-neutral-300'}  absolute right-3 cursor-pointer`}
                 />
             </div>
 

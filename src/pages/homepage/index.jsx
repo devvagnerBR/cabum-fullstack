@@ -21,7 +21,7 @@ import OnSale from './on-sale'
 const Homepage = () => {
 
     const [customProducts,setCustomProducts] = React.useState( [] )
-    const { products,favoritesProductsId } = myContext()
+    const { products,favoritesProductsId,productsInCartIds } = myContext()
 
     const banners = [
         { id: 1,image: banner1 },
@@ -37,17 +37,19 @@ const Homepage = () => {
         { id: 3,image: small_banner3 },
     ]
 
-
     React.useEffect( () => {
         const productsMarketAsFavorite = products?.map( ( product ) => {
             return {
                 ...product,
-                favorite: favoritesProductsId.includes( product.id )
+                favorite: favoritesProductsId.includes( product.id ),
+                inCart: productsInCartIds.includes( product.id )
             }
         } )
 
+
+
         setCustomProducts( productsMarketAsFavorite );
-    },[favoritesProductsId] )
+    },[favoritesProductsId,productsInCartIds] )
 
 
     return (

@@ -18,10 +18,7 @@ const Cart = () => {
     const [summaryModal,setSummaryModal] = React.useState( false )
     const hasProducts = productsInCart.length > 0
 
-    React.useEffect( () => {
-        getProductsInCart()
-    },[] )
-
+ 
 
     return (
         <div className={`flex flex-col items-center    ${hasProducts ? 'justify-start' : 'justify-center'}   px-4    `}>
@@ -42,6 +39,7 @@ const Cart = () => {
                         products={productsInCart}
                     />
                     <SummaryModal
+                        products={productsInCart}
                         summaryModal={summaryModal}
                         setSummaryModal={setSummaryModal}
                     />

@@ -6,6 +6,7 @@ import firebase from 'firebase/app'
 const CART_REQUESTS = () => {
 
     const [productsInCart,setProductsInCart] = React.useState( [] )
+    const [productsInCartIds,setProductsInCardIds] = React.useState( [] )
 
     const token = getCookie( 'token' )
 
@@ -113,9 +114,24 @@ const CART_REQUESTS = () => {
                 }
             }
 
+        } catch ( error ) {
+            console.log( error );
+        }
+    }
+
+    const getIdsFromItensInCart = async () => {
 
 
+        try {
 
+            cartRef.onSnapshot( ( docs ) => {
+                let data = []
+                docs.forEach( ( doc ) => {
+                    data.push( doc.id )
+                } )
+
+                setProductsInCardIds( data )
+            } )
 
 
 
@@ -126,6 +142,7 @@ const CART_REQUESTS = () => {
 
 
 
+
     return {
         addProductToCart,
         getProductsInCart,
@@ -133,7 +150,9 @@ const CART_REQUESTS = () => {
         removeProductFromCart,
         removeAllProductsFromCart,
         incrementQuantityFromItemInCart,
-        decrementQuantityFromItemInCart
+        decrementQuantityFromItemInCart,
+        getIdsFromItensInCart,
+        productsInCartIds
     }
 
 }

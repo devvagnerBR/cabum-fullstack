@@ -47,7 +47,9 @@ const GlobalProvider = ( { children } ) => {
         removeProductFromCart,
         removeAllProductsFromCart,
         incrementQuantityFromItemInCart,
-        decrementQuantityFromItemInCart
+        decrementQuantityFromItemInCart,
+        getIdsFromItensInCart,
+        productsInCartIds
     } = CART_REQUESTS()
 
     const {
@@ -88,6 +90,8 @@ const GlobalProvider = ( { children } ) => {
 
     React.useEffect( () => {
         getIdFromFavoritesProducts()
+        getIdsFromItensInCart()
+        getProductsInCart()
     },[] )
 
 
@@ -127,7 +131,10 @@ const GlobalProvider = ( { children } ) => {
                 getIdFromFavoritesProducts,
 
                 incrementQuantityFromItemInCart,
-                decrementQuantityFromItemInCart
+                decrementQuantityFromItemInCart,
+
+                productsInCartIds
+
 
             }}>
             {children}

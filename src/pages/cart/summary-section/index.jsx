@@ -2,9 +2,12 @@ import { FileSearch } from '@phosphor-icons/react'
 import React from 'react'
 import { myContext } from '../../../hooks/useContext'
 import convertToLocaleString from '../../../util/convert-to-locale-string'
+import { GO_TO_FAVORITES, GO_TO_HOME } from '../../../router/navigation'
+import { useNavigate } from 'react-router-dom'
 
 const SummarySection = ( { products } ) => {
 
+    const navigate = useNavigate()
 
     const totalPrice = products?.reduce( ( total,product ) => total + ( product.price * product.quantity ),0 )
     return (
@@ -51,7 +54,7 @@ const SummarySection = ( { products } ) => {
 
             <section className='flex flex-col w-full items-center justify-center gap-2 mt-7 '>
                 <button className='bg-orange-500 h-12 w-full rounded-sm text-white font-semibold hover:bg-orange-400'>IR PARA O PAGAMENTO</button>
-                <button className='border border-orange-500 h-12 w-full rounded-sm text-orange-500 font-semibold hover:bg-orange-50'>CONTINUAR COMPRANDO</button>
+                <button onClick={() => GO_TO_HOME( navigate )} className='border border-orange-500 h-12 w-full rounded-sm text-orange-500 font-semibold hover:bg-orange-50'>CONTINUAR COMPRANDO</button>
             </section>
         </div>
     )
