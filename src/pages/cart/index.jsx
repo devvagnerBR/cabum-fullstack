@@ -27,7 +27,7 @@ const Cart = () => {
         <div className={`flex flex-col items-center    ${hasProducts ? 'justify-start' : 'justify-center'}   px-4    `}>
             {hasProducts ?
                 <section
-                    className='w-[1350px] py-4  max-[1350px]:w-full flex h-screen  max-[1150px]:flex-col  items-start gap-4'>
+                    className='w-[1350px] py-4  max-[1350px]:w-full flex h-fit  max-[1150px]:flex-col  items-start gap-4'>
 
                     <section className='w-full'>
                         <CEPSection />
@@ -51,7 +51,7 @@ const Cart = () => {
 
                 </section> :
                 <section
-                    className='flex flex-col items-center justify-center min-h-[400px] h-[calc(100vh-288px)] max-md:h-[calc(100vh-240px)] '>
+                    className='flex flex-col items-center justify-center min-h-[700px] h-[calc(100vh-288px)] max-md:h-[calc(100vh-240px)] '>
                     <h1 className='text-2xl font-bold'>O seu carrinho está vazio.</h1>
                     <h1 className='text-sm py-2'>Deseja olhar outros produtos similares?</h1>
                     <button

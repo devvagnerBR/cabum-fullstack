@@ -101,11 +101,24 @@ const CART_REQUESTS = () => {
 
         try {
 
-            await cartRef.doc( productId ).update( {
-                quantity: firebase.firestore.FieldValue.increment( -1 )
-            } )
+            const docRef = cartRef.doc( productId );
+            const doc = await docRef.get();
+            if ( doc.exists ) {
 
-           
+                const quantity = doc.data().quantity;
+                if ( quantity > 1 ) {
+                    await cartRef.doc( productId ).update( {
+                        quantity: firebase.firestore.FieldValue.increment( -1 )
+                    } )
+                }
+            }
+
+
+
+
+
+
+
         } catch ( error ) {
             console.log( error );
         }
