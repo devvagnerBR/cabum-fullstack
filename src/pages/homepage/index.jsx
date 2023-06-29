@@ -20,8 +20,8 @@ import OnSale from './on-sale'
 
 const Homepage = () => {
 
-
-    const { products } = myContext()
+    const [customProducts,setCustomProducts] = React.useState( [] )
+    const { products,favoritesProductsId } = myContext()
 
     const banners = [
         { id: 1,image: banner1 },
@@ -38,24 +38,34 @@ const Homepage = () => {
     ]
 
 
+    React.useEffect( () => {
+        const productsMarketAsFavorite = products?.map( ( product ) => {
+            return {
+                ...product,
+                favorite: favoritesProductsId.includes( product.id )
+            }
+        } )
+
+        setCustomProducts( productsMarketAsFavorite );
+    },[favoritesProductsId] )
 
 
     return (
-        <div className='flex-col self-center h-full flex overflow-hidden'>
+        <div className='flex-col self-center  h-full flex overflow-hidden'>
             <MainBanner
                 banners={banners} />
             <OnSale
-                onSaleProducts={products} />
+                onSaleProducts={customProducts} />
             <MainBanner
                 banners={smallBanners} />
             <Categories />
             <ProductsSection
-                products={products}
+                products={customProducts}
                 title='ACABARAM DE  CHEGAR'
                 Icon={Lightning}
             />
             <ProductsSection
-                products={products}
+                products={customProducts}
                 title='MAIS PROCURADOS'
                 Icon={Lightning}
             />

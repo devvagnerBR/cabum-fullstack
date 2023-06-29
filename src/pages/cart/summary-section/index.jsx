@@ -1,8 +1,12 @@
 import { FileSearch } from '@phosphor-icons/react'
 import React from 'react'
+import { myContext } from '../../../hooks/useContext'
+import convertToLocaleString from '../../../util/convert-to-locale-string'
 
-const SummarySection = () => {
-    
+const SummarySection = ( { products } ) => {
+
+
+    const totalPrice = products?.reduce( ( total,product ) => total + ( product.price * product.quantity ),0 )
     return (
         <div className='w-[320px] shrink-0 flex flex-col items-start justify-start  border rounded-sm shadow-sm py-4 px-6  sticky top-4 max-[1150px]:hidden '>
             <header className='flex items-center gap-2'>
@@ -11,11 +15,11 @@ const SummarySection = () => {
             </header>
 
 
-            <h3 className='text-xs border-b px-2 pt-8 pl-2  gap-2 w-full text-neutral-400 flex items-center justify-between'>Valor dos Produtos <span className='font-bold text-lg'>R$ 2.588,22</span> </h3>
+            <h3 className='text-xs border-b px-2 pt-8 pl-2  gap-2 w-full text-neutral-400 flex items-center justify-between'>Valor dos Produtos <span className='font-bold text-lg'>{convertToLocaleString( totalPrice )}</span> </h3>
             <h3 className='text-xs px-2 mt-2  gap-2 w-full pl-2  text-neutral-400 flex items-center justify-between'>Frete:<span className='font-bold text-lg'>R$ 0,00</span> </h3>
 
             <section className='flex flex-col bg-neutral-100/60 w-full mt-2 pb-2'>
-                <h3 className='text-xs px-2 py-2 gap-2 w-full text-neutral-400 flex items-center justify-between'>Total à prazo <span className='font-bold text-lg'>R$ 2.588,22</span> </h3>
+                <h3 className='text-xs px-2 py-2 gap-2 w-full text-neutral-400 flex items-center justify-between'>Total à prazo <span className='font-bold text-lg'>{convertToLocaleString( totalPrice )}</span> </h3>
                 <h3
                     className='text-xs mt-2 gap-2 w-full text-neutral-400 flex items-center justify-center'>
                     em até
@@ -26,7 +30,7 @@ const SummarySection = () => {
                     de
                     <span
                         className='text-neutral-400 font-semibold'>
-                        R$258,82 sem juros
+                        {convertToLocaleString( totalPrice / 10 )} sem juros
                     </span>
                 </h3>
             </section>
@@ -41,8 +45,8 @@ const SummarySection = () => {
                     </span>
                 </h3>
 
-                <h1 className='mt-2 font-bold text-green-700 text-3xl'>R$ 2.199,99</h1>
-                <h1 className='mt-2 text-green-600 text-sm'>Economize: <span className='font-semibold text-green-700'>R$ 388,23</span></h1>
+                <h1 className='mt-2 font-bold text-green-700 text-3xl'>{convertToLocaleString( totalPrice - ( totalPrice * 0.05 ) )}</h1>
+                <h1 className='mt-2 text-green-600 text-sm'>Economize: <span className='font-semibold text-green-700'>{convertToLocaleString( totalPrice * 0.05 )}</span></h1>
             </section>
 
             <section className='flex flex-col w-full items-center justify-center gap-2 mt-7 '>

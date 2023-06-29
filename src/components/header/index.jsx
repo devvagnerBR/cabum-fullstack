@@ -14,12 +14,12 @@ const Header = () => {
     const navigate = useNavigate()
     const { pathname } = useLocation()
     const token = getCookie( 'token' )
-    const { modalMenu,setModalMenu,user,userLogOut } = myContext()
+    const { modalMenu,setModalMenu,user,userLogOut,productsInCart } = myContext()
 
     const isLoginAndSignUpPage = pathname === '/entrar' || pathname === '/cadastro'
     const displayName = getCookie( 'username' ) || user?.name
 
-
+    const productsLength = productsInCart?.length
 
     return (
         <header
@@ -72,12 +72,19 @@ const Header = () => {
                     </div>}
                 <div className={`${isLoginAndSignUpPage && 'invisible'} flex items-center gap-4 max-[360px]:hidden`}>
                     <Heart onClick={() => GO_TO_FAVORITES( navigate )} size={22} weight='fill' className=' fill-neutral-100 cursor-pointer' />
-                    <ShoppingCart onClick={() => GO_TO_CART( navigate )} size={22} weight='fill' className=' fill-neutral-100 cursor-pointer' />
+                    <div className='flex items-center justify-center'>
+                        <ShoppingCart
+                            onClick={() => GO_TO_CART( navigate )} size={22} weight='fill' className=' fill-neutral-100 cursor-pointer absolute'
+                        />
+                        <p className={` ${productsLength > 0 ? '' : 'invisible'} relative left-3 flex items-center justify-center bg-orange-500 bottom-2 text-xs text-white h-4 w-4 rounded-full font-semibold`}>{productsLength}</p>
+                        
+                    </div>
+
                 </div>
             </div>
 
             {modalMenu && <SidebarMenu />}
-        </header>
+        </header >
     )
 }
 

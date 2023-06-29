@@ -94,8 +94,7 @@ const ProductDetails = () => {
                                 className='flex flex-col w-48  max-lg:items-center max-lg:pb-2'>
                                 <h1
                                     className='text-white text-xl font-bold'>CaBuM! News</h1>
-                                <h1 c
-                                    lassName='text-white text-xs'>Receba ofertas</h1>
+                                <h1 className='text-white text-xs'>Receba ofertas</h1>
                             </section>
                             <section
                                 className='grid grid-cols-3 max-lg:grid-cols-1 gap-4 max-lg:place-items-center py-4    w-full'>

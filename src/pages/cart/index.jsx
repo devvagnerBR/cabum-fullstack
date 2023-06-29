@@ -6,32 +6,41 @@ import ProductsInCartSection from './products-section'
 import SummaryModal from './modal-summary'
 import { myContext } from '../../hooks/useContext'
 import DeliveryOptions from './delivery-options'
+import { GO_TO_HOME } from '../../router/navigation'
+import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
 
 
-
-    const { products } = myContext()
+    const navigate = useNavigate()
+    const { getProductsInCart,productsInCart } = myContext()
 
     const [summaryModal,setSummaryModal] = React.useState( false )
-    const hasProducts = products === true
+    const hasProducts = productsInCart.length > 0
+
+    React.useEffect( () => {
+        getProductsInCart()
+    },[] )
+
 
     return (
-        <div className={`flex flex-col items-center ${hasProducts ? 'justify-start' : 'justify-center'}   px-4   h-fit `}>
-            {products ?
+        <div className={`flex flex-col items-center    ${hasProducts ? 'justify-start' : 'justify-center'}   px-4    `}>
+            {hasProducts ?
                 <section
-                    className='w-[1350px] py-4 h-full max-[1350px]:w-full flex  max-[1150px]:flex-col  items-start gap-4'>
+                    className='w-[1350px] py-4  max-[1350px]:w-full flex h-screen  max-[1150px]:flex-col  items-start gap-4'>
 
                     <section className='w-full'>
                         <CEPSection />
                         <ProductsInCartSection
-                            products={products}
+                            products={productsInCart}
                             summaryModal={summaryModal}
                         />
                         <DeliveryOptions />
                     </section>
 
-                    <SummarySection />
+                    <SummarySection
+                        products={productsInCart}
+                    />
                     <SummaryModal
                         summaryModal={summaryModal}
                         setSummaryModal={setSummaryModal}
@@ -42,10 +51,11 @@ const Cart = () => {
 
                 </section> :
                 <section
-                    className='flex flex-col items-center'>
+                    className='flex flex-col items-center justify-center min-h-[400px] h-[calc(100vh-288px)] max-md:h-[calc(100vh-240px)] '>
                     <h1 className='text-2xl font-bold'>O seu carrinho está vazio.</h1>
                     <h1 className='text-sm py-2'>Deseja olhar outros produtos similares?</h1>
                     <button
+                        onClick={() => GO_TO_HOME( navigate )}
                         className='hover:bg-orange-400 transition-all text-lg  h-[3.125rem] max-md:mt-4 mt-4 flex items-center justify-center gap-2 rounded-sm text-white font-semibold bg-orange-500 w-full'>
                         <ShoppingCart
                             size={28}

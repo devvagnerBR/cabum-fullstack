@@ -63,7 +63,6 @@ const USER_REQUESTS = () => {
             const res = await auth.signInWithEmailAndPassword( email,password );
             const user = res.user;
             setCookie( 'token',res.user.uid,7 )
-            console.log( user );
             console.log( 'logado com sucesso' );
 
         } catch ( error ) {

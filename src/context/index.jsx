@@ -10,6 +10,8 @@ import transformTittleInSlug from './../util/transform-tittle-in-slug';
 import PRODUCT_REQUESTS from '../services/requests/products-requests';
 import getPageWidth from '../util/get-page-width';
 import getCEP from '../util/get-cep';
+import CART_REQUESTS from '../services/requests/cart-requests';
+import FAVORITES_REQUESTS from '../services/requests/favorite-request';
 
 export const GlobalContext = React.createContext( '' )
 
@@ -39,11 +41,27 @@ const GlobalProvider = ( { children } ) => {
     } = USER_REQUESTS()
 
     const {
+        addProductToCart,
+        getProductsInCart,
+        productsInCart,
+        removeProductFromCart,
+        removeAllProductsFromCart,
+        incrementQuantityFromItemInCart,
+        decrementQuantityFromItemInCart
+    } = CART_REQUESTS()
+
+    const {
         getAllProducts,
         products,
         getProductDetails,
         productDetails
     } = PRODUCT_REQUESTS()
+
+    const {
+        markProductAsFavorite,
+        favoritesProductsId,
+        getIdFromFavoritesProducts
+    } = FAVORITES_REQUESTS()
 
     React.useEffect( () => {
         if ( modalMenu ) {
@@ -68,11 +86,15 @@ const GlobalProvider = ( { children } ) => {
         if ( user?.name ) setCookie( 'username',user?.name )
     },[user] )
 
+    React.useEffect( () => {
+        getIdFromFavoritesProducts()
+    },[] )
 
 
     return (
         <GlobalContext.Provider
             value={{
+
                 modalMenu,
                 setModalMenu,
                 textLimit,
@@ -92,8 +114,20 @@ const GlobalProvider = ( { children } ) => {
                 getProductDetails,
                 productDetails,
                 size,
-                getCEP
+                getCEP,
 
+                addProductToCart,
+                getProductsInCart,
+                productsInCart,
+                removeProductFromCart,
+                removeAllProductsFromCart,
+
+                markProductAsFavorite,
+                favoritesProductsId,
+                getIdFromFavoritesProducts,
+
+                incrementQuantityFromItemInCart,
+                decrementQuantityFromItemInCart
 
             }}>
             {children}
