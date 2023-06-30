@@ -9,6 +9,7 @@ import Cart from '../pages/cart';
 import Footer from '../components/footer';
 import MyAccount from '../pages/my-account';
 import ProductDetails from '../pages/product-details';
+import PaymentMethod from '../pages/payment-method';
 
 
 const RouterConfig = () => {
@@ -27,9 +28,8 @@ const RouterConfig = () => {
                     <Route path='/carrinho' element={<Cart />} />
                     <Route path='/minha-conta' element={<MyAccount />} />
                     <Route path='/produto/:id/:product' element={<ProductDetails />} />
-
+                    <Route path='/pagamento' element={<PaymentMethod />} />
                 </Routes>
-                {/* <Footer /> */}
             </GlobalProvider>
         </BrowserRouter>
     )

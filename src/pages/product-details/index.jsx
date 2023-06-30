@@ -1,13 +1,15 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate,useParams } from 'react-router-dom'
 import { myContext } from '../../hooks/useContext'
 import { ShoppingCart,WarningCircle } from '@phosphor-icons/react'
+import { GO_TO_CART } from '../../router/navigation'
 
 
 const ProductDetails = () => {
 
     const { id } = useParams()
-    const { productDetails,getProductDetails } = myContext()
+    const navigate = useNavigate()
+    const { productDetails,getProductDetails,addProductToCart } = myContext()
     const productPrice = productDetails?.price
     const specs = productDetails?.specs
 
@@ -19,6 +21,12 @@ const ProductDetails = () => {
         }
 
     },[] )
+
+
+    const handleAddProductToCart = async ( product ) => {
+        await addProductToCart( product )
+        GO_TO_CART( navigate )
+    }
 
 
     if ( productDetails )
@@ -60,6 +68,7 @@ const ProductDetails = () => {
                             <h3
                                 className='underline cursor-pointer text-sm pt-2'>Ver mais opções de pagamento</h3>
                             <button
+                                onClick={() => handleAddProductToCart( productDetails )}
                                 className='bg-orange-500 py-3 w-[20.5rem] hover:bg-orange-400 transition-all flex items-center justify-center gap-3 mt-6 rounded-sm text-white font-semibold tracking-wider'>
                                 <ShoppingCart
                                     size={26}

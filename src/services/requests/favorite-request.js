@@ -77,12 +77,30 @@ const FAVORITES_REQUESTS = () => {
 
     }
 
+    const removeProductFromFavorites = async ( productId ) => {
+
+        try {
+
+            await favoritesRef
+                .doc( productId )
+                .delete();
+            console.log( 'produto removido dos favoritos' );
+
+        } catch ( error ) {
+            console.log( error );
+        }
+    }
+
+
+
+
     return {
         markProductAsFavorite,
         getIdFromFavoritesProducts,
         favoritesProductsId,
         getProductsMarkAsFavorite,
-        productsAsFavorites
+        productsAsFavorites,
+        removeProductFromFavorites
     }
 }
 

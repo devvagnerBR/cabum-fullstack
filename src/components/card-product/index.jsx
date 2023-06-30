@@ -1,14 +1,14 @@
 import React from 'react'
 import { ShoppingCart,Heart } from '@phosphor-icons/react'
 import { myContext } from '../../hooks/useContext'
-import { useNavigate,useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { GO_TO_CART } from '../../router/navigation'
 
 
 
 const CardProduct = ( { product } ) => {
 
-    const { textLimit,transformTittleInSlug,getProductDetails,addProductToCart,markProductAsFavorite } = myContext()
+    const { textLimit,transformTittleInSlug,getProductDetails,addProductToCart,markProductAsFavorite,removeProductFromFavorites } = myContext()
     const navigate = useNavigate()
 
     const goToProductDetails = async ( product ) => {
@@ -21,9 +21,15 @@ const CardProduct = ( { product } ) => {
         GO_TO_CART( navigate )
     }
 
-    const handleAddProductToFavorite = async () => {
-        await markProductAsFavorite( product )
+    const handleAddProductToFavorite = async ( product ) => {
+
+        if ( product.favorite ) {
+            await removeProductFromFavorites( product.id )
+        } else {
+            await markProductAsFavorite( product )
+        }
     }
+
 
     return (
         <div

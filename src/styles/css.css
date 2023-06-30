@@ -6,6 +6,9 @@
     @apply p-0 m-0 box-border outline-none scroll-smooth font-Poppins leading-4 text-neutral-600 
 }
 
+body{
+    @apply min-h-[100vh] min-w-[100vw]
+}
 
 
 input:-webkit-autofill {

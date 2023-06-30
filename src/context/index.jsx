@@ -64,7 +64,8 @@ const GlobalProvider = ( { children } ) => {
         favoritesProductsId,
         getIdFromFavoritesProducts,
         getProductsMarkAsFavorite,
-        productsAsFavorites
+        productsAsFavorites,
+        removeProductFromFavorites
     } = FAVORITES_REQUESTS()
 
     React.useEffect( () => {
@@ -137,6 +138,7 @@ const GlobalProvider = ( { children } ) => {
                 decrementQuantityFromItemInCart,
                 
                 productsAsFavorites,
+                removeProductFromFavorites,
                 productsInCartIds
 
 
