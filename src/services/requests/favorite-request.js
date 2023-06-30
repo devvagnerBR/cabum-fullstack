@@ -1,10 +1,12 @@
 import React from 'react'
 import { db_firestore } from '../firebase';
 import { getCookie } from '../../hooks/useCookie';
+import { Logger } from 'sass';
 
 const FAVORITES_REQUESTS = () => {
 
     const [favoritesProductsId,setFavoritesProductsId] = React.useState( [] )
+    const [productsAsFavorites,setProductsAsFavorites] = React.useState( [] )
 
     const token = getCookie( 'token' )
     const favoritesRef = db_firestore
@@ -55,7 +57,33 @@ const FAVORITES_REQUESTS = () => {
 
     }
 
-    return { markProductAsFavorite,getIdFromFavoritesProducts,favoritesProductsId }
+    const getProductsMarkAsFavorite = async () => {
+
+        try {
+
+            favoritesRef.onSnapshot( ( docs ) => {
+                let data = []
+                docs.forEach( ( doc ) => {
+                    if ( doc.exists ) data.push( doc.data() )
+                } )
+
+                setProductsAsFavorites( data )
+            } )
+
+        } catch ( error ) {
+            console.log( error );
+        }
+
+
+    }
+
+    return {
+        markProductAsFavorite,
+        getIdFromFavoritesProducts,
+        favoritesProductsId,
+        getProductsMarkAsFavorite,
+        productsAsFavorites
+    }
 }
 
 export default FAVORITES_REQUESTS

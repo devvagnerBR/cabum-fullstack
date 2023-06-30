@@ -8,6 +8,7 @@ import { myContext } from '../../hooks/useContext'
 import DeliveryOptions from './delivery-options'
 import { GO_TO_HOME } from '../../router/navigation'
 import { useNavigate } from 'react-router-dom'
+import Footer from '../../components/footer'
 
 const Cart = () => {
 
@@ -18,13 +19,13 @@ const Cart = () => {
     const [summaryModal,setSummaryModal] = React.useState( false )
     const hasProducts = productsInCart.length > 0
 
- 
+
 
     return (
-        <div className={`flex flex-col items-center    ${hasProducts ? 'justify-start' : 'justify-center'}   px-4    `}>
+        <div className={`flex flex-col items-center h-fit min-h-[calc(100vh-7rem)]  relative  justify-start  px-4      `}>
             {hasProducts ?
                 <section
-                    className='w-[1350px] py-4  max-[1350px]:w-full flex h-fit  max-[1150px]:flex-col  items-start gap-4'>
+                    className='w-[1350px] py-4  max-[1350px]:w-full flex h-fit mb-60   max-[1150px]:flex-col  items-start gap-4'>
 
                     <section className='w-full'>
                         <CEPSection />
@@ -49,7 +50,7 @@ const Cart = () => {
 
                 </section> :
                 <section
-                    className='flex flex-col items-center justify-center min-h-[700px] h-[calc(100vh-288px)] max-md:h-[calc(100vh-240px)] '>
+                    className='flex flex-col items-center justify-start max-md:h-[calc(100vh-4rem)] pt-12   relative    '>
                     <h1 className='text-2xl font-bold'>O seu carrinho está vazio.</h1>
                     <h1 className='text-sm py-2'>Deseja olhar outros produtos similares?</h1>
                     <button
@@ -63,6 +64,8 @@ const Cart = () => {
                     </button>
                 </section>
             }
+            <Footer />
+
         </div>
     )
 }

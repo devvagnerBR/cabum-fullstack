@@ -29,7 +29,7 @@ const RouterConfig = () => {
                     <Route path='/produto/:id/:product' element={<ProductDetails />} />
 
                 </Routes>
-                <Footer />
+                {/* <Footer /> */}
             </GlobalProvider>
         </BrowserRouter>
     )

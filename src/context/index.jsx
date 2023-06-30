@@ -62,7 +62,9 @@ const GlobalProvider = ( { children } ) => {
     const {
         markProductAsFavorite,
         favoritesProductsId,
-        getIdFromFavoritesProducts
+        getIdFromFavoritesProducts,
+        getProductsMarkAsFavorite,
+        productsAsFavorites
     } = FAVORITES_REQUESTS()
 
     React.useEffect( () => {
@@ -92,6 +94,7 @@ const GlobalProvider = ( { children } ) => {
         getIdFromFavoritesProducts()
         getIdsFromItensInCart()
         getProductsInCart()
+        getProductsMarkAsFavorite()
     },[] )
 
 
@@ -132,7 +135,8 @@ const GlobalProvider = ( { children } ) => {
 
                 incrementQuantityFromItemInCart,
                 decrementQuantityFromItemInCart,
-
+                
+                productsAsFavorites,
                 productsInCartIds
 
 

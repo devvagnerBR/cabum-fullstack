@@ -15,6 +15,7 @@ import small_banner3 from '../../assets/banners/banner_small_3.webp'
 import ProductsSection from './products-section'
 import { myContext } from '../../hooks/useContext'
 import OnSale from './on-sale'
+import Footer from '../../components/footer'
 
 
 
@@ -53,7 +54,7 @@ const Homepage = () => {
 
 
     return (
-        <div className='flex-col self-center  h-full flex overflow-hidden'>
+        <div className='flex-col self-center relative  h-full flex overflow-hidden pb-[12rem]'>
             <MainBanner
                 banners={banners} />
             <OnSale
@@ -71,6 +72,7 @@ const Homepage = () => {
                 title='MAIS PROCURADOS'
                 Icon={Lightning}
             />
+            <Footer/>
         </div>
     )
 }

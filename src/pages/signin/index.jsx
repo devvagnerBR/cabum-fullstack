@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { myContext } from '../../hooks/useContext'
 import { useNavigate } from 'react-router-dom'
+import Footer from '../../components/footer'
 
 const SignIn = () => {
 
@@ -50,13 +51,13 @@ const SignIn = () => {
 
 
     return (
-        <div className='flex flex-col items-center justify-start  min-h-[660px] pt-4 max-md:h-fit h-[calc(100dvh-18rem)] '>
+        <div className='flex flex-col items-center justify-start relative  pt-4   h-fit pb-[12rem]  '>
             <header>
                 <h1 className='text-orange-500 text-2xl font-bold'>CRIAR CONTA</h1>
             </header>
             <form
                 onSubmit={handleSubmit( handleCreateAccount )}
-                className='grid grid-cols-2 gap-4 max-md:grid-cols-1 '>
+                className='grid grid-cols-2 gap-4 max-md:grid-cols-1  '>
                 <Input
                     label='Nome completo*'
                     name='name'
@@ -136,6 +137,7 @@ const SignIn = () => {
                 </button>
             </form>
             <p className='h-8 flex pt-2 text-red-500'>{customError || userErrorMessage}</p>
+            <Footer />
         </div>
     )
 }

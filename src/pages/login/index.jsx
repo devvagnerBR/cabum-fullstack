@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { myContext } from '../../hooks/useContext'
 import { useNavigate } from 'react-router-dom'
 import { GO_TO_HOME } from './../../router/navigation';
+import Footer from '../../components/footer'
 
 
 
@@ -68,6 +69,7 @@ const LogIn = () => {
                 </button>
             </form>
 
+            <Footer />
         </div>
     )
 }

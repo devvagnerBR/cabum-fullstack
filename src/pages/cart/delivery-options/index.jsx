@@ -16,7 +16,7 @@ const DeliveryOptions = () => {
 
 
     return (
-        <div className='w-full border p-4 mb-32'>
+        <div className='w-full border p-4 '>
             <header className='flex items-center gap-2'>
                 <Truck size={22} weight='fill' className='fill-orange-500' />
                 <h1 className='font-semibold'>FRETE:</h1>
