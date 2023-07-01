@@ -1,10 +1,10 @@
 import React from 'react'
 
-const PaymentActions = () => {
+const PaymentActions = ( { tittle } ) => {
     return (
-        <div className='w-[85vw] flex gap-4 max-w-[1350px] py-4 items-end justify-end'>
-            <button className='border border-orange-500 h-12 px-2 rounded-sm text-orange-500 font-bold w-[18rem] hover:border-orange-400'>VOLTAR</button>
-            <button className='border bg-orange-500 h-12 px-2 rounded-sm text-white font-bold w-[18rem] hover:bg-orange-400'>CONTINUAR</button>
+        <div className='flex gap-4 py-4 items-end justify-end max-sm:flex-col max-sm:items-center max-sm:w-full '>
+            <button className='border border-orange-500 h-12 px-2 rounded-md text-orange-500 font-bold w-[18rem] max-sm:w-full hover:border-orange-400'>VOLTAR</button>
+            <button className='border bg-orange-500 h-12 px-2 rounded-md text-white font-bold w-[18rem] max-sm:w-full hover:bg-orange-400'>{tittle}</button>
         </div>
     )
 }

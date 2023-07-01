@@ -18,7 +18,7 @@ const PaymentDescription = ( { clickedMethod } ) => {
 
 
     return (
-        <div>
+        <div className='w-full'>
             {methods[method]}
         </div>
     )

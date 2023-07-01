@@ -4,7 +4,7 @@ import PaymentOption from './payment-option'
 
 const methods = [
     { id: 1,name: 'PIX',icon: Money },
-    { id: 2,name: 'BOLETO BANCÁRIO',icon: Article },
+    // { id: 2,name: 'BOLETO BANCÁRIO',icon: Article },
     { id: 3,name: 'CARTÃO DE CRÉDITO',icon: CreditCard },
 ]
 
@@ -12,10 +12,8 @@ const methods = [
 
 const PaymentOptions = ( { setClickedMethod } ) => {
 
-
-
     return (
-        <div className='flex flex-col w-[320px] max-sm:w-full gap-2'>
+        <div className='flex flex-col w-[250px] max-[950px]:w-full shrink-0 max-sm:w-full gap-2'>
             {methods?.map( ( method ) => {
                 return (
                     <PaymentOption
