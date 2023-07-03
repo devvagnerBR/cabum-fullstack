@@ -7,7 +7,6 @@ import Boleto from './boleto';
 const PaymentDescription = ( { clickedMethod } ) => {
 
 
-
     let method = clickedMethod.id - 1 || 0
     const methods = [
         [< Pix key='pix' />],

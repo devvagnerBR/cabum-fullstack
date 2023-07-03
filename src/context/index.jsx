@@ -96,7 +96,7 @@ const GlobalProvider = ( { children } ) => {
         getIdsFromItensInCart()
         getProductsInCart()
         getProductsMarkAsFavorite()
-    },[] )
+    },[token] )
 
 
     return (

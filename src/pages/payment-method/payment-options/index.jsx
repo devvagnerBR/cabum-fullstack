@@ -4,7 +4,7 @@ import PaymentOption from './payment-option'
 
 const methods = [
     { id: 1,name: 'PIX',icon: Money },
-    // { id: 2,name: 'BOLETO BANCÁRIO',icon: Article },
+    { id: 2,name: 'BOLETO BANCÁRIO',icon: Article },
     { id: 3,name: 'CARTÃO DE CRÉDITO',icon: CreditCard },
 ]
 

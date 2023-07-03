@@ -4,12 +4,10 @@ import Input from '../../components/input'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { myContext } from '../../hooks/useContext'
-import { useNavigate } from 'react-router-dom'
 import Footer from '../../components/footer'
 
 const SignIn = () => {
 
-    const navigate = useNavigate()
     const [customError,setCustomError] = React.useState( null )
 
     const {
