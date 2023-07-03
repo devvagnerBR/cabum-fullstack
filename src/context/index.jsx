@@ -27,7 +27,8 @@ const GlobalProvider = ( { children } ) => {
 
     const {
         formLoginValidade,
-        formSignUpValidade
+        formSignUpValidade,
+        creditCardValidade
     } = formsValidate()
 
     const {
@@ -139,7 +140,8 @@ const GlobalProvider = ( { children } ) => {
                 
                 productsAsFavorites,
                 removeProductFromFavorites,
-                productsInCartIds
+                productsInCartIds,
+                creditCardValidade
 
 
             }}>

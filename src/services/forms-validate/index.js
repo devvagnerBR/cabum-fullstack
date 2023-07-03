@@ -13,8 +13,6 @@ const formsValidate = () => {
             .nonempty( 'O campo senha está vazio' )
     } )
 
-
-
     const formSignUpValidade = z.object( {
 
         name: z.string().nonempty( 'Campo nome está vazio' ),
@@ -41,7 +39,18 @@ const formsValidate = () => {
     } )
 
 
-    return { formLoginValidade,formSignUpValidade }
+    const creditCardValidade = z.object( {
+        name: z.string().nonempty( 'Campo obrigatório' ),
+        card_number: z.string().nonempty( 'Campo obrigatório' ),
+        expiration_date: z.string().nonempty( 'Campo obrigatório' ),
+        security_code: z.string().nonempty( 'Campo obrigatório' ),
+        card_number: z.string().nonempty( 'Campo obrigatório' ),
+        birth: z.string().nonempty( 'Campo obrigatório' ),
+        cpf: z.string().nonempty( 'Campo obrigatório' ),
+
+    } )
+
+    return { formLoginValidade,formSignUpValidade,creditCardValidade }
 
 }
 

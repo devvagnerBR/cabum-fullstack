@@ -75,7 +75,6 @@ const SignIn = () => {
                     register={register}
                     error={errors.cpf && errors.cpf.message}
                     placeholder='___.___.___-__'
-
                 />
 
                 <Input
