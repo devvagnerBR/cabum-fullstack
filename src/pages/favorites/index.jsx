@@ -37,7 +37,7 @@ if ( mobile ) limitText = 40
 
 
 return (
-    <div className={`flex flex-col items-center justify-start   pt-4 min-h-[500px] h-fit`}>
+    <div className={`flex flex-col items-center justify-start    pt-4 min-h-[500px] h-fit`}>
         <header className='w-full flex items-center pl-24 pt-4 '>
             <CaretLeft size={22} weight='bold' className='fill-orange-500 cursor-pointer' />
             <h1 className='font-bold text-2xl cursor-pointer'>FAVORITOS</h1>
@@ -108,7 +108,6 @@ return (
                 </button>
             </section>
         }
-        <Footer />
     </div>
 )
 }

@@ -8,6 +8,7 @@ import { GO_TO_HOME } from './../../router/navigation';
 import { myContext } from '../../hooks/useContext'
 import profile_img from '../../assets/images/profile_ninja.png'
 import { getCookie } from '../../hooks/useCookie'
+import ModalSearch from './../modal-search/index';
 
 const Header = () => {
 
@@ -30,10 +31,14 @@ const Header = () => {
                 <img onClick={() => GO_TO_HOME( navigate )} className='max-md:hidden cursor-pointer' width={170} src={cabum_logo} alt="cabum logo" />
             </div>
 
-            <div className='w-[25%]  flex-1 max-md:w-[60%] max-w-[50rem]'>
-                <input placeholder='Busque aqui' className={`${isLoginAndSignUpPage && 'invisible'}  w-full bg-neutral-100 pl-4 h-[2.25rem]  text-neutral-600 border focus:border-orange-500 rounded-sm placeholder:text-sm`} type="text" />
+            <div className='w-[25%] relative flex-1 max-md:w-[60%] max-w-[50rem]'>
+                <input
+                    placeholder='Busque aqui'
+                    className={`${isLoginAndSignUpPage && 'invisible'}  w-full bg-neutral-100 pl-4 h-[2.25rem]  text-neutral-600 border focus:border-orange-500 rounded-sm placeholder:text-sm`}
+                    type="text"
+                />
+                <ModalSearch />
             </div>
-
             <div className='flex gap-8  '>
 
                 {token ?
@@ -77,7 +82,7 @@ const Header = () => {
                             onClick={() => GO_TO_CART( navigate )} size={22} weight='fill' className=' fill-neutral-100 cursor-pointer absolute'
                         />
                         <p className={` ${productsLength > 0 ? '' : 'invisible'} relative left-3 flex items-center justify-center bg-orange-500 bottom-2 text-xs text-white h-4 w-4 rounded-full font-semibold`}>{productsLength}</p>
-                        
+
                     </div>
 
                 </div>
