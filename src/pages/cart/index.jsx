@@ -6,7 +6,7 @@ import ProductsInCartSection from './products-section'
 import SummaryModal from './modal-summary'
 import { myContext } from '../../hooks/useContext'
 import DeliveryOptions from './delivery-options'
-import { GO_TO_HOME } from '../../router/navigation'
+import { GO_TO_HOME, GO_TO_PAYMENT_METHOD } from '../../router/navigation'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../../components/footer'
 
@@ -34,6 +34,18 @@ const Cart = () => {
                             summaryModal={summaryModal}
                         />
                         <DeliveryOptions />
+                        <section className={` min-[1150px]:hidden flex flex-col w-full items-center justify-center gap-2 mt-7 `}>
+                            <button
+                                onClick={() => GO_TO_PAYMENT_METHOD( navigate )}
+                                className='bg-orange-500 h-12 w-full rounded-sm text-white font-semibold hover:bg-orange-400'>
+                                IR PARA O PAGAMENTO
+                            </button>
+                            <button
+                                onClick={() => GO_TO_HOME( navigate )}
+                                className='border border-orange-500 h-12 w-full rounded-sm text-orange-500 font-semibold hover:bg-orange-50'>
+                                CONTINUAR COMPRANDO
+                            </button>
+                        </section>
                     </section>
 
                     <SummarySection
@@ -44,9 +56,7 @@ const Cart = () => {
                         summaryModal={summaryModal}
                         setSummaryModal={setSummaryModal}
                     />
-                    <div>
 
-                    </div>
 
                 </section> :
                 <section

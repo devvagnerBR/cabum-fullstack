@@ -8,7 +8,7 @@ const SummaryModal = ( { setSummaryModal,summaryModal,products } ) => {
     const totalPrice = products?.reduce( ( total,product ) => total + ( product.price * product.quantity ),0 )
     
     return (
-        <div className={`min-[1150px]:hidden w-full  flex flex-col   px-4 fixed bottom-0 left-0 h-fit bg-white shadow-lg items-start pt-4 transition-all pb-4 shadow-black ${summaryModal && ''}`}>
+        <div className={`min-[1150px]:hidden w-full z-50  flex flex-col   px-4 fixed bottom-0 left-0 h-fit bg-white shadow-lg items-start pt-4 transition-all pb-4 shadow-black ${summaryModal && ''}`}>
             <div
                 onClick={() => setSummaryModal( !summaryModal )}
                 className='absolute items-start  flex justify-center left-[47%] top-[-15px] bg-white h-8 w-8 rounded-full cursor-pointer'>
