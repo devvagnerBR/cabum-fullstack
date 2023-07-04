@@ -137,11 +137,13 @@ const GlobalProvider = ( { children } ) => {
 
                 incrementQuantityFromItemInCart,
                 decrementQuantityFromItemInCart,
-                
+
                 productsAsFavorites,
                 removeProductFromFavorites,
                 productsInCartIds,
-                creditCardValidade
+                creditCardValidade,
+
+                getCookie,setCookie,
 
 
             }}>
