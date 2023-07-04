@@ -33,6 +33,7 @@ const CardProduct = ( { product } ) => {
 
     return (
         <div
+            key={product.id}
             className=' h-fit flex items-center flex-col relative shadow-sm border bg-white max-[490px]:w-[80%] w-[1fr] p-2  hover:shadow-lg'>
             <div className=' absolute right-0 opacity-100  flex hover:opacity-100  w-[95%] h-[10%]'>
                 <Heart

@@ -1,6 +1,6 @@
 import React from 'react'
 import { UserCircle,House,Heart,ShoppingCart,X } from '@phosphor-icons/react'
-import { GO_TO_CART,GO_TO_FAVORITES,GO_TO_LOGIN,GO_TO_MY_ACCOUNT,GO_TO_SIGNUP } from '../../router/navigation';
+import { GO_TO_CART,GO_TO_FAVORITES,GO_TO_HOME,GO_TO_LOGIN,GO_TO_MY_ACCOUNT,GO_TO_SIGNUP } from '../../router/navigation';
 import { useNavigate } from 'react-router-dom';
 import { myContext } from '../../hooks/useContext';
 
@@ -9,7 +9,7 @@ const SidebarMenu = () => {
 
     const navigate = useNavigate()
 
-    const { modalMenu,setModalMenu,user } = myContext()
+    const { modalMenu,setModalMenu,user ,userLogOut} = myContext()
 
     const handleOutsideClick = ( e ) => {
         if ( e.target === e.currentTarget ) setModalMenu( false )
@@ -60,24 +60,35 @@ const SidebarMenu = () => {
 
                 <footer className=' w-[20rem] flex flex-col items-center justify-center max-md:w-full h-[7rem] fixed bottom-0'>
 
-                    <section className=' w-11/12 rounded-md bg-orange-600  justify-center h-[3rem] flex items-center '>
+                    {!user ? <>
+                        <section className=' w-11/12 rounded-md bg-orange-600  justify-center h-[3rem] flex items-center '>
 
-                        <h1
-                            onClick={() => {
-                                GO_TO_LOGIN( navigate )
-                                setModalMenu( false )
-                            }}
-                            className='text-neutral-100  cursor-pointer font-semibold text-lg'>ENTRAR</h1>
-                    </section>
-                    <section className='w-11/12 rounded-md  justify-center h-[3rem] flex items-center '>
+                            <h1
+                                onClick={() => {
+                                    GO_TO_LOGIN( navigate )
+                                    setModalMenu( false )
+                                }}
+                                className='text-neutral-100  cursor-pointer font-semibold text-lg'>ENTRAR</h1>
+                        </section>
+                        <section className='w-11/12 rounded-md  justify-center h-[3rem] flex items-center '>
 
-                        <h1
-                            onClick={() => {
-                                GO_TO_SIGNUP( navigate )
-                                setModalMenu( false )
-                            }}
-                            className='text-neutral-100  cursor-pointer font-semibold text-lg'>CADASTRO</h1>
-                    </section>
+                            <h1
+                                onClick={() => {
+                                    GO_TO_SIGNUP( navigate )
+                                    setModalMenu( false )
+                                }}
+                                className='text-neutral-100  cursor-pointer font-semibold text-lg'>CADASTRO</h1>
+                        </section> </> :
+                        <section className=' w-11/12 rounded-md bg-orange-600  justify-center h-[3rem] flex items-center '>
+
+                            <h1
+                                onClick={() => {
+                                    userLogOut()
+                                    GO_TO_HOME( navigate )
+                                }}
+                                className='text-neutral-100  cursor-pointer font-semibold text-lg'>SAIR</h1>
+                        </section>
+                    }
 
                 </footer>
             </aside>

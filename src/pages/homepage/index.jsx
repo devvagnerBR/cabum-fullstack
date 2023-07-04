@@ -33,9 +33,9 @@ const Homepage = () => {
     ]
 
     const smallBanners = [
-        { id: 1,image: small_banner1 },
-        { id: 2,image: small_banner2 },
-        { id: 3,image: small_banner3 },
+        { id: 11,image: small_banner1 },
+        { id: 12,image: small_banner2 },
+        { id: 13,image: small_banner3 },
     ]
 
     React.useEffect( () => {
