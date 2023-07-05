@@ -30,16 +30,17 @@ const PRODUCT_REQUESTS = () => {
     const getSearchProducts = async ( productName ) => {
 
         try {
-            const productNameLowerCase = productName.trim().toLowerCase()
-            const q = productsRef
-                .where( "name","array-contains",productNameLowerCase )
-                .onSnapshot( ( docs ) => {
 
+            const productNameLowerCase = [productName.trim().toLowerCase()]
+
+            productsRef
+                .where( "tags","array-contains-any",productNameLowerCase )
+                .onSnapshot( ( docs ) => {
 
                     let data = []
 
                     docs.forEach( ( doc ) => {
-                        if ( doc.exists ) data.push( doc.data() )
+                        data.push( doc.data() )
                         setResearchedProducts( data );
                     } )
 

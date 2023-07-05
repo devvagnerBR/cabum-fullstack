@@ -33,11 +33,7 @@ const Header = () => {
             const findProducts = async () => {
 
                 if ( searchInput ) {
-
                     await getSearchProducts( searchInput )
-                } else {
-                    setResearchedProducts( [] )
-
                 }
 
             }
@@ -47,8 +43,6 @@ const Header = () => {
         },500 )
         return () => clearTimeout( timer )
     },[searchInput] )
-
-
 
     return (
         <header
@@ -61,6 +55,8 @@ const Header = () => {
 
             <div className='w-[25%] relative flex-1 max-md:w-[60%] max-w-[50rem]'>
                 <input
+                    onBlur={() => setResearchedProducts( [] )}
+                    onFocus={() => getSearchProducts( searchInput )}
                     onChange={( e ) => setSearchInput( e.target.value )}
                     placeholder='Busque aqui'
                     className={`${isLoginAndSignUpPage && 'invisible'}  w-full bg-neutral-100 pl-4 h-[2.25rem]  text-neutral-600 border focus:border-orange-500 rounded-sm placeholder:text-sm`}
