@@ -30,22 +30,21 @@ const PRODUCT_REQUESTS = () => {
     const getSearchProducts = async ( productName ) => {
 
         try {
-
-            const productNameLowerCase = productName.trim().toLowerCase().split( ' ' );
-            const q = await productsRef.where( "tags","array-contains-any",productNameLowerCase ).onSnapshot( ( docs ) => {
-
-
-                let data = []
+            const productNameLowerCase = productName.trim().toLowerCase()
+            const q = productsRef
+                .where( "name","array-contains",productNameLowerCase )
+                .onSnapshot( ( docs ) => {
 
 
-                docs.forEach( ( doc ) => {
-                    if ( doc.exists ) data.push( doc.data() )
+                    let data = []
 
-                    setResearchedProducts( data );
+                    docs.forEach( ( doc ) => {
+                        if ( doc.exists ) data.push( doc.data() )
+                        setResearchedProducts( data );
+                    } )
+
+
                 } )
-
-
-            } )
 
 
         } catch ( error ) {

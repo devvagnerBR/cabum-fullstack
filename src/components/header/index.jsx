@@ -15,7 +15,7 @@ const Header = () => {
     const navigate = useNavigate()
     const { pathname } = useLocation()
     const token = getCookie( 'token' )
-    const [searchInput,setSearchInput] = React.useState( null )
+    const [searchInput,setSearchInput] = React.useState( '' )
 
     const { modalMenu,setModalMenu,user,userLogOut,productsInCart,getSearchProducts,researchedProducts,setResearchedProducts } = myContext()
 
@@ -24,8 +24,7 @@ const Header = () => {
 
     const productsLength = productsInCart?.length
 
-    const handleSearchItem = async () => {
-    }
+
 
     React.useEffect( () => {
 
@@ -44,18 +43,12 @@ const Header = () => {
             }
 
             findProducts()
-        },500 )
 
+        },500 )
         return () => clearTimeout( timer )
     },[searchInput] )
 
 
-
-    console.log( researchedProducts );
-
-    // let tittle = 'Processador AMD Ryzen 7 5700X, 3.4GHz (4.6GHz Max Turbo), Cache 36MB, AM4, Sem Vídeo'
-
-    // const splitTittle = tittle.split( ' ' ).map( palavra => palavra.trim().toLowerCase() )
 
     return (
         <header
@@ -68,7 +61,6 @@ const Header = () => {
 
             <div className='w-[25%] relative flex-1 max-md:w-[60%] max-w-[50rem]'>
                 <input
-                    onBlur={handleSearchItem}
                     onChange={( e ) => setSearchInput( e.target.value )}
                     placeholder='Busque aqui'
                     className={`${isLoginAndSignUpPage && 'invisible'}  w-full bg-neutral-100 pl-4 h-[2.25rem]  text-neutral-600 border focus:border-orange-500 rounded-sm placeholder:text-sm`}

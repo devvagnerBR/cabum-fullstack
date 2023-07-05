@@ -26,7 +26,7 @@ const RouterConfig = () => {
                     <Route path='/favoritos' element={<Favorites />} />
                     <Route path='/carrinho' element={<Cart />} />
                     <Route path='/minha-conta' element={<MyAccount />} />
-                    <Route path='/produto/:id/:product' element={<ProductDetails />} />
+                    <Route path='/produto/:id' element={<ProductDetails />} />
                     <Route path='/pagamento' element={<PaymentMethod />} />
                 </Routes>
             </GlobalProvider>

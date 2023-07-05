@@ -13,7 +13,7 @@ const CardProduct = ( { product } ) => {
 
     const goToProductDetails = async ( product ) => {
         await getProductDetails( product.id )
-        navigate( `/produto/${product.id}/${transformTittleInSlug( product.name )}` );
+        navigate( `/produto/${product.id}` );
     }
 
     const handleAddToCart = async ( product ) => {

@@ -16,7 +16,7 @@ const ProductDetails = () => {
 
     React.useEffect( () => {
 
-        if ( productDetails.length === 0 ) {
+        if ( productDetails?.length === 0 || null ) {
             getProductDetails( id )
         }
 
@@ -82,12 +82,12 @@ const ProductDetails = () => {
                         className='flex flex-col gap-4  w-full pb-28 max-sm:mt-4 max-sm: mt-28 px-4'>
                         <h1
                             className='text-2xl font-bold mb-10 flex items-center gap-2'><WarningCircle weight='fill' className='fill-orange-500' /> INFORMAÇÕES TÉCNICAS</h1>
-                        {specs?.map( ( itens,index ) => {
+                        {specs && specs?.map( ( itens,index ) => {
                             return (
                                 <div key={index}>
-                                    <h1 className='font-bold text-sm'>{itens.tittle}</h1>
-                                    {itens.infos?.map( ( item,index ) => {
-                                        return <p key={index} className='text-sm'>{item}</p>
+                                    <h1 className='font-bold text-sm'>{itens?.tittle}</h1>
+                                    {itens?.infos?.map( ( item,index ) => {
+                                        return <p key={index} className='text-sm'>{item && item}</p>
                                     } )}
                                 </div>
                             )
