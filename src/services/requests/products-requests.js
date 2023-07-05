@@ -5,7 +5,7 @@ const PRODUCT_REQUESTS = () => {
 
     const [products,setProducts] = React.useState( [] )
     const [productDetails,setProductDetails] = React.useState( [] )
-
+    const [researchedProducts,setResearchedProducts] = React.useState( [] )
     const productsRef = db_firestore.collection( "products" )
 
     const getAllProducts = async () => {
@@ -19,7 +19,6 @@ const PRODUCT_REQUESTS = () => {
 
     }
 
-
     const getProductDetails = async ( productId ) => {
 
         const q = await productsRef.where( "id","==",productId ).get()
@@ -28,11 +27,40 @@ const PRODUCT_REQUESTS = () => {
         } )
     }
 
+    const getSearchProducts = async ( productName ) => {
+
+        try {
+
+            const productNameLowerCase = productName.trim().toLowerCase().split( ' ' );
+            const q = await productsRef.where( "tags","array-contains-any",productNameLowerCase ).onSnapshot( ( docs ) => {
+
+
+                let data = []
+
+
+                docs.forEach( ( doc ) => {
+                    if ( doc.exists ) data.push( doc.data() )
+
+                    setResearchedProducts( data );
+                } )
+
+
+            } )
+
+
+        } catch ( error ) {
+            console.log( error );
+        }
+    }
+
     return {
         getAllProducts,
         products,
         getProductDetails,
-        productDetails
+        productDetails,
+        getSearchProducts,
+        researchedProducts,
+        setResearchedProducts
     }
 }
 

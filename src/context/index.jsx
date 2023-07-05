@@ -57,7 +57,10 @@ const GlobalProvider = ( { children } ) => {
         getAllProducts,
         products,
         getProductDetails,
-        productDetails
+        productDetails,
+        getSearchProducts,
+        researchedProducts,
+        setResearchedProducts
     } = PRODUCT_REQUESTS()
 
     const {
@@ -144,7 +147,9 @@ const GlobalProvider = ( { children } ) => {
                 creditCardValidade,
 
                 getCookie,setCookie,
-
+                getSearchProducts,
+                researchedProducts,
+                setResearchedProducts,
 
             }}>
             {children}
