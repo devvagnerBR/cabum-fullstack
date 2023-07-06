@@ -10,20 +10,32 @@ import { useNavigate } from 'react-router-dom';
 const ModalSearch = () => {
 
 
-    const { products,getSearchProducts,researchedProducts,getProductDetails,setResearchedProducts } = myContext()
+    const {
+        products,
+        getSearchProducts,
+        researchedProducts,
+        getProductDetails,
+        setResearchedProducts,
+        searchInput,
+        setSearchInput
+    } = myContext()
+
     const navigate = useNavigate()
 
 
     const goToProductDetails = async ( product ) => {
         await getProductDetails( product.id )
-        await setResearchedProducts( [] )
+        setSearchInput( '' )
         navigate( `/produto/${product.id}` );
-
+        // await setResearchedProducts( [] )
     }
 
 
+
+
     return (
-        <div className='absolute w-full  z-50 bg-white border'>
+        <div
+            className='absolute w-full z-40   bg-white border'>
 
             {researchedProducts?.map( ( product ) => {
                 return (
@@ -32,7 +44,9 @@ const ModalSearch = () => {
                         key={product?.id}
                         className='flex w-full items-center gap-2 p-2 h-10 border-b cursor-pointer'>
                         <img src={product?.image_url} className='w-6' alt='M' />
-                        <h2 className='text-sm'>{textLimit( product?.name,70 )}</h2>
+                        <h2
+                            className='text-sm'>{textLimit( product?.name,70 )}
+                        </h2>
                     </div>
                 )
             } )}

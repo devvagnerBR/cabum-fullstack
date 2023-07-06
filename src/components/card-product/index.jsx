@@ -63,7 +63,7 @@ const CardProduct = ( { product } ) => {
                 <div>
                     <h1
                         onClick={() => goToProductDetails( product )}
-                        className='text-sm  font-semibold flex flex-wrap w-11/12  h-[5rem] pl-2 leading-4 max-[560px]:w-[100%] max-[560px]:max-w-[300px]'>
+                        className='text-sm capitalize  font-semibold flex flex-wrap w-11/12  h-[5rem] pl-2 leading-4 max-[560px]:w-[100%] max-[560px]:max-w-[300px]'>
                         {textLimit( product?.name,66 )}
                     </h1>
                     <h2

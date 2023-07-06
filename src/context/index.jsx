@@ -20,6 +20,7 @@ const GlobalProvider = ( { children } ) => {
 
     const token = getCookie( 'token' )
     const [modalMenu,setModalMenu] = React.useState( false )
+    const [searchInput,setSearchInput] = React.useState( '' )
     const { countdown } = countdownTime()
     const { loading,awaitLoading } = controlledLoading()
     const { size } = getPageWidth()
@@ -150,6 +151,7 @@ const GlobalProvider = ( { children } ) => {
                 getSearchProducts,
                 researchedProducts,
                 setResearchedProducts,
+                searchInput,setSearchInput,
 
             }}>
             {children}

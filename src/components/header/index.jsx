@@ -13,11 +13,19 @@ import ModalSearch from './../modal-search/index';
 const Header = () => {
 
     const navigate = useNavigate()
-    const { pathname } = useLocation()
     const token = getCookie( 'token' )
-    const [searchInput,setSearchInput] = React.useState( '' )
+    const { pathname } = useLocation()
+    const { searchInput,setSearchInput } = myContext()
 
-    const { modalMenu,setModalMenu,user,userLogOut,productsInCart,getSearchProducts,researchedProducts,setResearchedProducts } = myContext()
+    const { modalMenu,
+        setModalMenu,
+        user,
+        userLogOut,
+        productsInCart,
+        getSearchProducts,
+        researchedProducts,
+        setResearchedProducts
+    } = myContext()
 
     const isLoginAndSignUpPage = pathname === '/entrar' || pathname === '/cadastro'
     const displayName = getCookie( 'username' ) || user?.name
@@ -29,20 +37,21 @@ const Header = () => {
     React.useEffect( () => {
 
         const timer = setTimeout( () => {
-
             const findProducts = async () => {
-
                 if ( searchInput ) {
                     await getSearchProducts( searchInput )
+                } else {
+                    setResearchedProducts( [] )
                 }
-
             }
-
             findProducts()
-
         },500 )
         return () => clearTimeout( timer )
     },[searchInput] )
+
+
+
+
 
     return (
         <header
@@ -53,16 +62,17 @@ const Header = () => {
                 <img onClick={() => GO_TO_HOME( navigate )} className='max-md:hidden cursor-pointer' width={170} src={cabum_logo} alt="cabum logo" />
             </div>
 
-            <div className='w-[25%] relative flex-1 max-md:w-[60%] max-w-[50rem]'>
+            <div
+                onBlur={() => setSearchInput( '' )}
+                className='w-[25%] relative flex-1 max-md:w-[60%] max-w-[50rem]'>
                 <input
-                    onBlur={() => setResearchedProducts( [] )}
-                    onFocus={() => getSearchProducts( searchInput )}
+                    value={searchInput}
                     onChange={( e ) => setSearchInput( e.target.value )}
                     placeholder='Busque aqui'
                     className={`${isLoginAndSignUpPage && 'invisible'}  w-full bg-neutral-100 pl-4 h-[2.25rem]  text-neutral-600 border focus:border-orange-500 rounded-sm placeholder:text-sm`}
                     type="text"
                 />
-                {searchInput && <ModalSearch />}
+                {researchedProducts.length > 0 && searchInput && <ModalSearch />}
             </div>
             <div className='flex gap-8  '>
 

@@ -39,7 +39,7 @@ const ProductDetails = () => {
                     <header
                         className='w-full text-start flex-wrap max-md:mt-2  mt-12 '>
                         <h1
-                            className='font-bold text-2xl flex-wrap max-md:text-lg px-4'>{productDetails?.name}</h1>
+                            className='font-bold text-2xl flex-wrap max-md:text-lg px-4 capitalize'>{productDetails?.name}</h1>
                     </header>
 
                     <section

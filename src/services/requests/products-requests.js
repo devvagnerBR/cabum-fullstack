@@ -19,6 +19,7 @@ const PRODUCT_REQUESTS = () => {
 
     }
 
+
     const getProductDetails = async ( productId ) => {
 
         const q = await productsRef.where( "id","==",productId ).get()
@@ -31,10 +32,9 @@ const PRODUCT_REQUESTS = () => {
 
         try {
 
-            const productNameLowerCase = [productName.trim().toLowerCase()]
+            const productNameLowerCase = productName.trim().toLowerCase()
 
-            productsRef
-                .where( "tags","array-contains-any",productNameLowerCase )
+            productsRef.where( "tags","array-contains-any",[productName] )
                 .onSnapshot( ( docs ) => {
 
                     let data = []
@@ -46,6 +46,9 @@ const PRODUCT_REQUESTS = () => {
 
 
                 } )
+
+
+
 
 
         } catch ( error ) {
