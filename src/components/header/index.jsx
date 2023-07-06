@@ -51,7 +51,13 @@ const Header = () => {
 
 
 
+    const handleBlur = () => {
+        const timer = setTimeout( () => {
+            setSearchInput( '' )
+        },1000 )
 
+        return () => clearTimeout( timer )
+    }
 
     return (
         <header
@@ -63,7 +69,7 @@ const Header = () => {
             </div>
 
             <div
-                onBlur={() => setSearchInput( '' )}
+                onBlur={handleBlur}
                 className='w-[25%] relative flex-1 max-md:w-[60%] max-w-[50rem]'>
                 <input
                     value={searchInput}
