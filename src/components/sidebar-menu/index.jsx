@@ -21,13 +21,12 @@ const SidebarMenu = () => {
         <div
             onClick={handleOutsideClick}
 
-            className='w-full h-[100dvh] max-md:h-[calc(100dvh-4rem)] bg-neutral-800/70 z-50 absolute max-md:top-[4rem] top-0 left-0'>
+            className='w-full h-[100dvh]  max-md:h-[calc(100dvh-4rem)] bg-neutral-800/70 z-50 absolute max-md:top-[4rem] top-0 left-0'>
             <aside className='bg-blue-700 w-[20rem] h-full max-md:w-full'>
 
                 <header className='w-full h-[4rem] flex items-center pl-4 gap-4'>
                     <UserCircle size={40} weight='fill' className=' fill-neutral-100' />
                     <h1 className='text-neutral-200 text-[1.25rem] font-extrabold'>{`${user?.name ? `Olá, ${user?.name}` : 'Olá. Faça seu login'}`}</h1>
-                    {/* <h1 className='text-neutral-200 text-[1.25rem] font-extrabold'>{`Olá, ${user?.name}` || 'Olá. Faça seu login'}</h1> */}
                 </header>
 
                 <section

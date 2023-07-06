@@ -1,10 +1,14 @@
 import React from 'react'
-import Footer from '../../components/footer'
+import SideBarProfile from './side-bar'
 
 const MyAccount = () => {
+
     return (
-        <div>
-            <Footer />
+        <div className={`flex flex-col h-fit relative`}>
+            <main className=''>
+                <SideBarProfile />
+            </main>
+
         </div>
     )
 }

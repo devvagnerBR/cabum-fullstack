@@ -33,6 +33,8 @@ const Header = () => {
     const productsLength = productsInCart?.length
 
 
+    
+
 
     React.useEffect( () => {
 
@@ -54,7 +56,7 @@ const Header = () => {
     const handleBlur = () => {
         const timer = setTimeout( () => {
             setSearchInput( '' )
-        },1000 )
+        },1200 )
 
         return () => clearTimeout( timer )
     }

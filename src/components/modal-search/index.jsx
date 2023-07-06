@@ -3,34 +3,21 @@ import { textLimit } from './../../util/text-limit';
 import { myContext } from './../../hooks/useContext';
 import { useNavigate } from 'react-router-dom';
 
-
-
-
-
 const ModalSearch = () => {
 
-
     const {
-        products,
-        getSearchProducts,
         researchedProducts,
         getProductDetails,
-        setResearchedProducts,
-        searchInput,
         setSearchInput
     } = myContext()
 
     const navigate = useNavigate()
 
-
     const goToProductDetails = async ( product ) => {
         await getProductDetails( product.id )
         setSearchInput( '' )
         navigate( `/produto/${product.id}` );
-        // await setResearchedProducts( [] )
     }
-
-
 
 
     return (
