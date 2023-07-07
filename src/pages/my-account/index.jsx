@@ -19,31 +19,23 @@ const MyAccount = () => {
     };
 
     return (
-        <div className='w-screen h-[calc(100vh-7rem)]  max-md:h-[calc(100vh-4rem)] flex'>
-
+        <div className='w-screen min-h-[calc(100vh-7rem)] max-md:h-[calc(100vh-4rem)] flex'>
             <aside
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                className={`${isHovered ? 'w-72' : ''} flex flex-col w-16  max-[450px]:hidden shrink-0 z-10 bg-white shadow-sm shadow-neutral-600/60 relative`}>
+                className={`${isHovered ? 'w-72' : ''} flex flex-col w-16  max-md:hidden shrink-0 z-10 bg-white shadow-sm shadow-neutral-600/60 relative`}>
 
                 <NavLink
-
                     to="" end
                     className='flex h-12 hover:bg-orange-50  g items-center justify-start cursor-pointer '>
-
                     <div
                         className={`justify-center  w-16 flex items-center`}>
                         <House size={30} weight='fill' className='fill-orange-500  hover:fill-orange-600 ' />
                     </div>
-
-
                     <div className='flex items-center'>
                         <h1 className={`${isHovered ? '' : 'hidden text-neutral-500 transition-all'}`}>Início</h1>
                     </div>
-
                 </NavLink>
-
-
                 <NavLink
                     to="meus-dados"
                     className='flex h-14 hover:bg-orange-50  items-center justify-start cursor-pointer '>
@@ -91,7 +83,7 @@ const MyAccount = () => {
                 </NavLink>
             </aside >
 
-            <main className='flex h-full  max-[450px]:pl-4 pl-[5rem] w-full shrink-0 absolute justify-center  p-4'>
+            <main className='flex   max-md:pl-4 pl-[5rem] w-full shrink-0 absolute justify-center  p-4'>
                 <section className='max-w-[1200px] w-full'>
                     <Routes>
                         <Route path='/' element={<Home />} />

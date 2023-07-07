@@ -13,7 +13,7 @@ const LastOrderSection = () => {
                 <h1 className='text-xl font-bold'>RESUMO DO SEU ÚLTIMO PEDIDO</h1>
             </header>
 
-            <main className='flex bg-neutral-50 border shadow-sm rounded-sm p-4'>
+            <main className='flex flex-col divide-y bg-neutral-50 border shadow-sm rounded-sm p-4'>
                 <section className='flex max-md:flex-col max-md:divide-y-[1px]  max-md:divide-neutral-200  gap-2 justify-evenly w-full py-4'>
                     <div className='min-w-[250px] flex flex-col gap-4'>
                         <h1 className='text-sm font-bold uppercase'>NÚMERO DO PEDIDO</h1>
@@ -34,6 +34,21 @@ const LastOrderSection = () => {
                         </div>
                     </section>
                 </section>
+                <section className='flex max-md:flex-col max-md:gap-4 gap-32 justify-start w-full py-4'>
+                    <div className='flex flex-col'>
+                        <h1 className='text-sm font-bold uppercase'>ENDEREÇO</h1>
+                        <h1 className='text-sm text-neutral-800 pt-4'>Rua Raul Seixas</h1>
+                        <h1 className='text-sm text-neutral-400'>Lote 5 Quadra 7b - Jardim Campomar</h1>
+                        <h1 className='text-sm text-neutral-400'>CEP 28890401 - Rio das Ostras</h1>
+                    </div>
+                    <div className=' flex flex-col gap-4'>
+                        <h1 className='text-sm font-bold uppercase'>GFL</h1>
+                        <h1 className='text-sm text-orange-500 font-semibold'>Não disponível</h1>
+                    </div>
+                </section>
+                <div className='justify-end items-center flex py-4'>
+                    <button className='border-orange-500 border rounded-sm p-3 text-orange-500 font-semibold'>VER TODOS OS PEDIDOS</button>
+                </div>
             </main>
         </main>
     )
