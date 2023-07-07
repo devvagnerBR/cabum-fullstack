@@ -9,7 +9,7 @@ const SidebarMenu = () => {
 
     const navigate = useNavigate()
 
-    const { modalMenu,setModalMenu,user ,userLogOut} = myContext()
+    const { modalMenu,setModalMenu,user,userLogOut } = myContext()
 
     const handleOutsideClick = ( e ) => {
         if ( e.target === e.currentTarget ) setModalMenu( false )
@@ -69,23 +69,23 @@ const SidebarMenu = () => {
                                 }}
                                 className='text-neutral-100  cursor-pointer font-semibold text-lg'>ENTRAR</h1>
                         </section>
-                        <section className='w-11/12 rounded-md  justify-center h-[3rem] flex items-center '>
-
+                        <section 
+                            onClick={() => {
+                                GO_TO_SIGNUP( navigate )
+                                setModalMenu( false )
+                            }}
+                        className='w-11/12 rounded-md cursor-pointer  justify-center h-[3rem] flex items-center '>
                             <h1
-                                onClick={() => {
-                                    GO_TO_SIGNUP( navigate )
-                                    setModalMenu( false )
-                                }}
-                                className='text-neutral-100  cursor-pointer font-semibold text-lg'>CADASTRO</h1>
+                                className='text-neutral-100 font-semibold text-lg'>CADASTRO</h1>
                         </section> </> :
-                        <section className=' w-11/12 rounded-md bg-orange-600  justify-center h-[3rem] flex items-center '>
-
+                        <section
+                            onClick={() => {
+                                userLogOut()
+                                GO_TO_HOME( navigate )
+                            }}
+                            className=' w-11/12 rounded-md cursor-pointer bg-orange-600  justify-center h-[3rem] flex items-center '>
                             <h1
-                                onClick={() => {
-                                    userLogOut()
-                                    GO_TO_HOME( navigate )
-                                }}
-                                className='text-neutral-100  cursor-pointer font-semibold text-lg'>SAIR</h1>
+                                className='text-neutral-100   font-semibold text-lg'>SAIR</h1>
                         </section>
                     }
 

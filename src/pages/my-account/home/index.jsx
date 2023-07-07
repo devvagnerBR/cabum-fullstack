@@ -1,8 +1,19 @@
 import React from 'react'
-
+import InfoCardsSection from './info-cards'
+import LastOrderSection from './last-order'
 const Home = () => {
+
+
+
+
+
+
+
     return (
-        <div>PROFILE HOME</div>
+        <section className=' rounded-md gap-4  w-full  mt-10 flex flex-col items-center justify-center'>
+            <InfoCardsSection />
+            <LastOrderSection />
+        </section>
     )
 }
 
