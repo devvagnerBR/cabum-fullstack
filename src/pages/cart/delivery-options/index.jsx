@@ -13,6 +13,7 @@ const delivery = [
 
 const DeliveryOptions = () => {
 
+    const [radio,setRadio] = React.useState( '' )
 
 
     return (
@@ -33,8 +34,11 @@ const DeliveryOptions = () => {
                             <div className='flex items-center gap-2'>
                                 <input
                                     id={option.name}
+                                    checked={radio === option.name}
                                     type='radio'
-                                    value={option.name} />
+                                    value={option.name}
+                                    onChange={e => setRadio( e.target.value )}
+                                />
                                 <label
                                     htmlFor={option.name}
                                     className='font-semibold text-xs'>

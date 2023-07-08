@@ -1,5 +1,6 @@
 import { ShoppingCartSimple } from '@phosphor-icons/react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const LastOrderSection = () => {
     return (
@@ -12,14 +13,13 @@ const LastOrderSection = () => {
                 />
                 <h1 className='text-xl font-bold'>RESUMO DO SEU ÚLTIMO PEDIDO</h1>
             </header>
-
-            <main className='flex flex-col divide-y bg-neutral-50 border shadow-sm rounded-sm p-4'>
-                <section className='flex max-md:flex-col max-md:divide-y-[1px]  max-md:divide-neutral-200  gap-2 justify-evenly w-full py-4'>
+            <main className='flex flex-col divide-y bg-neutral-50 border shadow-sm rounded-sm px-4'>
+                <section className='flex max-md:flex-col max-md:divide-y-[1px]  max-md:divide-neutral-200  gap-2 justify-evenly w-full py-2'>
                     <div className='min-w-[250px] flex flex-col gap-4'>
                         <h1 className='text-sm font-bold uppercase'>NÚMERO DO PEDIDO</h1>
                         <h1 className='text-sm'>#453345345</h1>
                     </div>
-                    <section className='flex gap-2 justify-between w-full pt-2'>
+                    <section className='flex gap-2 justify-between w-full max-md:pt-2'>
                         <div className='w-full flex flex-col gap-4'>
                             <h1 className='text-sm font-bold uppercase'>STATUS</h1>
                             <h1 className='text-sm text-green-500 font-semibold'>Concluído</h1>
@@ -47,7 +47,7 @@ const LastOrderSection = () => {
                     </div>
                 </section>
                 <div className='justify-end items-center flex py-4'>
-                    <button className='border-orange-500 border rounded-sm p-3 text-orange-500 font-semibold'>VER TODOS OS PEDIDOS</button>
+                    <Link to="meus-pedidos" className='border-orange-500 border rounded-sm p-3 text-orange-500 font-semibold'>VER TODOS OS PEDIDOS</Link>
                 </div>
             </main>
         </main>

@@ -30,7 +30,9 @@ const MyAccount = () => {
                     className='flex h-12 hover:bg-orange-50  g items-center justify-start cursor-pointer '>
                     <div
                         className={`justify-center  w-16 flex items-center`}>
-                        <House size={30} weight='fill' className='fill-orange-500  hover:fill-orange-600 ' />
+                        <House
+                            size={30}
+                            weight='fill' className='fill-orange-500  hover:fill-orange-600 ' />
                     </div>
                     <div className='flex items-center'>
                         <h1 className={`${isHovered ? '' : 'hidden text-neutral-500 transition-all'}`}>Início</h1>
@@ -41,7 +43,9 @@ const MyAccount = () => {
                     className='flex h-14 hover:bg-orange-50  items-center justify-start cursor-pointer '>
                     <div
                         className={`justify-center  w-16 flex items-center`}>
-                        <UserFocus size={30} weight='fill' className='fill-orange-500  hover:fill-orange-600 ' />
+                        <UserFocus
+                            size={30}
+                            weight='fill' className='fill-orange-500  hover:fill-orange-600 ' />
                     </div>
                     <div className='flex items-center'>
                         <h1 className={`${isHovered ? 'flex' : 'hidden text-neutral-500 transition-all'}`}>Meus dados</h1>
@@ -55,7 +59,9 @@ const MyAccount = () => {
                     className='flex h-14 hover:bg-orange-50  items-center justify-start cursor-pointer '>
                     <div
                         className={`justify-center  w-16 flex items-center`}>
-                        <Basket size={30} weight='fill' className='fill-orange-500  hover:fill-orange-600 ' />
+                        <Basket
+                            size={30}
+                            weight='fill' className='fill-orange-500  hover:fill-orange-600 ' />
                     </div>
 
 
@@ -73,7 +79,9 @@ const MyAccount = () => {
 
                     <div
                         className={`justify-center  w-16 flex items-center`}>
-                        <Heart size={30} weight='fill' className='fill-orange-500  hover:fill-orange-600 ' />
+                        <Heart
+                            size={30}
+                            weight='fill' className='fill-orange-500  hover:fill-orange-600 ' />
                     </div>
 
 

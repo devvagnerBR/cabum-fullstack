@@ -6,11 +6,13 @@ const Footer = () => {
 
             <section className='flex  justify-center gap-8  items-center'>
 
-                <div>
+                <div className=''>
                     <h1 className='text-white text-sm font-semibold pb-2'>CONTATO</h1>
-                    <h1 className='text-neutral-100/60 font-light text-sm cursor-pointer'>LinkedIn</h1>
-                    <h1 className='text-neutral-100/60 font-light text-sm cursor-pointer'>Github</h1>
-                    <h1 className='text-neutral-100/60 font-light text-sm cursor-pointer'>instagram</h1>
+                    <div className='flex flex-col'>
+                        <a href='https://www.linkedin.com/in/devvagner/' target='_blank' className='text-neutral-100/60 font-light text-sm cursor-pointer'>LinkedIn</a>
+                        <a href='https://github.com/devvagnerBR' target='_blank' className='text-neutral-100/60 font-light text-sm cursor-pointer'>Github</a>
+                        <a href='https://www.instagram.com/wgr.lz/' target='_blank' className='text-neutral-100/60 font-light text-sm cursor-pointer'>instagram</a>
+                    </div>
                 </div>
 
             </section>
