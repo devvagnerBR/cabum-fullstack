@@ -13,8 +13,7 @@ const delivery = [
 
 const DeliveryOptions = () => {
 
-    const [radio,setRadio] = React.useState( '' )
-
+    const [radio,setRadio] = React.useState( 'GLF' )
 
     return (
         <div className='w-full border p-4 '>

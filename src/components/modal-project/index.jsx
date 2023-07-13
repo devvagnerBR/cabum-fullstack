@@ -46,7 +46,7 @@ const ModalProject = () => {
                 </nav>
                 <main className='p-2 w-full h-full flex flex-col gap-2  items-center justify-center text-center'>
                     <p className='font-bold text-blue-600 text-xl'>Todas os métodos de pagamentos são fictícios</p>
-                    <p className='text-blue-500 leading-4 text-sm flex-wrap max-w-lg'>Formulário de cartão de crédito pode ser preenchidos com informações "não reais" </p>
+                    <p className='text-blue-500 leading-4 text-sm flex-wrap max-w-lg'>Formulário de cartão de crédito pode ser preenchido com informações "não reais" </p>
                     <p className='text-blue-500 leading-4 text-sm flex-wrap max-w-md'>Após o pagamento o pedido irá para a aba <span className='font-semibold text-blue-600'>"meus pedidos"</span> no seu perfil</p>
                 </main>
                 <section className='w-full  p-2 items-end max-sm:items-center flex max-sm:flex-col justify-center gap-2'>

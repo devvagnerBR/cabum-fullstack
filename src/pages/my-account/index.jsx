@@ -18,6 +18,7 @@ const MyAccount = () => {
         setIsHovered( false );
     };
 
+    
     return (
         <div className='w-screen min-h-[calc(100vh-7rem)] max-md:h-[calc(100vh-4rem)] flex'>
             <aside
@@ -92,7 +93,7 @@ const MyAccount = () => {
             </aside >
 
             <main className='flex   max-md:pl-4 pl-[5rem] w-full shrink-0 absolute justify-center  p-4'>
-                <section className='max-w-[1200px] w-full'>
+                <section className='max-w-[1400px] w-full'>
                     <Routes>
                         <Route path='/' element={<Home />} />
                         <Route path='meus-dados' element={<Infos />} />

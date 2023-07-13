@@ -1,6 +1,9 @@
 import React from 'react'
 
 const Footer = () => {
+
+
+
     return (
         <footer className='w-full bg-blue-700 items-center absolute bottom-0 left-0 justify-center gap-4 h-44  flex flex-col'>
 

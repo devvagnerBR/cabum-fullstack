@@ -12,6 +12,7 @@ import getPageWidth from '../util/get-page-width';
 import getCEP from '../util/get-cep';
 import CART_REQUESTS from '../services/requests/cart-requests';
 import FAVORITES_REQUESTS from '../services/requests/favorite-request';
+import PAYMENT_REQUESTS from '../services/requests/payments-requests';
 
 export const GlobalContext = React.createContext( '' )
 
@@ -63,6 +64,11 @@ const GlobalProvider = ( { children } ) => {
         researchedProducts,
         setResearchedProducts
     } = PRODUCT_REQUESTS()
+
+
+    const {
+        buyAsCreditCardMethod,
+    } = PAYMENT_REQUESTS()
 
     const {
         markProductAsFavorite,
@@ -152,6 +158,7 @@ const GlobalProvider = ( { children } ) => {
                 researchedProducts,
                 setResearchedProducts,
                 searchInput,setSearchInput,
+                buyAsCreditCardMethod
 
             }}>
             {children}

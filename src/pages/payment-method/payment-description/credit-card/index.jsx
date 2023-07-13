@@ -5,12 +5,15 @@ import { useForm } from 'react-hook-form'
 import InputMask from "react-input-mask";
 import PaymentActions from './../../payment-actions/index';
 import convertToLocaleString from './../../../../util/convert-to-locale-string';
+import { GO_TO_CONFIRM_ORDER } from './../../../../router/navigation';
+import { useNavigate } from 'react-router-dom';
 
 
 const CreditCard = () => {
 
-    const { productsInCart } = myContext()
-
+    const navigate = useNavigate()
+    const { productsInCart,buyAsCreditCardMethod } = myContext()
+    const [numParcelas,setNumParcelas] = React.useState( 0 )
 
     const totalPrice = productsInCart?.reduce( ( total,product ) => total + ( product.price * product.quantity ),0 )
 
@@ -25,13 +28,11 @@ const CreditCard = () => {
         resolver: zodResolver( creditCardValidade )
     } )
 
-    const parcelas = Array.from( { length: 10 },( _,index ) => index + 1 );
+    const parcelas = Array.from( { length: 12 },( _,index ) => index + 1 );
 
-    const handleSelectPayment = ( data ) => {
-        console.log( data );
-
+    const handleSelectPayment = async ( data ) => {
+        GO_TO_CONFIRM_ORDER( navigate )
     }
-
 
     return (
         <div className='flex flex-col'>
@@ -115,20 +116,34 @@ const CreditCard = () => {
                 </label>
                 <label htmlFor="method" className='flex flex-col gap-1 text-sm'>
                     Forma de pagamento
-                    <select name="" id="method" className='px-2 border h-12 rounded-md border-neutral-400'>
+
+                    <select
+                        name=""
+                        value={numParcelas}
+                        onChange={( { target } ) => setNumParcelas( target.value )}
+                        id="method"
+                        className='px-2 border h-12 rounded-md border-neutral-400'>
+
                         {parcelas.map( ( numParcelas ) => {
                             const valorParcela = totalPrice / numParcelas
+
                             return (
-                                <option key={numParcelas} value={numParcelas} className='p-2'>
+                                <option
+                                    key={numParcelas}
+                                    value={numParcelas} className='p-2'>
                                     {numParcelas}x sem juros - {convertToLocaleString( valorParcela )}
                                 </option>
                             )
+
                         } )}
+
                     </select>
+
                 </label>
                 <PaymentActions
-                    onSubmit={handleSubmit( handleSelectPayment )}
-                    tittle='PAGAR COM CARTÃO'
+                     onSubmit={handleSubmit( handleSelectPayment )}
+                    // onClick={() => GO_TO_CONFIRM_ORDER( navigate )}
+                    tittle='CONTINUAR'
                 />
             </form>
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PaymentActions = ( { tittle,onSubmit } ) => {
+const PaymentActions = ( { tittle,onSubmit,onClick } ) => {
 
 
     return (
@@ -9,6 +9,7 @@ const PaymentActions = ( { tittle,onSubmit } ) => {
             <button
                 type='submit'
                 onSubmit={onSubmit}
+                onClick={onClick}
                 className='border bg-orange-500 h-12 px-2 rounded-md text-white font-bold w-[18rem] max-sm:w-full hover:bg-orange-400'>{tittle}</button>
         </div>
     )

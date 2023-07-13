@@ -6,10 +6,10 @@ import GlobalProvider from '../context';
 import Header from '../components/header';
 import Favorites from '../pages/favorites';
 import Cart from '../pages/cart';
-import Footer from '../components/footer';
 import MyAccount from '../pages/my-account';
 import ProductDetails from '../pages/product-details';
 import PaymentMethod from '../pages/payment-method';
+import ConfirmOrder from '../pages/confirm-order';
 
 
 const RouterConfig = () => {
@@ -28,6 +28,7 @@ const RouterConfig = () => {
                     <Route path='/minha-conta/*' element={<MyAccount />} />
                     <Route path='/produto/:id' element={<ProductDetails />} />
                     <Route path='/pagamento' element={<PaymentMethod />} />
+                    <Route path='/confirmacao' element={<ConfirmOrder />} />
                 </Routes>
             </GlobalProvider>
         </BrowserRouter>
