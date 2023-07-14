@@ -3,13 +3,11 @@ import React from 'react'
 
 const BasicInfos = () => {
 
-    //CRIAR NAVBAR BAR BUTTONS
-
 
     return (
         <aside className='border flex gap-4 flex-col p-4'>
             <header
-                className='flex gap-2 items-center p-4'>
+                className='flex gap-2 items-center py-4'>
                 <FileText
                     weight='fill'
                     size={22}
@@ -33,7 +31,7 @@ const BasicInfos = () => {
                     />
                 </label>
                 <label className='flex flex-col gap-1 text-xs text-neutral-500 ' htmlFor="name">
-                    Telefone Celular
+                    Telefone celular*
                     <input
                         id='name'
                         className='border-neutral-400 text-base focus-within:border-orange-500 text-neutral-500 border h-12 rounded-sm pl-2'
@@ -54,7 +52,7 @@ const BasicInfos = () => {
                             <Lock
                                 weight='fill'
                                 className='bg-neutral-50 h-full fill-neutral-400 mr-2'
-                                size={26}
+                                size={24}
                             />
                         </div>
                     </section>
@@ -74,7 +72,7 @@ const BasicInfos = () => {
                             <Lock
                                 weight='fill'
                                 className='bg-neutral-50 h-full fill-neutral-400 mr-2'
-                                size={26}
+                                size={24}
                             />
                         </div>
                     </section>
@@ -94,7 +92,7 @@ const BasicInfos = () => {
                             <Lock
                                 weight='fill'
                                 className='bg-neutral-50 h-full fill-neutral-400 mr-2'
-                                size={26}
+                                size={24}
                             />
                         </div>
                     </section>
@@ -102,6 +100,14 @@ const BasicInfos = () => {
                 </label>
             </form>
             <p className='text-xs font-light text-neutral-300'>(*) Campos obrigatórios</p>
+            <nav
+                className='flex items-center justify-center max-lg:flex-col'>
+                <a
+                    className='w-full underline text-orange-500 max-lg:text-center font-semibold text-lg cursor-pointer'>EXCLUIR MINHA CONTA
+                </a>
+                <button
+                    className='w-full h-12 rounded-sm bg-orange-500 text-neutral-50 font-medium text-lg'>SALVAR ALTERAÇÕES</button>
+            </nav>
         </aside>
     )
 }

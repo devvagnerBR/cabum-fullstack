@@ -18,7 +18,6 @@ const MyAccount = () => {
         setIsHovered( false );
     };
 
-    
     return (
         <div className='w-screen min-h-[calc(100vh-7rem)] max-md:h-[calc(100vh-4rem)] flex'>
             <aside
