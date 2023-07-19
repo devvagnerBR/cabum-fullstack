@@ -3,9 +3,10 @@ import React from 'react'
 import BasicInfos from './basic-infos'
 import Addresses from './addresses'
 
+
 const Infos = () => {
     return (
-        <section className='p-2'>
+        <section className='p-2 flex flex-col relative'>
             <header
                 className='flex gap-2 items-center h-20'>
                 <UserFocus

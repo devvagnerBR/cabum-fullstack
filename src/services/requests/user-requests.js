@@ -10,8 +10,9 @@ const USER_REQUESTS = () => {
 
     const navigate = useNavigate()
     const [userErrorMessage,setUserErrorMessage] = React.useState( null )
+    const [addresses,setAddresses] = React.useState( [] )
     const [user,setUser] = React.useState( null )
-
+    const token = getCookie( 'token' )
 
     const checkIfDataAlreadyExist = async ( itemName,item ) => {
         const userRef = db_firestore.collection( "users" );
@@ -73,7 +74,7 @@ const USER_REQUESTS = () => {
 
     const getLoggedUser = React.useCallback( async () => {
 
-        const token = getCookie( 'token' )
+
         if ( token ) {
             try {
 
@@ -125,12 +126,35 @@ const USER_REQUESTS = () => {
     }
 
 
+
+    const getAddresses =  () => {
+
+        const addressesRef = db_firestore
+            .collection( "users" ).doc( token )
+            .collection( "addresses" )
+
+        try {
+
+             addressesRef.onSnapshot( ( docs ) => {
+                let data = []
+                docs.forEach( ( doc ) => {
+                    data.push( doc.data() )
+                } )
+                setAddresses( data )
+            } )
+
+        } catch ( error ) {
+            console.log( error );
+        }
+    }
+
     return {
         createAccount,
         signInWithEmailAndPassword,
         userErrorMessage,
         getLoggedUser,
-        user,setUser,userLogOut,checkForUpdate
+        user,setUser,userLogOut,checkForUpdate,
+        getAddresses,addresses
     }
 
 }

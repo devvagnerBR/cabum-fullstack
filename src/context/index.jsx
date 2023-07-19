@@ -41,6 +41,8 @@ const GlobalProvider = ( { children } ) => {
         user,
         userLogOut,
         checkForUpdate,
+        getAddresses,
+        addresses
     } = USER_REQUESTS()
 
     const {
@@ -158,7 +160,9 @@ const GlobalProvider = ( { children } ) => {
                 researchedProducts,
                 setResearchedProducts,
                 searchInput,setSearchInput,
-                buyAsCreditCardMethod
+                buyAsCreditCardMethod,
+                getAddresses,
+                addresses
 
             }}>
             {children}

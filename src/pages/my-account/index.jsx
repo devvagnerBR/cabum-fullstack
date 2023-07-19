@@ -4,6 +4,8 @@ import { NavLink,Route,Routes } from 'react-router-dom'
 import Home from './home';
 import Infos from './infos';
 import Orders from './orders';
+import CustomModal from '../../components/custom-modal';
+
 
 const MyAccount = () => {
 
@@ -20,6 +22,11 @@ const MyAccount = () => {
 
     return (
         <div className='w-screen min-h-[calc(100vh-7rem)] max-md:h-[calc(100vh-4rem)] flex'>
+            < CustomModal>
+                <div className='bg-neutral-100 rounded-sm w-[700px] h-[500px] flex items-center justify-center'>
+                    <h1 className='text-white'>MODAL</h1>
+                </div>
+            </CustomModal>
             <aside
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}

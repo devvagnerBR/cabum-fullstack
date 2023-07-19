@@ -33,7 +33,7 @@ const Header = () => {
     const productsLength = productsInCart?.length
 
 
-    
+
 
 
     React.useEffect( () => {
@@ -118,16 +118,23 @@ const Header = () => {
                             <h1 className='text-neutral-100'>crie seu <span onClick={() => GO_TO_SIGNUP( navigate )} className='text-neutral-100 font-semibold uppercase hover:underline cursor-pointer transition-all'>Cadastro</span></h1>
                         </section>
                     </div>}
-                <div className={`${isLoginAndSignUpPage && 'invisible'} flex items-center gap-4 max-[360px]:hidden`}>
-                    <Heart onClick={() => GO_TO_FAVORITES( navigate )} size={22} weight='fill' className=' fill-neutral-100 cursor-pointer' />
-                    <div className='flex items-center justify-center'>
+                <div
+                    className={`${isLoginAndSignUpPage && 'invisible'} flex items-center gap-4 max-[360px]:hidden`}>
+                    <Heart
+                        onClick={() => GO_TO_FAVORITES( navigate )} size={22} weight='fill' className=' fill-neutral-100 cursor-pointer' />
+                    <div
+                        className='flex items-center justify-center'>
                         <ShoppingCart
-                            onClick={() => GO_TO_CART( navigate )} size={22} weight='fill' className=' fill-neutral-100 cursor-pointer absolute'
+                            onClick={() => GO_TO_CART( navigate )}
+                            size={22}
+                            weight='fill'
+                            className=' fill-neutral-100 cursor-pointer absolute'
                         />
-                        <p className={` ${productsLength > 0 ? '' : 'invisible'} relative left-3 flex items-center justify-center bg-orange-500 bottom-2 text-xs text-white h-4 w-4 rounded-full font-semibold`}>{productsLength}</p>
-
+                        <p
+                            className={` ${productsLength > 0 ? '' : 'invisible'} relative left-3 flex items-center justify-center bg-orange-500 bottom-2 text-xs text-white h-4 w-4 rounded-full font-semibold`}>
+                            {productsLength}
+                        </p>
                     </div>
-
                 </div>
             </div>
 

@@ -1,9 +1,9 @@
-import { UserFocus,FileText,Lock } from '@phosphor-icons/react'
+import { FileText,Lock } from '@phosphor-icons/react'
 import React from 'react'
 
 const BasicInfos = () => {
 
-
+    
     return (
         <aside className='border flex gap-4 flex-col p-4'>
             <header
