@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-const getCEP = async ( code ) => {
-
+const getViaCep = async ( code ) => {
 
     try {
 
@@ -16,7 +15,6 @@ const getCEP = async ( code ) => {
     }
 
 
-
 }
 
-export default getCEP
+export default getViaCep

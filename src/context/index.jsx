@@ -9,10 +9,12 @@ import { getCookie,setCookie } from '../hooks/useCookie';
 import transformTittleInSlug from './../util/transform-tittle-in-slug';
 import PRODUCT_REQUESTS from '../services/requests/products-requests';
 import getPageWidth from '../util/get-page-width';
-import getCEP from '../util/get-cep';
+
 import CART_REQUESTS from '../services/requests/cart-requests';
 import FAVORITES_REQUESTS from '../services/requests/favorite-request';
 import PAYMENT_REQUESTS from '../services/requests/payments-requests';
+import viaCEP from './../util/get-address';
+import getViaCep from './../util/get-cep';
 
 export const GlobalContext = React.createContext( '' )
 
@@ -30,7 +32,8 @@ const GlobalProvider = ( { children } ) => {
     const {
         formLoginValidade,
         formSignUpValidade,
-        creditCardValidade
+        creditCardValidade,
+        formNewAddressValidate
     } = formsValidate()
 
     const {
@@ -42,7 +45,8 @@ const GlobalProvider = ( { children } ) => {
         userLogOut,
         checkForUpdate,
         getAddresses,
-        addresses
+        addresses,
+        saveNewAddress
     } = USER_REQUESTS()
 
     const {
@@ -81,6 +85,9 @@ const GlobalProvider = ( { children } ) => {
         removeProductFromFavorites
     } = FAVORITES_REQUESTS()
 
+    const {
+        getCEP,fullAddress
+    } = viaCEP()
     React.useEffect( () => {
         if ( modalMenu ) {
             document.body.classList.add( 'overflow-hidden' )
@@ -122,6 +129,7 @@ const GlobalProvider = ( { children } ) => {
                 formLoginValidade,
                 formSignUpValidade,
                 formatPhone,
+                formNewAddressValidate,
                 countdown,
                 signInWithEmailAndPassword,
                 awaitLoading,
@@ -135,7 +143,7 @@ const GlobalProvider = ( { children } ) => {
                 getProductDetails,
                 productDetails,
                 size,
-                getCEP,
+                getViaCep,
 
                 addProductToCart,
                 getProductsInCart,
@@ -162,7 +170,9 @@ const GlobalProvider = ( { children } ) => {
                 searchInput,setSearchInput,
                 buyAsCreditCardMethod,
                 getAddresses,
-                addresses
+                addresses,
+                getCEP,fullAddress,
+                saveNewAddress
 
             }}>
             {children}

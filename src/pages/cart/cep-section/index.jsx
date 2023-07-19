@@ -8,19 +8,16 @@ const CEPSection = () => {
     const [location,setLocation] = React.useState( '' )
     const [cepCode,setCepCode] = React.useState( '' )
 
-    const { getCEP } = myContext()
+    const { getViaCep } = myContext()
 
     const handleGetCEP = async ( e ) => {
         e.preventDefault()
 
         if ( cepCode ) {
-            const res = await getCEP( cepCode )
+            const res = await getViaCep( cepCode )
             setLocation( res );
         }
-
-
     }
-
 
     return (
         <div className='flex flex-col items-start max-[550px]:items-center justify-start h-fit w-full py-4 px-6  border rounded-sm shadow-sm'>

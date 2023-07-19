@@ -12,7 +12,7 @@ const AddressCard = ( { address } ) => {
 
                 <h1
                     className='font-bold text-sm'>
-                    {address.title}
+                    {address.identification}
                 </h1>
                 <h4
                     className='text-sm  max-sm:text-xs'>

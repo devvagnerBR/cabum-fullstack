@@ -3,9 +3,8 @@ import React from 'react'
 
 const BasicInfos = () => {
 
-    
-    return (
-        <aside className='border flex gap-4 flex-col p-4'>
+        return (
+        <aside className='border flex  gap-4 flex-col p-4'>
             <header
                 className='flex gap-2 items-center py-4'>
                 <FileText

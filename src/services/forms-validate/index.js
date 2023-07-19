@@ -50,7 +50,21 @@ const formsValidate = () => {
 
     } )
 
-    return { formLoginValidade,formSignUpValidade,creditCardValidade }
+
+    const formNewAddressValidate = z.object( {
+        cep: z.string().nonempty(),
+        identification: z.string().nonempty(),
+        number: z.string().nonempty().max( 6 ),
+        complement: z.string().nonempty(),
+    } )
+
+
+    return {
+        formLoginValidade,
+        formSignUpValidade,
+        creditCardValidade,
+        formNewAddressValidate
+    }
 
 }
 

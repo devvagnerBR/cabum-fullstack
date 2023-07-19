@@ -5,6 +5,9 @@ import Addresses from './addresses'
 
 
 const Infos = () => {
+
+
+
     return (
         <section className='p-2 flex flex-col relative'>
             <header

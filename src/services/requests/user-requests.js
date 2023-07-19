@@ -20,6 +20,10 @@ const USER_REQUESTS = () => {
         return !q.empty;
     }
 
+    const addressesRef = db_firestore
+        .collection( "users" ).doc( token )
+        .collection( "addresses" )
+
     const createAccount = async ( data ) => {
 
         try {
@@ -127,15 +131,13 @@ const USER_REQUESTS = () => {
 
 
 
-    const getAddresses =  () => {
+    const getAddresses = () => {
 
-        const addressesRef = db_firestore
-            .collection( "users" ).doc( token )
-            .collection( "addresses" )
+
 
         try {
 
-             addressesRef.onSnapshot( ( docs ) => {
+            addressesRef.onSnapshot( ( docs ) => {
                 let data = []
                 docs.forEach( ( doc ) => {
                     data.push( doc.data() )
@@ -148,13 +150,29 @@ const USER_REQUESTS = () => {
         }
     }
 
+
+    const saveNewAddress = async ( address ) => {
+
+        try {
+            await addressesRef
+                .add( address )
+            console.log( 'endereço cadastrado com sucesso' );
+
+        } catch ( error ) {
+            console.log( error );
+        }
+    }
+
+
+
+
     return {
         createAccount,
         signInWithEmailAndPassword,
         userErrorMessage,
         getLoggedUser,
         user,setUser,userLogOut,checkForUpdate,
-        getAddresses,addresses
+        getAddresses,addresses,saveNewAddress
     }
 
 }
