@@ -65,7 +65,7 @@ const BasicInfos = () => {
                             id='name'
                             className='border-neutral-300 bg-neutral-50 w-full border-r-0 text-base focus-within:border-orange-500 text-neutral-500 border h-12 pl-2'
                             type="text"
-                            placeholder='144.454.977-46'
+                            placeholder='000.000.000-00'
                         />
                         <div className='flex items-center justify-center border border-l-0 border-neutral-300'>
                             <Lock
@@ -85,7 +85,7 @@ const BasicInfos = () => {
                             id='name'
                             className='border-neutral-300 bg-neutral-50 w-full border-r-0 text-base focus-within:border-orange-500 text-neutral-500 border h-12 pl-2'
                             type="text"
-                            placeholder='21/12/1994'
+                            placeholder='00/00/0000'
                         />
                         <div className='flex items-center justify-center border border-l-0 border-neutral-300'>
                             <Lock
