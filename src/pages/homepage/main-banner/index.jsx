@@ -2,10 +2,7 @@ import React from 'react'
 import { Carousel } from 'antd';
 
 
-
-
 const MainBanner = ( { banners } ) => {
-
 
 
     return (
@@ -13,9 +10,7 @@ const MainBanner = ( { banners } ) => {
         <div className='w-10/12 max-2xl:w-full self-center  h-auto'>
             <Carousel
                 dots={false}
-                autoplay
-                
-            >
+                autoplay>
                 {banners.map( ( banner ) => {
                     return (
                         <div className='cursor-pointer' key={banner.id}>
