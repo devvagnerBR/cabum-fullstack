@@ -2,48 +2,51 @@ import React from 'react'
 import { myContext } from '../../../../../../hooks/useContext'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { v4 as uuidv4 } from 'uuid'
 
-
-const NewAddressForm = () => {
+const EditAddressForm = () => {
 
     const {
         formNewAddressValidate,
         getCEP,
         fullAddress,
-        saveNewAddress,
-        setModalNewAddress,
+        setModalEditAddress,
+        editableAddress,
+        updateAddress
     } = myContext()
 
-    const { watch,reset,handleSubmit,register,formState: { errors } } = useForm( { resolver: zodResolver( formNewAddressValidate ) } )
+    const { watch,handleSubmit,register,formState: { errors } } = useForm( { resolver: zodResolver( formNewAddressValidate ) } )
 
-    const handleAddNewAddress = async ( data ) => {
+    const handleSaveUpdatedAddress = async ( data ) => {
 
-        const newAddress = {
-            id: uuidv4(),
-            cep: data.cep,
-            identification: data.identification,
-            street: fullAddress.street,
+        const body = {
+            id: editableAddress.id,
+            cep: data.cep || editableAddress.cep,
+            identification: data.identification || editableAddress.identification,
+            street: fullAddress.street || editableAddress.street || data.street,
             number: data.number,
             complement: data.complement,
-            neighborhood: fullAddress.neighborhood,
-            city: fullAddress.city,
-            uf: fullAddress.uf
+            neighborhood: editableAddress.neighborhood || fullAddress.neighborhood,
+            city: fullAddress.city || editableAddress.city,
+            uf: fullAddress.uf || editableAddress.uf
         }
 
-        await saveNewAddress( newAddress )
-        reset() //🟧🟧🟧
-        setModalNewAddress( false )
+
+        await updateAddress( body )
+        setModalEditAddress( false )
     }
+
+
+
 
     return (
         <form
-            onSubmit={handleSubmit( handleAddNewAddress )}
+            onSubmit={handleSubmit( handleSaveUpdatedAddress )}
             className='pt-4 flex flex-col gap-2'>
             <label className='flex flex-col  text-sm text-neutral-500 ' htmlFor="cep">
                 CEP*
                 <input
                     {...register( 'cep' )}
+                    defaultValue={editableAddress?.cep ?? ''}
                     onBlur={() => getCEP( watch( 'cep' ) )}
                     id='cep'
                     className='border-neutral-400 text-base focus-within:border-orange-500 text-neutral-500 border h-12 rounded-sm pl-2'
@@ -56,6 +59,7 @@ const NewAddressForm = () => {
                 <input
                     id='identification'
                     {...register( 'identification' )}
+                    defaultValue={editableAddress?.identification ?? ''}
                     className='border-neutral-400 text-base focus-within:border-orange-500 text-neutral-500 border h-12 rounded-sm pl-2'
                     type="text"
                 />
@@ -66,10 +70,10 @@ const NewAddressForm = () => {
             <label className='flex flex-col  text-sm text-neutral-500 ' htmlFor="street">
                 Logradouro*
                 <input
-                    disabled={fullAddress.street}
+                    disabled={fullAddress.street || editableAddress?.street}
                     id='street'
                     readOnly
-                    value={fullAddress?.street}
+                    value={fullAddress?.street || editableAddress?.street}
                     className='border-neutral-400 text-base focus-within:border-orange-500 text-neutral-500 border h-12 rounded-sm pl-2'
                     type="text"
                 />
@@ -82,6 +86,7 @@ const NewAddressForm = () => {
                     <input
                         id='number'
                         {...register( 'number' )}
+                        defaultValue={editableAddress?.number ?? ''}
                         className='border-neutral-400 text-base focus-within:border-orange-500 text-neutral-500 border h-12 rounded-sm pl-2'
                         type="text"
                     />
@@ -91,6 +96,7 @@ const NewAddressForm = () => {
                     Complemento*
                     <input
                         {...register( 'complement' )}
+                        defaultValue={editableAddress?.complement ?? ''}
                         id='complement'
                         className='border-neutral-400 text-base focus-within:border-orange-500 text-neutral-500 border h-12 rounded-sm pl-2'
                         type="text"
@@ -102,8 +108,8 @@ const NewAddressForm = () => {
             <label className='flex flex-col  text-sm text-neutral-500 ' htmlFor="neighborhood">
                 Bairro*
                 <input
-                    disabled={fullAddress.neighborhood}
-                    value={fullAddress?.neighborhood}
+                    disabled={fullAddress.neighborhood || editableAddress?.neighborhood}
+                    value={fullAddress?.neighborhood || editableAddress?.neighborhood}
                     readOnly
                     id='neighborhood'
                     className='border-neutral-400 text-base focus-within:border-orange-500 text-neutral-500 border h-12 rounded-sm pl-2'
@@ -114,8 +120,8 @@ const NewAddressForm = () => {
             <label className='flex flex-col  text-sm text-neutral-500 ' htmlFor="city">
                 Cidade*
                 <input
-                    value={fullAddress?.city}
-                    disabled={fullAddress?.city}
+                    value={fullAddress?.city || editableAddress?.city}
+                    disabled={fullAddress?.city || editableAddress?.city}
                     id='city'
                     readOnly
                     className='border-neutral-400 text-base focus-within:border-orange-500 text-neutral-500 border h-12 rounded-sm pl-2'
@@ -126,8 +132,8 @@ const NewAddressForm = () => {
             <label className='flex flex-col  text-sm text-neutral-500 ' htmlFor="uf">
                 UF*
                 <input
-                    disabled={fullAddress.uf}
-                    value={fullAddress.uf}
+                    disabled={fullAddress.uf || editableAddress?.uf}
+                    value={fullAddress.uf || editableAddress?.uf}
                     id='uf'
                     readOnly
                     className='border-neutral-400 text-base focus-within:border-orange-500 text-neutral-500 border h-12 rounded-sm pl-2'
@@ -144,4 +150,4 @@ const NewAddressForm = () => {
     )
 }
 
-export default NewAddressForm
+export default EditAddressForm

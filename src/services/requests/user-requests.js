@@ -155,7 +155,8 @@ const USER_REQUESTS = () => {
 
         try {
             await addressesRef
-                .add( address )
+                .doc( address.id )
+                .set( address )
             console.log( 'endereço cadastrado com sucesso' );
 
         } catch ( error ) {
@@ -164,7 +165,28 @@ const USER_REQUESTS = () => {
     }
 
 
+    const deleteAddress = ( addressId ) => {
 
+        try {
+
+            addressesRef
+                .doc( addressId )
+                .delete();
+            console.log( 'endereço deletado com sucesso' );
+
+        } catch ( error ) {
+            console.log( error );
+        }
+    }
+
+    const updateAddress = async ( body ) => {
+
+        await addressesRef
+            .doc( body.id )
+            .update( body )
+        console.log( 'Endereço atualizado com sucesso' );
+
+    };
 
     return {
         createAccount,
@@ -172,7 +194,8 @@ const USER_REQUESTS = () => {
         userErrorMessage,
         getLoggedUser,
         user,setUser,userLogOut,checkForUpdate,
-        getAddresses,addresses,saveNewAddress
+        getAddresses,addresses,saveNewAddress,deleteAddress,
+        updateAddress
     }
 
 }

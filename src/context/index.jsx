@@ -24,6 +24,9 @@ const GlobalProvider = ( { children } ) => {
     const token = getCookie( 'token' )
     const [modalMenu,setModalMenu] = React.useState( false )
     const [modalNewAddress,setModalNewAddress] = React.useState( false )
+    const [modalEditAddress,setModalEditAddress] = React.useState( null )
+    const [editableAddress,setEditableAddress] = React.useState( null )
+
     const [searchInput,setSearchInput] = React.useState( '' )
     const { countdown } = countdownTime()
     const { loading,awaitLoading } = controlledLoading()
@@ -47,7 +50,9 @@ const GlobalProvider = ( { children } ) => {
         checkForUpdate,
         getAddresses,
         addresses,
-        saveNewAddress
+        saveNewAddress,
+        deleteAddress,
+        updateAddress
     } = USER_REQUESTS()
 
     const {
@@ -163,6 +168,7 @@ const GlobalProvider = ( { children } ) => {
                 removeProductFromFavorites,
                 productsInCartIds,
                 creditCardValidade,
+                deleteAddress,
 
                 getCookie,setCookie,
                 getSearchProducts,
@@ -174,7 +180,10 @@ const GlobalProvider = ( { children } ) => {
                 addresses,
                 getCEP,fullAddress,
                 saveNewAddress,
-                modalNewAddress,setModalNewAddress
+                modalNewAddress,setModalNewAddress,
+                modalEditAddress,setModalEditAddress,
+                editableAddress,setEditableAddress,
+                updateAddress
 
             }}>
             {children}

@@ -7,12 +7,20 @@ import Orders from './orders';
 import CustomModal from '../../components/custom-modal';
 import NewAddressModal from './infos/addresses/new-address-modal';
 import { myContext } from '../../hooks/useContext';
+import EditAddressModal from './infos/addresses/edit-address-modal';
+
+
 
 
 const MyAccount = () => {
 
 
-    const { modalNewAddress,setModalNewAddress } = myContext()
+    const {
+        modalNewAddress,
+        setModalNewAddress,
+        modalEditAddress,
+        setModalEditAddress
+    } = myContext()
     const [isHovered,setIsHovered] = React.useState( false );
 
     const handleMouseEnter = () => {
@@ -28,7 +36,14 @@ const MyAccount = () => {
     return (
         <div className='w-screen relative min-h-[calc(100vh-7rem)] max-md:h-[calc(100vh-4rem)] flex'>
             {modalNewAddress && < CustomModal>
-                <NewAddressModal setModalNewAddress={setModalNewAddress} />
+                <NewAddressModal
+                    setModalNewAddress={setModalNewAddress}
+                />
+            </CustomModal>}
+            {modalEditAddress && <CustomModal>
+                <EditAddressModal
+                    setModalEditAddress={setModalEditAddress}
+                />
             </CustomModal>}
             <aside
                 onMouseEnter={handleMouseEnter}

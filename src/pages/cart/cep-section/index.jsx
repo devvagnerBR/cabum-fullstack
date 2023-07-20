@@ -18,7 +18,6 @@ const CEPSection = () => {
             setLocation( res );
         }
     }
-
     return (
         <div className='flex flex-col items-start max-[550px]:items-center justify-start h-fit w-full py-4 px-6  border rounded-sm shadow-sm'>
 

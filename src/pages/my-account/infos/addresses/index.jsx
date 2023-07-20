@@ -7,7 +7,12 @@ import { myContext } from './../../../../hooks/useContext';
 const Addresses = () => {
 
 
-    const { getAddresses,addresses,setModalNewAddress } = myContext()
+    const {
+        getAddresses,
+        addresses,
+        setModalNewAddress
+    } = myContext()
+
     const hasAddress = addresses.length > 0
 
     React.useEffect( () => {
@@ -31,8 +36,11 @@ const Addresses = () => {
                     ENDEREÇOS
                 </h1>
             </header>
-            {hasAddress ? addresses?.map( ( address ) => {
+            {hasAddress ? addresses?.map( ( address,index ) => {
+
+        
                 return <AddressCard
+                    index={index}
                     key={address.id}
                     address={address} />
             } ) : <p className='text-center'>Nenhum endereço cadastrado</p>
