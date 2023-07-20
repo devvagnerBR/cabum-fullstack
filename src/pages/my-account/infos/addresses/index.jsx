@@ -7,8 +7,7 @@ import { myContext } from './../../../../hooks/useContext';
 const Addresses = () => {
 
 
-    const [modalNewAddress,setModalNewAddress] = React.useState( false )
-    const { getAddresses,addresses } = myContext()
+    const { getAddresses,addresses,setModalNewAddress } = myContext()
     const hasAddress = addresses.length > 0
 
     React.useEffect( () => {
@@ -17,7 +16,6 @@ const Addresses = () => {
         }
         getAddressesFromUser()
     },[] )
-
 
     return (
         <aside className='border flex gap-4 flex-col max-sm:p-0 p-4'>
@@ -40,9 +38,14 @@ const Addresses = () => {
             } ) : <p className='text-center'>Nenhum endereço cadastrado</p>
 
             }
-
-            <nav className='bg-orange-500 h-12 flex items-center justify-center cursor-pointer rounded-sm'>
-                <button className='text-neutral-50 font-semibold '>CADASTRAR NOVO ENDEREÇO</button>
+            <nav
+                onClick={() => setModalNewAddress( true )}
+                className='bg-orange-500 h-12 flex items-center justify-center cursor-pointer rounded-sm'>
+                <button
+                    className='text-neutral-50 font-semibold '
+                >
+                    CADASTRAR NOVO ENDEREÇO
+                </button>
             </nav>
         </aside>
     )

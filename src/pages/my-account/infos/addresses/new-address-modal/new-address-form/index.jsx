@@ -2,15 +2,15 @@ import React from 'react'
 import { myContext } from '../../../../../../hooks/useContext'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import getAddress from '../../../../../../util/get-address'
-
+import { v4 as uuidv4 } from 'uuid'
 const NewAddressForm = () => {
 
     const {
         formNewAddressValidate,
         getCEP,
         fullAddress,
-        saveNewAddress
+        saveNewAddress,
+        setModalNewAddress
     } = myContext()
 
     const { watch,handleSubmit,register,formState: { errors } } = useForm( { resolver: zodResolver( formNewAddressValidate ) } )
@@ -18,6 +18,7 @@ const NewAddressForm = () => {
     const handleAddNewAddress = async ( data ) => {
 
         const newAddress = {
+            id: uuidv4(),
             cep: data.cep,
             identification: data.identification,
             street: fullAddress.street,
@@ -29,12 +30,10 @@ const NewAddressForm = () => {
         }
 
         await saveNewAddress( newAddress )
+        setModalNewAddress( false )
+
 
     }
-
-
-
-
 
     return (
         <form
@@ -68,6 +67,7 @@ const NewAddressForm = () => {
                 <input
                     disabled={fullAddress.street}
                     id='street'
+                    readOnly
                     value={fullAddress?.street}
                     className='border-neutral-400 text-base focus-within:border-orange-500 text-neutral-500 border h-12 rounded-sm pl-2'
                     type="text"
@@ -103,6 +103,7 @@ const NewAddressForm = () => {
                 <input
                     disabled={fullAddress.neighborhood}
                     value={fullAddress?.neighborhood}
+                    readOnly
                     id='neighborhood'
                     className='border-neutral-400 text-base focus-within:border-orange-500 text-neutral-500 border h-12 rounded-sm pl-2'
                     type="text"
@@ -115,6 +116,7 @@ const NewAddressForm = () => {
                     value={fullAddress?.city}
                     disabled={fullAddress?.city}
                     id='city'
+                    readOnly
                     className='border-neutral-400 text-base focus-within:border-orange-500 text-neutral-500 border h-12 rounded-sm pl-2'
                     type="text"
                 />
@@ -126,6 +128,7 @@ const NewAddressForm = () => {
                     disabled={fullAddress.uf}
                     value={fullAddress.uf}
                     id='uf'
+                    readOnly
                     className='border-neutral-400 text-base focus-within:border-orange-500 text-neutral-500 border h-12 rounded-sm pl-2'
                     type="text"
                 />

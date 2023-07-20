@@ -22,7 +22,7 @@ const AddressCard = ( { address } ) => {
                 <section className='flex gap-2'>
                     <h4
                         className='text-sm  max-sm:text-xs'>
-                        Número: {address.number}
+                        Número: {address.number},
                     </h4>
                     <h4
                         className='text-sm  max-sm:text-xs'>

@@ -23,6 +23,7 @@ const GlobalProvider = ( { children } ) => {
 
     const token = getCookie( 'token' )
     const [modalMenu,setModalMenu] = React.useState( false )
+    const [modalNewAddress,setModalNewAddress] = React.useState( false )
     const [searchInput,setSearchInput] = React.useState( '' )
     const { countdown } = countdownTime()
     const { loading,awaitLoading } = controlledLoading()
@@ -172,7 +173,8 @@ const GlobalProvider = ( { children } ) => {
                 getAddresses,
                 addresses,
                 getCEP,fullAddress,
-                saveNewAddress
+                saveNewAddress,
+                modalNewAddress,setModalNewAddress
 
             }}>
             {children}

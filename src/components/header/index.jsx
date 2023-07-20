@@ -80,7 +80,7 @@ const Header = () => {
                     className={`${isLoginAndSignUpPage && 'invisible'}  w-full bg-neutral-100 pl-4 h-[2.25rem]  text-neutral-600 border focus:border-orange-500 rounded-sm placeholder:text-sm`}
                     type="text"
                 />
-                {researchedProducts.length > 0 && searchInput && <ModalSearch />}
+                {researchedProducts?.length > 0 && searchInput && <ModalSearch />}
             </div>
             <div className='flex gap-8  '>
 

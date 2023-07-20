@@ -2,7 +2,8 @@ import { X } from '@phosphor-icons/react'
 import React from 'react'
 import NewAddressForm from './new-address-form'
 
-const NewAddressModal = () => {
+const NewAddressModal = ( { setModalNewAddress } ) => {
+
 
     return (
         <section
@@ -13,6 +14,7 @@ const NewAddressModal = () => {
                     Cadastrar novo endereço
                 </h4>
                 <X
+                    onClick={() => setModalNewAddress( false )}
                     className='fill-orange-500 cursor-pointer'
                     weight='bold'
                     size={24}
