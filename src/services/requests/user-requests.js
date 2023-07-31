@@ -180,7 +180,6 @@ const USER_REQUESTS = () => {
     }
 
     const updateAddress = async ( body ) => {
-
         await addressesRef
             .doc( body.id )
             .update( body )

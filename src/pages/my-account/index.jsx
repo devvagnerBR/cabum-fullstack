@@ -21,6 +21,7 @@ const MyAccount = () => {
         modalEditAddress,
         setModalEditAddress
     } = myContext()
+
     const [isHovered,setIsHovered] = React.useState( false );
 
     const handleMouseEnter = () => {
@@ -32,6 +33,7 @@ const MyAccount = () => {
     };
 
 
+   
 
     return (
         <div className='w-screen relative min-h-[calc(100vh-7rem)] max-md:h-[calc(100vh-4rem)] flex'>
@@ -48,7 +50,7 @@ const MyAccount = () => {
             <aside
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                className={`${isHovered ? 'w-72' : ''} flex flex-col w-16  max-md:hidden shrink-0 z-10 bg-white shadow-sm shadow-neutral-600/60 relative`}>
+                className={`${isHovered ? 'w-72' : ''}  flex-col w-16   max-md:hidden shrink-0 z-10 bg-white shadow-sm shadow-neutral-600/60 relative`}>
 
                 <NavLink
                     to="" end

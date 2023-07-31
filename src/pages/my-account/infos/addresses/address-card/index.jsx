@@ -17,7 +17,7 @@ const AddressCard = ( { address,index } ) => {
 
     return (
         <section
-            className={`border-l-4 ${index === 0 ? 'bg-orange-200 border border-orange-300' : 'border border-zinc-300'}  border-l-orange-400 p-3 `}
+            className={`border-l-4 ${index === 0 ? 'bg-orange-200 border border-orange-400' : 'border border-zinc-300'}  border-l-orange-400 p-3 `}
             key={address.id}>
 
             <aside className='flex flex-col gap-2 '>
@@ -63,12 +63,12 @@ const AddressCard = ( { address,index } ) => {
                         setModalEditAddress( true )
                         setEditableAddress( address )
                     }}
-                    className='text-neutral-300 font-semibold text-sm'>
+                    className='text-orange-500 font-semibold text-sm'>
                     EDITAR
                 </button>
                 <button
                     onClick={() => handleRemoveAddress( address )}
-                    className='text-neutral-300 font-semibold text-sm'
+                    className='text-orange-500 font-semibold text-sm'
                 >EXCLUIR</button>
             </nav>
         </section>
