@@ -66,7 +66,9 @@ const GlobalProvider = ( { children } ) => {
         decrementQuantityFromItemInCart,
         getIdsFromItensInCart,
         productsInCartIds,
-        addOrderInfos
+        addOrderInfos,
+        getPreOrder,
+        preOrder
     } = CART_REQUESTS()
 
     const {
@@ -190,8 +192,9 @@ const GlobalProvider = ( { children } ) => {
                 editableAddress,setEditableAddress,
                 updateAddress,
                 updateNameOrPhoneNumber,
-                addOrderInfos
-
+                addOrderInfos,
+                getPreOrder,
+                preOrder
             }}>
             {children}
         </GlobalContext.Provider>

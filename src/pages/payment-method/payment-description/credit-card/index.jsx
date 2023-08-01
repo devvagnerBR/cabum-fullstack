@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 const CreditCard = () => {
 
     const navigate = useNavigate()
-    const { productsInCart,buyAsCreditCardMethod } = myContext()
+    const { productsInCart,addOrderInfos } = myContext()
     const [numParcelas,setNumParcelas] = React.useState( 0 )
 
     const totalPrice = productsInCart?.reduce( ( total,product ) => total + ( product.price * product.quantity ),0 )
@@ -32,6 +32,10 @@ const CreditCard = () => {
 
     const handleSelectPayment = async ( data ) => {
         GO_TO_CONFIRM_ORDER( navigate )
+    }
+
+    const handleSetPaymentMethod = async () => {
+        await addOrderInfos( { paymentMethod: '3',installments_quantity: numParcelas } )
     }
 
     return (
@@ -141,8 +145,8 @@ const CreditCard = () => {
 
                 </label>
                 <PaymentActions
-                     onSubmit={handleSubmit( handleSelectPayment )}
-                    // onClick={() => GO_TO_CONFIRM_ORDER( navigate )}
+                    onSubmit={handleSubmit( handleSelectPayment )}
+                    onClick={handleSetPaymentMethod}
                     tittle='CONTINUAR'
                 />
             </form>

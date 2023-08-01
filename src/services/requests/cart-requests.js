@@ -7,6 +7,7 @@ const CART_REQUESTS = () => {
 
     const [productsInCart,setProductsInCart] = React.useState( [] )
     const [productsInCartIds,setProductsInCardIds] = React.useState( [] )
+    const [preOrder,setPreOrder] = React.useState( [] )
 
     const token = getCookie( 'token' )
 
@@ -156,7 +157,28 @@ const CART_REQUESTS = () => {
             console.log( error );
         }
 
+
     }
+
+    const getPreOrder = async () => {
+
+        const orderRef = db_firestore
+            .collection( "users" ).doc( token )
+            .collection( "pre-order" ).doc( token )
+
+        try {
+
+            orderRef.onSnapshot( ( docs ) => {
+                setPreOrder( docs.data() )
+            } )
+
+        } catch ( error ) {
+            console.log( error );
+        }
+
+
+    }
+
 
     return {
         addProductToCart,
@@ -168,7 +190,8 @@ const CART_REQUESTS = () => {
         decrementQuantityFromItemInCart,
         getIdsFromItensInCart,
         productsInCartIds,
-        addOrderInfos
+        addOrderInfos,
+        getPreOrder,preOrder
     }
 
 }

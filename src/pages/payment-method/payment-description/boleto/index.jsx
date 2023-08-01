@@ -2,14 +2,20 @@ import React from 'react'
 import { myContext } from './../../../../hooks/useContext';
 import convertToLocaleString from './../../../../util/convert-to-locale-string';
 import PaymentActions from './../../payment-actions/index';
+import { GO_TO_CONFIRM_ORDER } from '../../../../router/navigation';
 
 const Boleto = () => {
 
-
-    const { productsInCart } = myContext()
+    const navigate = useNavigate()
+    const { productsInCart,addOrderInfos } = myContext()
 
 
     const totalPrice = productsInCart?.reduce( ( total,product ) => total + ( product.price * product.quantity ),0 )
+
+    const handleSetPaymentMethod = async () => {
+        await addOrderInfos( { paymentMethod: '2' } )
+        GO_TO_CONFIRM_ORDER( navigate )
+    }
 
     return (
         <div className='flex flex-col  pb-24 max-md:pb-6'>
@@ -33,6 +39,7 @@ const Boleto = () => {
             </section>
 
             <PaymentActions
+                onClick={handleSetPaymentMethod}
                 tittle='PAGAR COM BOLETO' />
         </div>
     )

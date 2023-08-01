@@ -1,16 +1,23 @@
 import React from 'react'
-import Footer from '../../../../components/footer'
 import PaymentActions from '../../payment-actions'
 import { myContext } from '../../../../hooks/useContext'
 import convertToLocaleString from '../../../../util/convert-to-locale-string'
+import { useNavigate } from 'react-router-dom'
+import { GO_TO_CONFIRM_ORDER } from '../../../../router/navigation'
 
 
 const Pix = () => {
 
-    const { productsInCart } = myContext()
+    const navigate = useNavigate()
+    const { productsInCart,addOrderInfos } = myContext()
 
-    
+
     const totalPrice = productsInCart?.reduce( ( total,product ) => total + ( product.price * product.quantity ),0 )
+
+    const handleSetPaymentMethod = async () => {
+        await addOrderInfos( { paymentMethod: '1' } )
+        GO_TO_CONFIRM_ORDER( navigate )
+    }
 
     return (
         <div className='flex flex-col  pb-24 max-md:pb-6'>
@@ -34,6 +41,7 @@ const Pix = () => {
             </section>
 
             <PaymentActions
+                onClick={handleSetPaymentMethod}
                 tittle='PAGAR COM O PIX' />
         </div>
     )

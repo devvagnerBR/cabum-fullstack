@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PaymentActions = ( { tittle,onSubmit,onClick } ) => {
+const PaymentActions = ( { tittle,onSubmit,onClick  } ) => {
 
 
     return (
