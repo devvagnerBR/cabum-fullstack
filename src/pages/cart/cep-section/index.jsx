@@ -25,7 +25,8 @@ const CEPSection = () => {
     }
 
     React.useEffect( () => {
-        addOrderInfos( { address: fullAddress } )
+        if ( fullAddress.cep )
+            addOrderInfos( { address: fullAddress } )
     },[fullAddress] )
 
 

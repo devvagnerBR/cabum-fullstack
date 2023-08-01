@@ -25,7 +25,7 @@ const viaCEP = () => {
                     const address = res.data
 
                     let body = {
-
+                        cep: cep,
                         neighborhood: address.bairro,
                         complement: address.complemento || '',
                         city: address.localidade || '',
