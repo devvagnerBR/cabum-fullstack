@@ -6,7 +6,7 @@ import ProductsInCartSection from './products-section'
 import SummaryModal from './modal-summary'
 import { myContext } from '../../hooks/useContext'
 import DeliveryOptions from './delivery-options'
-import { GO_TO_HOME, GO_TO_PAYMENT_METHOD } from '../../router/navigation'
+import { GO_TO_HOME,GO_TO_PAYMENT_METHOD } from '../../router/navigation'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../../components/footer'
 
@@ -14,11 +14,10 @@ const Cart = () => {
 
 
     const navigate = useNavigate()
-    const { getProductsInCart,productsInCart } = myContext()
+    const { productsInCart } = myContext()
 
     const [summaryModal,setSummaryModal] = React.useState( false )
     const hasProducts = productsInCart.length > 0
-
 
 
     return (

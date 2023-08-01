@@ -141,7 +141,22 @@ const CART_REQUESTS = () => {
     }
 
 
+    const addOrderInfos = async ( body ) => {
 
+        try {
+
+            const orderRef = db_firestore
+                .collection( "users" ).doc( token )
+                .collection( "pre-order" ).doc( token )
+
+            await orderRef.update( body )
+            console.log( 'pre-order atualizado com sucesso' );
+
+        } catch ( error ) {
+            console.log( error );
+        }
+
+    }
 
     return {
         addProductToCart,
@@ -152,7 +167,8 @@ const CART_REQUESTS = () => {
         incrementQuantityFromItemInCart,
         decrementQuantityFromItemInCart,
         getIdsFromItensInCart,
-        productsInCartIds
+        productsInCartIds,
+        addOrderInfos
     }
 
 }

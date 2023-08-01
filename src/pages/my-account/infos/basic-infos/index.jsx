@@ -19,7 +19,6 @@ const BasicInfos = () => {
         await updateNameOrPhoneNumber( newInfos )
     }
 
-
     return (
         <aside className='border flex  gap-4 flex-col p-4'>
             <header
@@ -33,10 +32,10 @@ const BasicInfos = () => {
                     DADOS BÁSICOS
                 </h1>
             </header>
-            <nav className='flex max-[900px]:flex-col gap-2'>
+            {/* <nav className='flex max-[900px]:flex-col gap-2'>
                 <button className='border border-orange-500 text-orange-500 font-semibold w-full rounded-sm p-4'>ALTERAR E-MAIL</button>
                 <button className='border border-orange-500 text-orange-500 font-semibold w-full rounded-sm p-4'>ALTERAR SENHA</button>
-            </nav>
+            </nav> */}
             <form className='gap-1 flex flex-col'>
                 <label className='flex flex-col gap-1 text-xs text-neutral-500 '>
                     Nome completo*

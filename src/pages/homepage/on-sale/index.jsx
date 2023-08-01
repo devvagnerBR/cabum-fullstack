@@ -1,5 +1,5 @@
 import React from 'react'
-import { Star,Alarm,CaretRight } from '@phosphor-icons/react'
+import { Alarm,CaretRight } from '@phosphor-icons/react'
 import CardProduct from '../../../components/card-product'
 
 

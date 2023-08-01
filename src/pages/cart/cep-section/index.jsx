@@ -8,16 +8,27 @@ const CEPSection = () => {
     const [location,setLocation] = React.useState( '' )
     const [cepCode,setCepCode] = React.useState( '' )
 
-    const { getViaCep } = myContext()
+    const { getCEP,
+        fullAddress,
+        addOrderInfos
+    } = myContext()
+
 
     const handleGetCEP = async ( e ) => {
         e.preventDefault()
 
         if ( cepCode ) {
-            const res = await getViaCep( cepCode )
-            setLocation( res );
+            await getCEP( cepCode )
+            setLocation( fullAddress );
         }
+
     }
+
+    React.useEffect( () => {
+        addOrderInfos( { address: fullAddress } )
+    },[fullAddress] )
+
+
     return (
         <div className='flex flex-col items-start max-[550px]:items-center justify-start h-fit w-full py-4 px-6  border rounded-sm shadow-sm'>
 
@@ -41,7 +52,7 @@ const CEPSection = () => {
                 <a href='https://buscacepinter.correios.com.br/app/endereco/index.php' target='_blank' className='text-xs cursor-pointer text-orange-500 font-semibold'>Não lembro meu CEP</a>
             </div>
             <section className='pt-4'>
-                {location && <p className='font-semibold text-xs text-neutral-400'>Entregar em: <span className='font-light text-neutral-400'>{location}</span> </p>}
+                {location && <p className='font-semibold text-xs text-neutral-400'>Entregar em: <span className='font-light text-neutral-400'>{fullAddress.neighborhood} - {fullAddress.city} / {fullAddress.uf}</span> </p>}
             </section>
         </div>
     )

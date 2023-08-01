@@ -65,7 +65,8 @@ const GlobalProvider = ( { children } ) => {
         incrementQuantityFromItemInCart,
         decrementQuantityFromItemInCart,
         getIdsFromItensInCart,
-        productsInCartIds
+        productsInCartIds,
+        addOrderInfos
     } = CART_REQUESTS()
 
     const {
@@ -188,7 +189,8 @@ const GlobalProvider = ( { children } ) => {
                 modalEditAddress,setModalEditAddress,
                 editableAddress,setEditableAddress,
                 updateAddress,
-                updateNameOrPhoneNumber
+                updateNameOrPhoneNumber,
+                addOrderInfos
 
             }}>
             {children}

@@ -1,10 +1,12 @@
 import { Envelope,Gear } from '@phosphor-icons/react'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { myContext } from '../../../../hooks/useContext'
 
 const InfoCardsSection = () => {
 
 
+    const { user } = myContext()
 
     return (
         <main className='flex max-md:flex-col w-full  gap-4'>
@@ -14,8 +16,8 @@ const InfoCardsSection = () => {
                         <img src="https://static.kabum.com.br/conteudo/temas/001/imagens/k5/images/profile_ninja.png" alt="IMG" width={70} />
                     </div>
                     <div className='gap-1 flex flex-col'>
-                        <h1 className='font-bold text-xl'>Bem-vindo, Wagner Luiz</h1>
-                        <p className='flex gap-2 items-center text-sm text-neutral-500'><Envelope weight='fill' className='fill-orange-500' size={20} /> wagnerluizsg@gmail.com</p>
+                        <h1 className='font-bold text-xl'>Bem-vindo, {user?.name}</h1>
+                        <p className='flex gap-2 items-center text-sm text-neutral-500'><Envelope weight='fill' className='fill-orange-500' size={20} /> {user?.email}</p>
                     </div>
                 </div>
                 <div>
