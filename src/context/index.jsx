@@ -52,7 +52,8 @@ const GlobalProvider = ( { children } ) => {
         addresses,
         saveNewAddress,
         deleteAddress,
-        updateAddress
+        updateAddress,
+        updateNameOrPhoneNumber
     } = USER_REQUESTS()
 
     const {
@@ -92,8 +93,11 @@ const GlobalProvider = ( { children } ) => {
     } = FAVORITES_REQUESTS()
 
     const {
-        getCEP,fullAddress
+        getCEP,
+        fullAddress
     } = viaCEP()
+
+
     React.useEffect( () => {
         if ( modalMenu ) {
             document.body.classList.add( 'overflow-hidden' )
@@ -183,7 +187,8 @@ const GlobalProvider = ( { children } ) => {
                 modalNewAddress,setModalNewAddress,
                 modalEditAddress,setModalEditAddress,
                 editableAddress,setEditableAddress,
-                updateAddress
+                updateAddress,
+                updateNameOrPhoneNumber
 
             }}>
             {children}

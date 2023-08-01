@@ -187,6 +187,33 @@ const USER_REQUESTS = () => {
 
     };
 
+
+    const updateNameOrPhoneNumber = async ( body ) => {
+
+        const userRef = db_firestore.collection( "users" );
+        const { newName,newPhoneNumber } = body;
+
+        const dataToUpdate = {}
+        if ( newName ) dataToUpdate.name = newName;
+        if ( newPhoneNumber ) dataToUpdate.phone_number = newPhoneNumber;
+
+        try {
+            await userRef
+                .doc( token )
+                .update( dataToUpdate )
+            console.log( 'dados atualizados com sucesso' );
+
+        } catch ( error ) {
+            console.log( error );
+        }
+
+    }
+
+
+
+
+
+
     return {
         createAccount,
         signInWithEmailAndPassword,
@@ -194,7 +221,7 @@ const USER_REQUESTS = () => {
         getLoggedUser,
         user,setUser,userLogOut,checkForUpdate,
         getAddresses,addresses,saveNewAddress,deleteAddress,
-        updateAddress
+        updateAddress,updateNameOrPhoneNumber
     }
 
 }

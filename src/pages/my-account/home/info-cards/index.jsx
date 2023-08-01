@@ -1,5 +1,6 @@
 import { Envelope,Gear } from '@phosphor-icons/react'
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const InfoCardsSection = () => {
 
@@ -18,7 +19,13 @@ const InfoCardsSection = () => {
                     </div>
                 </div>
                 <div>
-                    <Gear size={30} weight='fill' className='fill-orange-500 cursor-pointer hover:fill-orange-600' />
+                    <NavLink to="/minha-conta/meus-dados">
+                        <Gear
+                            size={30}
+                            weight='fill'
+                            className='fill-orange-500 cursor-pointer hover:fill-orange-600'
+                        />
+                    </NavLink>
                 </div>
             </section>
             <section className=' w-2/4 flex-wrap min-h-[150px]   max-md:w-full flex items-center justify-between max-lg:justify-center p-4 bg-neutral-50  shadow-sm shadow-neutral-300 gap-4 rounded-sm'>
