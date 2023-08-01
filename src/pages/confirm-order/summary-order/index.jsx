@@ -2,15 +2,18 @@ import React from 'react'
 import { FileSearch } from '@phosphor-icons/react'
 import { useNavigate } from 'react-router-dom'
 import convertToLocaleString from '../../../util/convert-to-locale-string'
+import { myContext } from '../../../hooks/useContext'
 
-const SummaryOrder = ( { products } ) => {
+const SummaryOrder = ( { products,isOrder } ) => {
 
     const navigate = useNavigate()
+    const { size } = myContext()
     const totalPrice = products?.reduce( ( total,product ) => total + ( product.price * product.quantity ),0 )
 
+    const isOrderAndMobile = isOrder && size < 1150
 
     return (
-        <div className='w-[320px] shrink-0 flex flex-col items-start justify-start  border rounded-sm shadow-sm py-4 px-6  sticky top-4 max-[1150px]:hidden '>
+        <div className={`w-[320px] shrink-0 flex flex-col items-start justify-start  border rounded-sm shadow-sm py-4 px-6  sticky top-4 ${isOrderAndMobile ? 'w-full' : 'max-[1150px]:hidden'}  `}>
             <header className='flex items-center gap-2'>
                 <FileSearch weight='fill' size={22} className='fill-orange-500' />
                 <h1 className='font-bold text-neutral-600 text-2xl'>RESUMO</h1>
@@ -53,7 +56,7 @@ const SummaryOrder = ( { products } ) => {
                     FINALIZAR
                 </button>
                 <button
-                    onClick={()=> navigate( -1 )}
+                    onClick={() => navigate( -1 )}
                     className='border border-orange-500 h-12 w-full rounded-sm text-orange-500 font-semibold hover:bg-orange-50'>
                     VOLTAR
                 </button>

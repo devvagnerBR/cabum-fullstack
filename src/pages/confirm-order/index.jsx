@@ -7,25 +7,20 @@ import SummaryOrder from './summary-order'
 import ProductsList from './products-list'
 
 
-
-
-
-
 const ConfirmOrder = () => {
 
-    const navigate = useNavigate()
-
+    const navigate = useNavigate();
     const { productsInCart,
         user,
         getPreOrder,
         preOrder,
         addresses,
         getAddresses
-    } = myContext()
+    } = myContext();
 
     React.useEffect( () => {
-        getPreOrder()
-        getAddresses()
+        getPreOrder();
+        getAddresses();
     },[] )
 
     const addressInfos = addresses[0]
@@ -37,10 +32,14 @@ const ConfirmOrder = () => {
             <section
                 className='w-[1350px] py-4  max-[1350px]:w-full flex h-fit mb-60   max-[1150px]:flex-col  items-start gap-4'>
                 <section className='w-full gap-4 flex flex-col'>
-                    <PersonalData user={user} addressInfos={addressInfos} />
-                    <ProductsList />
+                    <PersonalData
+                        user={user}
+                        addressInfos={addressInfos} />
+                    <ProductsList products={products} />
                 </section>
-                <SummaryOrder products={productsInCart} />
+                <SummaryOrder
+                    isOrder
+                    products={productsInCart} />
             </section>
             <Footer />
 
