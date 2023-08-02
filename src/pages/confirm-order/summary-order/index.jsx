@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import convertToLocaleString from '../../../util/convert-to-locale-string'
 import { myContext } from '../../../hooks/useContext'
 
+
+
 const SummaryOrder = ( { products,isOrder } ) => {
 
     const navigate = useNavigate()
@@ -22,7 +24,7 @@ const SummaryOrder = ( { products,isOrder } ) => {
             <h3 className='text-xs px-2 mt-2  gap-2 w-full pl-2  text-neutral-400 flex items-center justify-between'>Frete:<span className='font-bold text-lg'>R$ 0,00</span> </h3>
             <section className='flex flex-col bg-neutral-100/60 w-full mt-2 pb-2'>
                 <h3 className='text-xs px-2 py-2 gap-2 w-full text-neutral-400 flex items-center justify-between'>Total à prazo <span className='font-bold text-lg'>{convertToLocaleString( totalPrice )}</span> </h3>
-                <h3
+                {!isOrder && <h3
                     className='text-xs mt-2 gap-2 w-full text-neutral-400 flex items-center justify-center'>
                     em até
                     <span
@@ -34,7 +36,7 @@ const SummaryOrder = ( { products,isOrder } ) => {
                         className='text-neutral-400 font-semibold'>
                         {convertToLocaleString( totalPrice / 10 )} sem juros
                     </span>
-                </h3>
+                </h3>}
             </section>
             <section className='bg-green-100 flex flex-col items-end w-full mt-8 p-2'>
                 <h3

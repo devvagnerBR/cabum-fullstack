@@ -3,6 +3,7 @@ import { myContext } from './../../../../hooks/useContext';
 import convertToLocaleString from './../../../../util/convert-to-locale-string';
 import PaymentActions from './../../payment-actions/index';
 import { GO_TO_CONFIRM_ORDER } from '../../../../router/navigation';
+import { useNavigate } from 'react-router-dom';
 
 const Boleto = () => {
 

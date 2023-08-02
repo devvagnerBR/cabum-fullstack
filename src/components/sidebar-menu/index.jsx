@@ -20,7 +20,7 @@ const SidebarMenu = () => {
             onClick={handleOutsideClick}
 
             className='w-full h-[100dvh]  max-md:h-[calc(100dvh-4rem)] bg-neutral-800/70 z-50 absolute max-md:top-[4rem] top-0 left-0'>
-            <aside className='bg-blue-700 w-[20rem] h-full max-md:w-full'>
+            <aside className='bg-blue-500 w-[20rem] h-full max-md:w-full'>
 
                 <header className='w-full h-[4rem] flex items-center pl-4 gap-4'>
                     <UserCircle size={40} weight='fill' className=' fill-neutral-100' />
@@ -75,7 +75,7 @@ const SidebarMenu = () => {
                 <footer className=' w-[20rem] flex flex-col items-center justify-center max-md:w-full h-[7rem] fixed bottom-0'>
 
                     {!user ? <>
-                        <section className=' w-11/12 rounded-md bg-orange-600  justify-center h-[3rem] flex items-center '>
+                        <section className=' w-11/12 rounded-md bg-orange-500  justify-center h-[3rem] flex items-center '>
                             <h1
                                 onClick={() => {
                                     GO_TO_LOGIN( navigate )
@@ -97,7 +97,7 @@ const SidebarMenu = () => {
                                 userLogOut()
                                 GO_TO_HOME( navigate )
                             }}
-                            className=' w-11/12 rounded-md cursor-pointer bg-orange-600  justify-center h-[3rem] flex items-center '>
+                            className=' w-11/12 rounded-md cursor-pointer bg-orange-500  justify-center h-[3rem] flex items-center '>
                             <h1
                                 className='text-neutral-100   font-semibold text-lg'>SAIR</h1>
                         </section>

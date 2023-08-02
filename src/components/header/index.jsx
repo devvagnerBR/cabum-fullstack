@@ -63,7 +63,7 @@ const Header = () => {
 
     return (
         <header
-            className={`bg-blue-700 ${isLoginAndSignUpPage && 'border-b-4 border-orange-400'}  h-[7rem] max-md:h-[4rem] max-md:justify-around px-4 justify-center flex items-center relative max-xl:w-full  max-xl:justify-evenly     gap-4 md:gap-8 lg:px-8  max-md:px-4 flex-wrap  m-auto`}>
+            className={`bg-blue-500 ${isLoginAndSignUpPage && 'border-b-4 border-orange-400'}  h-[7rem] max-md:h-[4rem] max-md:justify-around px-4 justify-center flex items-center relative max-xl:w-full  max-xl:justify-evenly     gap-4 md:gap-8 lg:px-8  max-md:px-4 flex-wrap  m-auto`}>
             <div className='flex  gap-4 items-center justify-start '>
                 <h1 onClick={() => GO_TO_HOME( navigate )} className={` ${!isLoginAndSignUpPage && 'hidden'} flex md:hidden items-center text-white gap-2  cursor-pointer`}><CaretLeft className='fill-white' size={20} /> Voltar </h1>
                 <List onClick={() => setModalMenu( !modalMenu )} size={40} weight='regular' className={` ${isLoginAndSignUpPage && 'invisible'} fill-neutral-300 cursor-pointer`} />

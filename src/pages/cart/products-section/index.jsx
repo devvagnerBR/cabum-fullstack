@@ -7,7 +7,12 @@ import convertToLocaleString from '../../../util/convert-to-locale-string';
 
 const ProductsInCartSection = ( { summaryModal,products } ) => {
 
-    const { size,removeProductFromCart,removeAllProductsFromCart,incrementQuantityFromItemInCart,decrementQuantityFromItemInCart } = myContext()
+    const { size,
+        removeProductFromCart,
+        removeAllProductsFromCart,
+        incrementQuantityFromItemInCart,
+        decrementQuantityFromItemInCart
+    } = myContext()
 
     const handleRemoveProductFromCart = async ( productId ) => {
         await removeProductFromCart( productId )
@@ -16,7 +21,6 @@ const ProductsInCartSection = ( { summaryModal,products } ) => {
     const handleClearCart = async () => {
         await removeAllProductsFromCart()
     }
-
 
     const handleIncrementQuantity = async ( productId ) => {
         await incrementQuantityFromItemInCart( productId )

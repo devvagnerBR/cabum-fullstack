@@ -8,7 +8,7 @@ const countdownTime = () => {
 
     React.useEffect( () => {
 
-        const futureDate = moment( '2023-07-30' );
+        const futureDate = moment( '2023-08-31' );
         const interval = setInterval( () => {
             const now = moment();
             const diff = futureDate.diff( now );
