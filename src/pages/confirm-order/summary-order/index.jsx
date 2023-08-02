@@ -7,12 +7,16 @@ import { GO_TO_MY_ACCOUNT } from '../../../router/navigation'
 
 
 
+
 const SummaryOrder = ( { products,isOrder,pre_order } ) => {
 
     const navigate = useNavigate()
 
     const { size,
-        saveNewOrder
+        saveNewOrder,
+        getAddresses,
+        addresses,
+        addOrderInfos
     } = myContext()
 
     const totalPrice = products?.reduce( ( total,product ) => total + ( product.price * product.quantity ),0 )
@@ -20,11 +24,14 @@ const SummaryOrder = ( { products,isOrder,pre_order } ) => {
     const isOrderAndMobile = isOrder && size < 1150
 
     const handleAddPreOrderToCompletedOrder = async () => {
+        await addOrderInfos( { address: addresses[0] } )
         await saveNewOrder( pre_order )
         GO_TO_MY_ACCOUNT( navigate )
     }
 
-
+    React.useEffect( () => {
+        getAddresses()
+    },[] )
 
 
 

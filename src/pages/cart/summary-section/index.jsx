@@ -10,12 +10,17 @@ const SummarySection = ( { products } ) => {
     const navigate = useNavigate()
 
     const totalPrice = products?.reduce( ( total,product ) => total + ( product.price * product.quantity ),0 )
-    const { productsInCart,addOrderInfos } = myContext()
+    
+    const {
+        productsInCart,
+        addOrderInfos,
+    } = myContext()
 
 
     const handleSetOrderProducts = async ( body ) => {
         await addOrderInfos( { products: body } )
     }
+
 
 
     return (
@@ -63,8 +68,8 @@ const SummarySection = ( { products } ) => {
             <section className='flex flex-col w-full items-center justify-center gap-2 mt-7 '>
                 <button
                     onClick={() => {
-                        GO_TO_PAYMENT_METHOD( navigate )
                         handleSetOrderProducts( productsInCart )
+                        GO_TO_PAYMENT_METHOD( navigate )
                     }}
                     className='bg-orange-500 h-12 w-full rounded-sm text-white font-semibold hover:bg-orange-400'>
                     IR PARA O PAGAMENTO

@@ -55,7 +55,7 @@ const ORDER_REQUESTS = () => {
             const lastOrder = await getGlobalOrdersSize()
             const newOrderNumber = lastOrder + 1
             console.log( '[1]:',newOrderNumber );
-            const order = { ...preOrder,order_number: newOrderNumber,order_data: Date.now() }
+            const order = { ...preOrder,order_number: newOrderNumber,order_date: Date.now() }
             await db_firestore
                 .collection( "users" ).doc( token )
                 .collection( "orders" ).doc( newOrderNumber.toString() )
@@ -66,7 +66,7 @@ const ORDER_REQUESTS = () => {
                 .set( {
                     order_number: newOrderNumber,
                     user_id: token,
-                    order_data: Date.now()
+                    order_date: Date.now()
                 } )
             console.log( '[3]: salvo no global-orders' );
             await deleteCartItens()
