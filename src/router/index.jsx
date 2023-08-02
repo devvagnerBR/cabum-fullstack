@@ -10,6 +10,7 @@ import MyAccount from '../pages/my-account';
 import ProductDetails from '../pages/product-details';
 import PaymentMethod from '../pages/payment-method';
 import ConfirmOrder from '../pages/confirm-order';
+import CompletedOrder from '../pages/confirm-order/completed-order';
 
 
 const RouterConfig = () => {
@@ -29,6 +30,7 @@ const RouterConfig = () => {
                     <Route path='/produto/:id' element={<ProductDetails />} />
                     <Route path='/pagamento' element={<PaymentMethod />} />
                     <Route path='/confirmacao' element={<ConfirmOrder />} />
+                    <Route path='/pedido-finalizado' element={<CompletedOrder />} />
                 </Routes>
             </GlobalProvider>
         </BrowserRouter>

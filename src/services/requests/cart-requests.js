@@ -175,9 +175,27 @@ const CART_REQUESTS = () => {
         } catch ( error ) {
             console.log( error );
         }
-
-
     }
+
+
+    /* 
+        const addProductToCart = async ( product ) => {
+
+        const { id,price,image_url,name } = product
+        try {
+
+            await cartRef.doc( product.id ).set( { id,price,image_url,name,quantity: 1 } )
+            console.log( 'produto adicionado com sucesso!' );
+
+        } catch ( error ) {
+            console.log( error );
+        }
+    }
+    
+    */
+
+
+
 
 
     return {
@@ -191,7 +209,8 @@ const CART_REQUESTS = () => {
         getIdsFromItensInCart,
         productsInCartIds,
         addOrderInfos,
-        getPreOrder,preOrder
+        getPreOrder,preOrder,
+
     }
 
 }

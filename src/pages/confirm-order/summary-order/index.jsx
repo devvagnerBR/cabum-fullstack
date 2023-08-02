@@ -6,13 +6,25 @@ import { myContext } from '../../../hooks/useContext'
 
 
 
-const SummaryOrder = ( { products,isOrder } ) => {
+const SummaryOrder = ( { products,isOrder,pre_order } ) => {
 
     const navigate = useNavigate()
-    const { size } = myContext()
+
+    const { size,
+        saveNewOrder
+    } = myContext()
+
     const totalPrice = products?.reduce( ( total,product ) => total + ( product.price * product.quantity ),0 )
 
     const isOrderAndMobile = isOrder && size < 1150
+
+    const handleAddPreOrderToCompletedOrder = async () => {
+        await saveNewOrder( pre_order )
+    }
+
+
+
+
 
     return (
         <div className={`w-[320px] shrink-0 flex flex-col items-start justify-start  border rounded-sm shadow-sm py-4 px-6  sticky top-4 ${isOrderAndMobile ? 'w-full' : 'max-[1150px]:hidden'}  `}>
@@ -23,20 +35,8 @@ const SummaryOrder = ( { products,isOrder } ) => {
             <h3 className='text-xs border-b px-2 pt-8 pl-2  gap-2 w-full text-neutral-400 flex items-center justify-between'>Valor dos Produtos <span className='font-bold text-lg'>{convertToLocaleString( totalPrice )}</span> </h3>
             <h3 className='text-xs px-2 mt-2  gap-2 w-full pl-2  text-neutral-400 flex items-center justify-between'>Frete:<span className='font-bold text-lg'>R$ 0,00</span> </h3>
             <section className='flex flex-col bg-neutral-100/60 w-full mt-2 pb-2'>
-                <h3 className='text-xs px-2 py-2 gap-2 w-full text-neutral-400 flex items-center justify-between'>Total à prazo <span className='font-bold text-lg'>{convertToLocaleString( totalPrice )}</span> </h3>
-                {!isOrder && <h3
-                    className='text-xs mt-2 gap-2 w-full text-neutral-400 flex items-center justify-center'>
-                    em até
-                    <span
-                        className='text-neutral-400 font-semibold'>
-                        10x
-                    </span>
-                    de
-                    <span
-                        className='text-neutral-400 font-semibold'>
-                        {convertToLocaleString( totalPrice / 10 )} sem juros
-                    </span>
-                </h3>}
+                <h3 className='text-xs px-2 py-2 gap-2 w-full text-neutral-400 flex items-center justify-between'>Desconto: <span className='font-bold text-lg'>{convertToLocaleString( totalPrice * 0.05 )}</span> </h3>
+
             </section>
             <section className='bg-green-100 flex flex-col items-end w-full mt-8 p-2'>
                 <h3
@@ -53,7 +53,7 @@ const SummaryOrder = ( { products,isOrder } ) => {
 
             <section className='flex flex-col w-full items-center justify-center gap-2 mt-7 '>
                 <button
-                    // onClick={() => GO_TO_PAYMENT_METHOD( navigate )}
+                    onClick={handleAddPreOrderToCompletedOrder}
                     className='bg-orange-500 h-12 w-full rounded-sm text-white font-semibold hover:bg-orange-400'>
                     FINALIZAR
                 </button>

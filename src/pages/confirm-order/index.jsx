@@ -9,7 +9,7 @@ import ProductsList from './products-list'
 
 const ConfirmOrder = () => {
 
-    const navigate = useNavigate();
+
     const { productsInCart,
         user,
         getPreOrder,
@@ -26,7 +26,6 @@ const ConfirmOrder = () => {
     const addressInfos = addresses[0]
     const products = preOrder?.products
 
-
     return (
         <div className={`flex relative flex-col items-center h-fit min-h-[calc(100vh-7rem)]  max-md:min-h-[calc(100vh-4rem)]  justify-start  px-4      `}>
             <section
@@ -39,7 +38,9 @@ const ConfirmOrder = () => {
                 </section>
                 <SummaryOrder
                     isOrder
-                    products={productsInCart} />
+                    products={productsInCart}
+                    pre_order={preOrder}
+                />
             </section>
             <Footer />
 

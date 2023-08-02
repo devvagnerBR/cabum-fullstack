@@ -15,6 +15,7 @@ import FAVORITES_REQUESTS from '../services/requests/favorite-request';
 import PAYMENT_REQUESTS from '../services/requests/payments-requests';
 import viaCEP from './../util/get-address';
 import getViaCep from './../util/get-cep';
+import ORDER_REQUESTS from '../services/requests/order-requests';
 
 export const GlobalContext = React.createContext( '' )
 
@@ -95,6 +96,9 @@ const GlobalProvider = ( { children } ) => {
         removeProductFromFavorites
     } = FAVORITES_REQUESTS()
 
+    const {
+        saveNewOrder
+    } = ORDER_REQUESTS()
     const {
         getCEP,
         fullAddress
@@ -194,7 +198,8 @@ const GlobalProvider = ( { children } ) => {
                 updateNameOrPhoneNumber,
                 addOrderInfos,
                 getPreOrder,
-                preOrder
+                preOrder,
+                saveNewOrder
             }}>
             {children}
         </GlobalContext.Provider>
