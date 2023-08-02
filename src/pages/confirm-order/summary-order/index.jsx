@@ -3,6 +3,7 @@ import { FileSearch } from '@phosphor-icons/react'
 import { useNavigate } from 'react-router-dom'
 import convertToLocaleString from '../../../util/convert-to-locale-string'
 import { myContext } from '../../../hooks/useContext'
+import { GO_TO_MY_ACCOUNT } from '../../../router/navigation'
 
 
 
@@ -20,6 +21,7 @@ const SummaryOrder = ( { products,isOrder,pre_order } ) => {
 
     const handleAddPreOrderToCompletedOrder = async () => {
         await saveNewOrder( pre_order )
+        GO_TO_MY_ACCOUNT( navigate )
     }
 
 

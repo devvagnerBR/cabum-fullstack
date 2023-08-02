@@ -150,7 +150,14 @@ const CART_REQUESTS = () => {
                 .collection( "users" ).doc( token )
                 .collection( "pre-order" ).doc( token )
 
-            await orderRef.update( body )
+            const snapshot = await orderRef.get();
+            if ( snapshot.exists ) {
+                await orderRef.update( body )
+                console.log( 'pre-order atualizado com sucesso' );
+            } else {
+                await orderRef.set( body )
+                console.log( 'pre-order criado com sucesso' );
+            }
             console.log( 'pre-order atualizado com sucesso' );
 
         } catch ( error ) {
@@ -159,6 +166,23 @@ const CART_REQUESTS = () => {
 
 
     }
+    // const addOrderInfos = async ( body ) => {
+
+    //     try {
+
+    //         const orderRef = db_firestore
+    //             .collection( "users" ).doc( token )
+    //             .collection( "pre-order" ).doc( token )
+
+    //         await orderRef.update( body )
+    //         console.log( 'pre-order atualizado com sucesso' );
+
+    //     } catch ( error ) {
+    //         console.log( error );
+    //     }
+
+
+    // }
 
     const getPreOrder = async () => {
 
