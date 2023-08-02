@@ -97,8 +97,11 @@ const GlobalProvider = ( { children } ) => {
     } = FAVORITES_REQUESTS()
 
     const {
-        saveNewOrder
+        saveNewOrder,
+        getOrders,
+        orders
     } = ORDER_REQUESTS()
+
     const {
         getCEP,
         fullAddress
@@ -199,7 +202,9 @@ const GlobalProvider = ( { children } ) => {
                 addOrderInfos,
                 getPreOrder,
                 preOrder,
-                saveNewOrder
+                saveNewOrder,
+                getOrders,
+                orders
             }}>
             {children}
         </GlobalContext.Provider>

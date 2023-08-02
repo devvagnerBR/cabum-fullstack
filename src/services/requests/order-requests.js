@@ -1,10 +1,13 @@
 
+import React from 'react';
 import { getCookie } from '../../hooks/useCookie';
 import { db_firestore } from './../firebase/index';
 
 
 const ORDER_REQUESTS = () => {
 
+
+    const [orders,setOrders] = React.useState( [] )
     const globalOrdersRefs = db_firestore.collection( "global-orders" )
     const token = getCookie( 'token' )
 
@@ -44,6 +47,7 @@ const ORDER_REQUESTS = () => {
     }
 
 
+
     const saveNewOrder = async ( preOrder ) => {
 
         try {
@@ -51,7 +55,7 @@ const ORDER_REQUESTS = () => {
             const lastOrder = await getGlobalOrdersSize()
             const newOrderNumber = lastOrder + 1
             console.log( '[1]:',newOrderNumber );
-            const order = { ...preOrder,order_number: newOrderNumber }
+            const order = { ...preOrder,order_number: newOrderNumber,order_data: Date.now() }
             await db_firestore
                 .collection( "users" ).doc( token )
                 .collection( "orders" ).doc( newOrderNumber.toString() )
@@ -62,7 +66,7 @@ const ORDER_REQUESTS = () => {
                 .set( {
                     order_number: newOrderNumber,
                     user_id: token,
-                    order_data: new Date()
+                    order_data: Date.now()
                 } )
             console.log( '[3]: salvo no global-orders' );
             await deleteCartItens()
@@ -76,20 +80,41 @@ const ORDER_REQUESTS = () => {
         }
     }
 
-    /*
-            // ✅ PEGAR os dados do "pre-order" 
-            // ✅ PEGAR length do "global-orders"
 
-            // ✅ SALVAR o pre-order no "orders"
-            // ✅ SALVAR o pedido no "global-orders"
-            
-            // ✅ DELETAR "cart"
-            // ✅ DELETAR "pre-order"
-    */
+    const getOrders = async () => {
+
+        const ordersRef = db_firestore
+            .collection( "users" ).doc( token )
+            .collection( "orders" );
+
+        try {
+
+            ordersRef.onSnapshot( ( docs ) => {
+
+                let data = []
+                docs.forEach( ( doc ) => {
+
+                    data.push( doc.data() )
+                } )
+
+                setOrders( data )
+
+            } )
+
+        } catch ( error ) {
+            console.log( error );
+        }
+
+
+    }
+
+
 
     return {
         getGlobalOrdersSize,
-        saveNewOrder
+        saveNewOrder,
+        getOrders,
+        orders
     }
 }
 

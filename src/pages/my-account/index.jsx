@@ -19,7 +19,8 @@ const MyAccount = () => {
         modalNewAddress,
         setModalNewAddress,
         modalEditAddress,
-        setModalEditAddress
+        setModalEditAddress,
+        getOrders
     } = myContext()
 
     const [isHovered,setIsHovered] = React.useState( false );
@@ -33,7 +34,10 @@ const MyAccount = () => {
     };
 
 
-   
+    React.useEffect( () => {
+        getOrders()
+    },[] )
+
 
     return (
         <div className='w-screen relative min-h-[calc(100vh-7rem)] max-md:h-[calc(100vh-4rem)] flex'>
