@@ -123,7 +123,7 @@ const MyAccount = () => {
             </aside >
 
             <main className='flex   max-md:pl-4 pl-[5rem] w-full shrink-0 absolute justify-center  p-4'>
-                <section className='max-w-[1400px] w-full'>
+                <section className='max-w-[1400px] w-full h-[85vh] overflow-y-scroll'>
                     <Routes>
                         <Route path='/' element={<Home />} />
                         <Route path='meus-dados' element={<Infos />} />

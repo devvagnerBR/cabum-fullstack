@@ -11,7 +11,7 @@ const Orders = () => {
     } = myContext()
 
     return (
-        <div>
+        <div className=''>
             <header className='p-2 flex items-center gap-2'>
                 <Basket size={26} className='fill-orange-500' weight='fill' />
                 <h1 className='font-bold text-xl'>MEUS PEDIDOS</h1>
