@@ -12,7 +12,6 @@ import PaymentMethod from '../pages/payment-method';
 import ConfirmOrder from '../pages/confirm-order';
 import CompletedOrder from '../pages/confirm-order/completed-order';
 
-
 const RouterConfig = () => {
 
     return (

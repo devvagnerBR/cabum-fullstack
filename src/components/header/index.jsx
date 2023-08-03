@@ -9,7 +9,7 @@ import { myContext } from '../../hooks/useContext'
 import profile_img from '../../assets/images/profile_ninja.png'
 import { getCookie } from '../../hooks/useCookie'
 import ModalSearch from './../modal-search/index';
-
+import kabum_search from '../../assets/icons/kabum_search.svg'
 const Header = () => {
 
     const navigate = useNavigate()
@@ -72,14 +72,20 @@ const Header = () => {
 
             <div
                 onBlur={handleBlur}
-                className='w-[25%] relative flex-1 max-md:w-[60%] max-w-[50rem]'>
+                className='w-[25%] relative flex-1 max-md:w-[50%] max-w-[60rem] flex items-center '>
                 <input
                     value={searchInput}
                     onChange={( e ) => setSearchInput( e.target.value )}
                     placeholder='Busque aqui'
-                    className={`${isLoginAndSignUpPage && 'invisible'}  w-full bg-neutral-100 pl-4 h-[2.25rem]  text-neutral-600 border focus:border-orange-500 rounded-sm placeholder:text-sm`}
+                    className={`${isLoginAndSignUpPage && 'invisible'} relative w-full bg-neutral-100 pl-4 h-[2.75rem]   text-neutral-600 border focus:border-orange-500 rounded-md placeholder:text-sm`}
                     type="text"
                 />
+                <img
+                    className='absolute right-[-1.5rem] w-20 max-md:hidden'
+                    src={kabum_search}
+                    alt="kabum logo"
+                />
+
                 {researchedProducts?.length > 0 && searchInput && <ModalSearch />}
             </div>
             <div className='flex gap-8  '>

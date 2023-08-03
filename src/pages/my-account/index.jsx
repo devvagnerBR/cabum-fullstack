@@ -1,6 +1,6 @@
 import React from 'react'
 import { House,UserFocus,Basket,Heart } from '@phosphor-icons/react'
-import { NavLink,Route,Routes } from 'react-router-dom'
+import { NavLink,Route,Routes,useLocation } from 'react-router-dom'
 import Home from './home';
 import Infos from './infos';
 import Orders from './orders';
@@ -14,7 +14,9 @@ import EditAddressModal from './infos/addresses/edit-address-modal';
 
 const MyAccount = () => {
 
-
+    const { pathname } = useLocation()
+    const isUserOrderPage = pathname === '/minha-conta/meus-pedidos'
+    
     const {
         modalNewAddress,
         setModalNewAddress,
@@ -37,6 +39,9 @@ const MyAccount = () => {
     React.useEffect( () => {
         getOrders()
     },[] )
+
+
+
 
 
     return (
@@ -123,7 +128,7 @@ const MyAccount = () => {
             </aside >
 
             <main className='flex   max-md:pl-4 pl-[5rem] w-full shrink-0 absolute justify-center  p-4'>
-                <section className='max-w-[1400px] w-full h-[85vh] overflow-y-scroll'>
+                <section className={`max-w-[1400px] w-full h-[85vh] ${isUserOrderPage && 'overflow-y-scroll'} `}>
                     <Routes>
                         <Route path='/' element={<Home />} />
                         <Route path='meus-dados' element={<Infos />} />

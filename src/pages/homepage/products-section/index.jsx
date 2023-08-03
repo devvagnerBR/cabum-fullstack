@@ -1,5 +1,3 @@
-
-import { Alarm,Star } from '@phosphor-icons/react'
 import React from 'react'
 import CardProduct from '../../../components/card-product'
 

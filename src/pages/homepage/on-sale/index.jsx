@@ -4,6 +4,7 @@ import CardProduct from '../../../components/card-product'
 
 
 import { myContext } from './../../../hooks/useContext';
+import { Link } from 'react-router-dom';
 
 const OnSale = ( { onSaleProducts } ) => {
 
@@ -42,10 +43,10 @@ const OnSale = ( { onSaleProducts } ) => {
                 } )}
 
             </section>
-            <div className=' w-full h-12 max-sm:w-[100vw] cursor-pointer items-center max-sm:justify-center bg-white flex justify-end pr-4'>
-                <button className='text-orange-500 font-semibold text-base'>VER TODOS</button>
+            {/* <div className=' w-full h-12 max-sm:w-[100vw] cursor-pointer items-center max-sm:justify-center bg-white flex justify-end pr-4'>
+                <Link to="/produtos" className='text-orange-500 font-semibold text-base'>VER TODOS</Link>
                 <CaretRight className='fill-orange-500 ' weight='bold' size={16} />
-            </div>
+            </div> */}
         </div>
     )
 
