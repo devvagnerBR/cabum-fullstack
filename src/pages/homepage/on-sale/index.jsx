@@ -1,14 +1,40 @@
 import React from 'react'
-import { Alarm,CaretRight } from '@phosphor-icons/react'
+import { Alarm } from '@phosphor-icons/react'
 import CardProduct from '../../../components/card-product'
+
+import { Swiper,SwiperSlide } from 'swiper/react'
+import { Navigation,Pagination,Scrollbar,A11y } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import 'swiper/css'
 
 
 import { myContext } from './../../../hooks/useContext';
-import { Link } from 'react-router-dom';
 
 const OnSale = ( { onSaleProducts } ) => {
 
-    const { countdown } = myContext()
+    const {
+        countdown,
+        size
+    } = myContext()
+
+
+    const slidersCalc = () => {
+
+        let calc = window.innerWidth
+
+        if ( calc <= 450 ) return 1;
+        if ( calc <= 600 ) return 2;
+        if ( calc <= 880 ) return 3;
+        if ( calc <= 1150 ) return 4;
+
+        return 5;
+
+
+    }
 
     return (
         <div
@@ -31,22 +57,25 @@ const OnSale = ( { onSaleProducts } ) => {
                 }
             </header>
 
-            <section
-                className='w-full grid grid-cols-5  max-xl:grid-cols-4 place-items-center max-[950px]:grid-cols-3  max-md:grid-cols-2  max-[560px]:grid-cols-1 gap-3 p-4 bg-white '>
+            <Swiper
+                modules={[Navigation,Pagination,Scrollbar,A11y]}
+                slidesPerView={slidersCalc()}
+                navigation={size < 450}
+                spaceBetween={5}
+                className='w-full  gap-3 py-4 bg-white '>
                 {onSaleProducts?.map( ( product ) => {
 
                     return (
-                        <CardProduct
-                            product={product}
-                            key={`on-sale-${product.id}`} />
+                        <SwiperSlide
+                            key={`on-sale-${product.id}`}>
+                            <CardProduct
+                                product={product}
+                            />
+                        </SwiperSlide>
                     )
                 } )}
 
-            </section>
-            {/* <div className=' w-full h-12 max-sm:w-[100vw] cursor-pointer items-center max-sm:justify-center bg-white flex justify-end pr-4'>
-                <Link to="/produtos" className='text-orange-500 font-semibold text-base'>VER TODOS</Link>
-                <CaretRight className='fill-orange-500 ' weight='bold' size={16} />
-            </div> */}
+            </Swiper>
         </div>
     )
 
