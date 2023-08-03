@@ -202,7 +202,7 @@ const CART_REQUESTS = () => {
         getIdsFromItensInCart,
         productsInCartIds,
         addOrderInfos,
-        getPreOrder,preOrder,
+        getPreOrder,preOrder
 
     }
 

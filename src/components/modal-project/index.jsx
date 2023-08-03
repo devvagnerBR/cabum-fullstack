@@ -21,19 +21,6 @@ const ModalProject = () => {
         setModalTerms( true )
     }
 
-    React.useEffect( () => {
-        if ( !modalTerms ) {
-            document.body.classList.add( 'overflow-hidden' )
-        } else {
-            document.body.classList.remove( 'overflow-hidden' )
-        }
-
-        return () => {
-            document.body.classList.remove( 'overflow-hidden' )
-        }
-    },[modalTerms] )
-
-
     return (
         <div className={`${modalTerms ? 'hidden' : 'flex'}   flex flex-col items-center z-0 justify-center  absolute top-0 w-full h-[calc(100vh-7rem)] max-md:h-[calc(100vh-4rem)] bg-neutral-700/70 `}>
             <section className='bg-white rounded-sm flex-col max-w-[600px] w-[90%] h-fit    flex items-center justify-start'>

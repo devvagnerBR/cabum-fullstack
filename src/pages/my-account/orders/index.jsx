@@ -3,15 +3,12 @@ import React from 'react'
 import { myContext } from '../../../hooks/useContext'
 import convertTimeInDate from '../../../util/convert-time-in-date'
 import usePaymentCheck from '../../../hooks/usePaymentCheck'
-import { Link } from 'react-router-dom'
 
 const Orders = () => {
 
     const {
         orders
     } = myContext()
-
-
 
     return (
         <div>

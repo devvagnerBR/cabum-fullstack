@@ -16,6 +16,7 @@ import PAYMENT_REQUESTS from '../services/requests/payments-requests';
 import viaCEP from './../util/get-address';
 import getViaCep from './../util/get-cep';
 import ORDER_REQUESTS from '../services/requests/order-requests';
+import useFreezeScreen from '../hooks/useFreezeScreen';
 
 export const GlobalContext = React.createContext( '' )
 
@@ -27,11 +28,14 @@ const GlobalProvider = ( { children } ) => {
     const [modalNewAddress,setModalNewAddress] = React.useState( false )
     const [modalEditAddress,setModalEditAddress] = React.useState( null )
     const [editableAddress,setEditableAddress] = React.useState( null )
+    const [modalCompletedPurchase,setModalCompletedPurchase] = React.useState( false )
 
     const [searchInput,setSearchInput] = React.useState( '' )
     const { countdown } = countdownTime()
     const { loading,awaitLoading } = controlledLoading()
     const { size } = getPageWidth()
+
+    useFreezeScreen( modalMenu )
 
 
     const {
@@ -106,20 +110,6 @@ const GlobalProvider = ( { children } ) => {
         getCEP,
         fullAddress
     } = viaCEP()
-
-
-    React.useEffect( () => {
-        if ( modalMenu ) {
-            document.body.classList.add( 'overflow-hidden' )
-        } else {
-            document.body.classList.remove( 'overflow-hidden' )
-        }
-
-        return () => {
-            document.body.classList.remove( 'overflow-hidden' )
-        }
-    },[modalMenu] )
-
 
     React.useEffect( () => {
         checkForUpdate()
@@ -204,7 +194,9 @@ const GlobalProvider = ( { children } ) => {
                 preOrder,
                 saveNewOrder,
                 getOrders,
-                orders
+                orders,
+                modalCompletedPurchase,
+                setModalCompletedPurchase
             }}>
             {children}
         </GlobalContext.Provider>

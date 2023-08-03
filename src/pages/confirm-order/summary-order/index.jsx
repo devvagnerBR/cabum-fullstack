@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import convertToLocaleString from '../../../util/convert-to-locale-string'
 import { myContext } from '../../../hooks/useContext'
 import { GO_TO_MY_ACCOUNT } from '../../../router/navigation'
+import usePaymentCheck from '../../../hooks/usePaymentCheck'
 
 
 
@@ -16,7 +17,9 @@ const SummaryOrder = ( { products,isOrder,pre_order } ) => {
         saveNewOrder,
         getAddresses,
         addresses,
-        addOrderInfos
+        addOrderInfos,
+        preOrder,
+        setModalCompletedPurchase
     } = myContext()
 
     const totalPrice = products?.reduce( ( total,product ) => total + ( product.price * product.quantity ),0 )
@@ -26,7 +29,7 @@ const SummaryOrder = ( { products,isOrder,pre_order } ) => {
     const handleAddPreOrderToCompletedOrder = async () => {
         await addOrderInfos( { address: addresses[0] } )
         await saveNewOrder( pre_order )
-        GO_TO_MY_ACCOUNT( navigate )
+        await setModalCompletedPurchase( true )
     }
 
     React.useEffect( () => {
@@ -53,11 +56,10 @@ const SummaryOrder = ( { products,isOrder,pre_order } ) => {
                     Forma de pagamento:
                     <span
                         className='text-green-700 font-semibold'>
-                        CARTÃO DE CRÉDITO
+                        {usePaymentCheck( preOrder?.paymentMethod )}
                     </span>
                 </h3>
                 <h1 className='mt-2 font-bold text-green-700 text-3xl'>{convertToLocaleString( totalPrice - ( totalPrice * 0.05 ) )}</h1>
-                <h1 className=' text-green-600 text-sm'>Economizou: <span className='font-semibold text-green-700'>{convertToLocaleString( totalPrice * 0.05 )}</span></h1>
             </section>
 
             <section className='flex flex-col w-full items-center justify-center gap-2 mt-7 '>
