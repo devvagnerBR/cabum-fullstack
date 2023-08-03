@@ -14,10 +14,24 @@ const Cart = () => {
 
 
     const navigate = useNavigate()
-    const { productsInCart } = myContext()
+    const {
+        productsInCart,
+        getAddresses,
+        addOrderInfos,
+        addresses
+    } = myContext()
+
+    React.useEffect( () => {
+        getAddresses();
+    },[] )
 
     const [summaryModal,setSummaryModal] = React.useState( false )
     const hasProducts = productsInCart.length > 0
+
+    const handleSetOrderProducts = async ( body ) => {
+        await addOrderInfos( { products: body,address: addresses[0] } )
+    }
+
 
 
     return (
@@ -35,7 +49,10 @@ const Cart = () => {
                         <DeliveryOptions />
                         <section className={` min-[1150px]:hidden flex flex-col w-full items-center justify-center gap-2 mt-7 `}>
                             <button
-                                onClick={() => GO_TO_PAYMENT_METHOD( navigate )}
+                                onClick={() => {
+                                    handleSetOrderProducts( productsInCart )
+                                    GO_TO_PAYMENT_METHOD( navigate )
+                                }}
                                 className='bg-orange-500 h-12 w-full rounded-sm text-white font-semibold hover:bg-orange-400'>
                                 IR PARA O PAGAMENTO
                             </button>

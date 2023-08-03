@@ -29,14 +29,12 @@ const SummaryOrder = ( { products,isOrder,pre_order } ) => {
     const handleAddPreOrderToCompletedOrder = async () => {
         await addOrderInfos( { address: addresses[0] } )
         await saveNewOrder( pre_order )
-        await setModalCompletedPurchase( true )
+        setModalCompletedPurchase( true )
     }
 
     React.useEffect( () => {
         getAddresses()
     },[] )
-
-
 
     return (
         <div className={`w-[320px] shrink-0 flex flex-col items-start justify-start  border rounded-sm shadow-sm py-4 px-6  sticky top-4 ${isOrderAndMobile ? 'w-full' : 'max-[1150px]:hidden'}  `}>

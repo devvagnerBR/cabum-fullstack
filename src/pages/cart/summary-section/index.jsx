@@ -10,15 +10,20 @@ const SummarySection = ( { products } ) => {
     const navigate = useNavigate()
 
     const totalPrice = products?.reduce( ( total,product ) => total + ( product.price * product.quantity ),0 )
-    
+
     const {
         productsInCart,
         addOrderInfos,
+        addresses,
+        getAddresses
     } = myContext()
 
+    React.useEffect( () => {
+        getAddresses();
+    },[] )
 
     const handleSetOrderProducts = async ( body ) => {
-        await addOrderInfos( { products: body } )
+        await addOrderInfos( { products: body,address: addresses[0] } )
     }
 
 

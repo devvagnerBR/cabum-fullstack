@@ -82,31 +82,24 @@ const ORDER_REQUESTS = () => {
 
 
     const getOrders = async () => {
-
         const ordersRef = db_firestore
-            .collection( "users" ).doc( token )
+            .collection( "users" )
+            .doc( token )
             .collection( "orders" );
 
         try {
-
-            ordersRef.onSnapshot( ( docs ) => {
-
-                let data = []
+            ordersRef.orderBy( "order_number","desc" ).onSnapshot( ( docs ) => {
+                let data = [];
                 docs.forEach( ( doc ) => {
-
-                    data.push( doc.data() )
-                } )
-
-                setOrders( data )
-
-            } )
-
+                    data.push( doc.data() );
+                } );
+                setOrders( data );
+            } );
         } catch ( error ) {
             console.log( error );
         }
+    };
 
-
-    }
 
 
 
