@@ -10,12 +10,9 @@ import { getCookie,setCookie } from '../hooks/useCookie'
 import useFreezeScreen from '../hooks/useFreezeScreen'
 
 
-
-
 const UtilitiesContext = React.createContext( '' )
 
 const UtilitiesProvider = ( { children } ) => {
-
 
     const [modalMenu,setModalMenu] = React.useState( false )
     const [modalCompletedPurchase,setModalCompletedPurchase] = React.useState( false )

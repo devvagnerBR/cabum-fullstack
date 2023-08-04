@@ -5,7 +5,6 @@ import { GO_TO_CART,GO_TO_FAVORITES,GO_TO_LOGIN,GO_TO_MY_ACCOUNT,GO_TO_SIGNUP } 
 import { useLocation,useNavigate } from 'react-router-dom'
 import SidebarMenu from '../sidebar-menu'
 import { GO_TO_HOME } from './../../router/navigation';
-import { myContext } from '../../hooks/useContext'
 import profile_img from '../../assets/images/profile_ninja.png'
 import { getCookie } from '../../hooks/useCookie'
 import ModalSearch from './../modal-search/index';
@@ -37,27 +36,21 @@ const Header = () => {
         productsInCart
     } = useCartContext()
 
-
     const {
         getSearchProducts,
         researchedProducts,
         setResearchedProducts
     } = useProductsContext()
 
-
-
     const isLoginAndSignUpPage = pathname === '/entrar' || pathname === '/cadastro'
     const displayName = getCookie( 'username' ) || user?.name
 
     const productsLength = productsInCart?.length
 
-
-
-
-
     React.useEffect( () => {
 
         const timer = setTimeout( () => {
+
             const findProducts = async () => {
                 if ( searchInput ) {
                     await getSearchProducts( searchInput )
@@ -65,7 +58,9 @@ const Header = () => {
                     setResearchedProducts( [] )
                 }
             }
+
             findProducts()
+
         },500 )
         return () => clearTimeout( timer )
     },[searchInput] )

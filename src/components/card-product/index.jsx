@@ -7,8 +7,6 @@ import { useProductsContext } from '../../context/products-context'
 import { useCartContext } from '../../context/cart-context'
 import { useFavoritesContext } from '../../context/favorites-context'
 
-
-
 const CardProduct = ( { product } ) => {
 
     const {
@@ -27,9 +25,6 @@ const CardProduct = ( { product } ) => {
         getProductDetails,
 
     } = useProductsContext()
-
-
-
 
     const navigate = useNavigate()
 
@@ -51,7 +46,6 @@ const CardProduct = ( { product } ) => {
             await markProductAsFavorite( product )
         }
     }
-
 
     return (
         <div
