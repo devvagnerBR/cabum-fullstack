@@ -30,7 +30,6 @@ const ProductsSection = ( { products,Icon,title = 'PRODUTOS' } ) => {
 
         return 5;
 
-
     }
 
     return (
@@ -39,8 +38,6 @@ const ProductsSection = ( { products,Icon,title = 'PRODUTOS' } ) => {
 
                 <  Icon size={18} weight='bold' className='fill-orange-500' />
                 <h1 className='font-bold text-neutral-700 text-xl  max-[580px]:text-3xl'>{title}</h1>
-
-
             </header>
             <Swiper
                 modules={[Navigation,Pagination,Scrollbar,A11y]}
