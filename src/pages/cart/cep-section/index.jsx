@@ -1,17 +1,22 @@
 import React from 'react'
 import { MapPin } from '@phosphor-icons/react'
-import { myContext } from '../../../hooks/useContext'
 import InputMask from "react-input-mask";
+import { useUtilitiesContext } from '../../../context/utilities-context';
+import { useOrdersContext } from '../../../context/orders-context';
 
 const CEPSection = () => {
 
     const [location,setLocation] = React.useState( '' )
     const [cepCode,setCepCode] = React.useState( '' )
 
+
     const { getCEP,
-        fullAddress,
+        fullAddress
+    } = useUtilitiesContext()
+
+    const {
         addOrderInfos
-    } = myContext()
+    } = useOrdersContext()
 
 
     const handleGetCEP = async ( e ) => {

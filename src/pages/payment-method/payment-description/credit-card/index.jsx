@@ -7,12 +7,22 @@ import PaymentActions from './../../payment-actions/index';
 import convertToLocaleString from './../../../../util/convert-to-locale-string';
 import { GO_TO_CONFIRM_ORDER } from './../../../../router/navigation';
 import { useNavigate } from 'react-router-dom';
+import { useCartContext } from '../../../../context/cart-context';
+import { useOrdersContext } from '../../../../context/orders-context';
 
 
 const CreditCard = () => {
 
     const navigate = useNavigate()
-    const { productsInCart,addOrderInfos } = myContext()
+
+    const {
+        productsInCart,
+    } = useCartContext()
+
+    const {
+        addOrderInfos
+    } = useOrdersContext()
+
     const [numParcelas,setNumParcelas] = React.useState( 0 )
 
     const totalPrice = productsInCart?.reduce( ( total,product ) => total + ( product.price * product.quantity ),0 )

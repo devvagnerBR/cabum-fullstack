@@ -3,18 +3,22 @@ import { SignIn as SignInIcon } from '@phosphor-icons/react'
 import Input from '../../components/input'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { myContext } from '../../hooks/useContext'
 import Footer from '../../components/footer'
+import { useUtilitiesContext } from '../../context/utilities-context'
+import { useUserContext } from '../../context/user-context'
 
 const SignIn = () => {
 
     const [customError,setCustomError] = React.useState( null )
 
     const {
-        formSignUpValidade,
         createAccount,
         userErrorMessage
-    } = myContext()
+    } = useUserContext()
+
+    const {
+        formSignUpValidade
+    } = useUtilitiesContext()
 
 
     const { handleSubmit,
@@ -36,7 +40,7 @@ const SignIn = () => {
                 setCustomError( 'As senhas informadas não são iguais' )
             } else {
                 await createAccount( data );
-                
+
                 // GO_TO_HOME( navigate )
 
             }

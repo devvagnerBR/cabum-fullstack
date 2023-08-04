@@ -9,17 +9,27 @@ import DeliveryOptions from './delivery-options'
 import { GO_TO_HOME,GO_TO_PAYMENT_METHOD } from '../../router/navigation'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../../components/footer'
+import { useCartContext } from '../../context/cart-context'
+import { useUserContext } from '../../context/user-context'
+import { useOrdersContext } from '../../context/orders-context'
 
 const Cart = () => {
 
 
     const navigate = useNavigate()
+
     const {
-        productsInCart,
         getAddresses,
-        addOrderInfos,
         addresses
-    } = myContext()
+    } = useUserContext()
+
+    const {
+        productsInCart
+    } = useCartContext()
+
+    const {
+        addOrderInfos
+    } = useOrdersContext()
 
     React.useEffect( () => {
         getAddresses();

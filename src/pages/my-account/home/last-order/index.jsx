@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom'
 import { myContext } from '../../../../hooks/useContext'
 import convertTimeInDate from '../../../../util/convert-time-in-date'
 import usePaymentCheck from '../../../../hooks/usePaymentCheck'
+import { useOrdersContext } from '../../../../context/orders-context'
 
 const LastOrderSection = () => {
 
 
-    const { orders } = myContext();
+    const {
+        orders
+    } = useOrdersContext();
 
     const lastOrder = orders[0]
     const address = lastOrder?.address

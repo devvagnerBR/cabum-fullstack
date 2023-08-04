@@ -1,14 +1,21 @@
 import React from 'react'
-import { myContext } from './../../../../hooks/useContext';
 import convertToLocaleString from './../../../../util/convert-to-locale-string';
 import PaymentActions from './../../payment-actions/index';
 import { GO_TO_CONFIRM_ORDER } from '../../../../router/navigation';
 import { useNavigate } from 'react-router-dom';
+import { useCartContext } from '../../../../context/cart-context';
+import { useOrdersContext } from '../../../../context/orders-context';
 
 const Boleto = () => {
 
     const navigate = useNavigate()
-    const { productsInCart,addOrderInfos } = myContext()
+    const {
+        productsInCart,
+    } = useCartContext()
+
+    const {
+        addOrderInfos
+    } = useOrdersContext()
 
 
     const totalPrice = productsInCart?.reduce( ( total,product ) => total + ( product.price * product.quantity ),0 )

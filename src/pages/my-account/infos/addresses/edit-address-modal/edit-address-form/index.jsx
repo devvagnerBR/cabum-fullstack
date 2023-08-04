@@ -1,9 +1,14 @@
 import React from 'react'
-import { myContext } from '../../../../../../hooks/useContext'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useUtilitiesContext } from '../../../../../../context/utilities-context'
+import { useUserContext } from '../../../../../../context/user-context'
 
 const EditAddressForm = () => {
+
+    const {
+        updateAddress
+    } = useUserContext()
 
     const {
         formNewAddressValidate,
@@ -11,8 +16,7 @@ const EditAddressForm = () => {
         fullAddress,
         setModalEditAddress,
         editableAddress,
-        updateAddress
-    } = myContext()
+    } = useUtilitiesContext()
 
     const { watch,handleSubmit,register,formState: { errors } } = useForm( { resolver: zodResolver( formNewAddressValidate ) } )
 

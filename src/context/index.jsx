@@ -1,20 +1,20 @@
 import React from 'react'
-import { textLimit } from './../util/text-limit';
+import { textLimit } from '../util/text-limit';
 import formsValidate from '../services/forms-validate';
-import formatPhone from './../util/convert-phone';
+import formatPhone from '../util/convert-phone';
 import countdownTime from '../util/countdown';
 import USER_REQUESTS from '../services/requests/user-requests';
 import controlledLoading from '../util/controlled-loading';
 import { getCookie,setCookie } from '../hooks/useCookie';
-import transformTittleInSlug from './../util/transform-tittle-in-slug';
+import transformTittleInSlug from '../util/transform-tittle-in-slug';
 import PRODUCT_REQUESTS from '../services/requests/products-requests';
 import getPageWidth from '../util/get-page-width';
 
 import CART_REQUESTS from '../services/requests/cart-requests';
 import FAVORITES_REQUESTS from '../services/requests/favorite-request';
 import PAYMENT_REQUESTS from '../services/requests/payments-requests';
-import viaCEP from './../util/get-address';
-import getViaCep from './../util/get-cep';
+import viaCEP from '../util/get-address';
+import getViaCep from '../util/get-cep';
 import ORDER_REQUESTS from '../services/requests/order-requests';
 import useFreezeScreen from '../hooks/useFreezeScreen';
 
@@ -111,23 +111,10 @@ const GlobalProvider = ( { children } ) => {
         fullAddress
     } = viaCEP()
 
-    React.useEffect( () => {
-        checkForUpdate()
-        getLoggedUser()
-        getAllProducts()
-    },[token] )
 
     React.useEffect( () => {
         if ( user?.name ) setCookie( 'username',user?.name )
     },[user] )
-
-    React.useEffect( () => {
-        getIdFromFavoritesProducts()
-        getIdsFromItensInCart()
-        getProductsInCart()
-        getProductsMarkAsFavorite()
-    },[token] )
-
 
     return (
         <GlobalContext.Provider

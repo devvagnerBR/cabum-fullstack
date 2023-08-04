@@ -2,14 +2,23 @@ import React from 'react'
 import { UserCircle,House,Heart,ShoppingCart,X,Basket,UserFocus } from '@phosphor-icons/react'
 import { GO_TO_CART,GO_TO_FAVORITES,GO_TO_HOME,GO_TO_LOGIN,GO_TO_MY_ACCOUNT,GO_TO_SIGNUP } from '../../router/navigation';
 import { useNavigate } from 'react-router-dom';
-import { myContext } from '../../hooks/useContext';
+import { useUserContext } from '../../context/user-context';
+import { useUtilitiesContext } from '../../context/utilities-context';
 
 
 const SidebarMenu = () => {
 
     const navigate = useNavigate()
 
-    const { modalMenu,setModalMenu,user,userLogOut } = myContext()
+    const {
+        modalMenu,
+        setModalMenu
+    } = useUtilitiesContext()
+
+    const {
+        user,
+        userLogOut
+    } = useUserContext()
 
     const handleOutsideClick = ( e ) => {
         if ( e.target === e.currentTarget ) setModalMenu( false )

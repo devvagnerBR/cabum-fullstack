@@ -8,6 +8,8 @@ import CustomModal from '../../components/custom-modal';
 import NewAddressModal from './infos/addresses/new-address-modal';
 import { myContext } from '../../hooks/useContext';
 import EditAddressModal from './infos/addresses/edit-address-modal';
+import { useOrdersContext } from '../../context/orders-context';
+import { useUtilitiesContext } from '../../context/utilities-context';
 
 
 
@@ -16,14 +18,18 @@ const MyAccount = () => {
 
     const { pathname } = useLocation()
     const isUserOrderPage = pathname === '/minha-conta/meus-pedidos'
-    
+
+    const {
+        getOrders,
+    } = useOrdersContext()
+
     const {
         modalNewAddress,
         setModalNewAddress,
         modalEditAddress,
         setModalEditAddress,
-        getOrders
-    } = myContext()
+    } = useUtilitiesContext()
+
 
     const [isHovered,setIsHovered] = React.useState( false );
 

@@ -5,6 +5,9 @@ import convertToLocaleString from '../../../util/convert-to-locale-string'
 import { myContext } from '../../../hooks/useContext'
 import { GO_TO_MY_ACCOUNT } from '../../../router/navigation'
 import usePaymentCheck from '../../../hooks/usePaymentCheck'
+import { useUtilitiesContext } from '../../../context/utilities-context'
+import { useOrdersContext } from '../../../context/orders-context'
+import { useUserContext } from '../../../context/user-context'
 
 
 
@@ -13,14 +16,24 @@ const SummaryOrder = ( { products,isOrder,pre_order } ) => {
 
     const navigate = useNavigate()
 
-    const { size,
-        saveNewOrder,
+    const {
         getAddresses,
-        addresses,
+        addresses
+    } = useUserContext()
+    
+    const {
+        saveNewOrder,
         addOrderInfos,
         preOrder,
+    } = useOrdersContext()
+
+
+    const {
+        size,
         setModalCompletedPurchase
-    } = myContext()
+    } = useUtilitiesContext()
+
+
 
     const totalPrice = products?.reduce( ( total,product ) => total + ( product.price * product.quantity ),0 )
 

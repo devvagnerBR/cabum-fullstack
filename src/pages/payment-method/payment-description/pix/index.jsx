@@ -1,15 +1,23 @@
 import React from 'react'
 import PaymentActions from '../../payment-actions'
-import { myContext } from '../../../../hooks/useContext'
 import convertToLocaleString from '../../../../util/convert-to-locale-string'
 import { useNavigate } from 'react-router-dom'
 import { GO_TO_CONFIRM_ORDER } from '../../../../router/navigation'
+import { useOrdersContext } from '../../../../context/orders-context'
+import { useCartContext } from '../../../../context/cart-context'
 
 
 const Pix = () => {
 
     const navigate = useNavigate()
-    const { productsInCart,addOrderInfos } = myContext()
+
+    const {
+        productsInCart,
+    } = useCartContext()
+
+    const {
+        addOrderInfos
+    } = useOrdersContext()
 
 
     const totalPrice = productsInCart?.reduce( ( total,product ) => total + ( product.price * product.quantity ),0 )

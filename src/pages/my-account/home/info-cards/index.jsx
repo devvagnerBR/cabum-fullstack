@@ -2,11 +2,14 @@ import { Envelope,Gear } from '@phosphor-icons/react'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { myContext } from '../../../../hooks/useContext'
+import { useUserContext } from '../../../../context/user-context'
 
 const InfoCardsSection = () => {
 
 
-    const { user } = myContext()
+    const {
+        user
+    } = useUserContext()
 
     return (
         <main className='flex max-md:flex-col w-full  gap-4'>

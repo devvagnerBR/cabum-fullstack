@@ -16,13 +16,27 @@ import ProductsSection from './products-section'
 import { myContext } from '../../hooks/useContext'
 import OnSale from './on-sale'
 import Footer from '../../components/footer'
+import { useProductsContext } from '../../context/products-context'
+import { useFavoritesContext } from '../../context/favorites-context'
+import { useCartContext } from '../../context/cart-context'
 
 
 
 const Homepage = () => {
 
+    const {
+        products,
+    } = useProductsContext()
+
+    const {
+        favoritesProductsId
+    } = useFavoritesContext()
+
+    const {
+        productsInCartIds
+    } = useCartContext()
+
     const [customProducts,setCustomProducts] = React.useState( [] )
-    const { products,favoritesProductsId,productsInCartIds } = myContext()
 
     const banners = [
         { id: 1,image: banner1 },
@@ -72,7 +86,7 @@ const Homepage = () => {
                 title='MAIS PROCURADOS'
                 Icon={Lightning}
             />
-            <Footer/>
+            <Footer />
         </div>
     )
 }

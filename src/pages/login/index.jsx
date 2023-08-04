@@ -7,6 +7,8 @@ import { myContext } from '../../hooks/useContext'
 import { useNavigate } from 'react-router-dom'
 import { GO_TO_HOME } from './../../router/navigation';
 import Footer from '../../components/footer'
+import { useUserContext } from '../../context/user-context'
+import { useUtilitiesContext } from '../../context/utilities-context'
 
 
 
@@ -16,11 +18,14 @@ const LogIn = () => {
     const navigate = useNavigate()
 
     const {
+        signInWithEmailAndPassword
+    } = useUserContext()
+
+    const {
         formLoginValidade,
-        signInWithEmailAndPassword,
         awaitLoading,
         loading
-    } = myContext()
+    } = useUtilitiesContext()
 
     const { handleSubmit,register,formState: { errors } } = useForm( { resolver: zodResolver( formLoginValidade ) } )
 

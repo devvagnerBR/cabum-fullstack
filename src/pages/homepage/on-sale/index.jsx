@@ -11,15 +11,14 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css'
 
-
-import { myContext } from './../../../hooks/useContext';
+import { useUtilitiesContext } from '../../../context/utilities-context';
 
 const OnSale = ( { onSaleProducts } ) => {
 
     const {
         countdown,
         size
-    } = myContext()
+    } = useUtilitiesContext()
 
 
     const slidersCalc = () => {

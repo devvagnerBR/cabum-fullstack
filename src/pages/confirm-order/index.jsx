@@ -6,6 +6,9 @@ import PersonalData from './personal-data'
 import SummaryOrder from './summary-order'
 import ProductsList from './products-list'
 import ModalCompletedPurchase from '../../components/modal-completed-purchase'
+import { useUserContext } from '../../context/user-context'
+import { useOrdersContext } from '../../context/orders-context'
+import { useCartContext } from '../../context/cart-context'
 
 
 
@@ -13,13 +16,20 @@ const ConfirmOrder = () => {
 
     const navigate = useNavigate()
 
-    const { productsInCart,
+    const {
         user,
-        getPreOrder,
-        preOrder,
         addresses,
         getAddresses
-    } = myContext();
+    } = useUserContext()
+
+    const {
+        getPreOrder,
+        preOrder,
+    } = useOrdersContext()
+
+    const {
+        productsInCart
+    } = useCartContext()
 
     React.useEffect( () => {
         getPreOrder();

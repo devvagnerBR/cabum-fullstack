@@ -7,7 +7,6 @@ const CART_REQUESTS = () => {
 
     const [productsInCart,setProductsInCart] = React.useState( [] )
     const [productsInCartIds,setProductsInCardIds] = React.useState( [] )
-    const [preOrder,setPreOrder] = React.useState( [] )
 
     const token = getCookie( 'token' )
 
@@ -142,52 +141,6 @@ const CART_REQUESTS = () => {
     }
 
 
-    const addOrderInfos = async ( body ) => {
-
-        try {
-
-            const orderRef = db_firestore
-                .collection( "users" ).doc( token )
-                .collection( "pre-order" ).doc( token )
-
-            const snapshot = await orderRef.get();
-            if ( snapshot.exists ) {
-                await orderRef.update( body )
-                console.log( 'pre-order atualizado com sucesso' );
-            } else {
-                await orderRef.set( body )
-                console.log( 'pre-order criado com sucesso' );
-            }
-            console.log( 'pre-order atualizado com sucesso' );
-
-        } catch ( error ) {
-            console.log( error );
-        }
-
-
-    }
-
-
-    const getPreOrder = async () => {
-
-        const orderRef = db_firestore
-            .collection( "users" ).doc( token )
-            .collection( "pre-order" ).doc( token )
-
-        try {
-
-            orderRef.onSnapshot( ( docs ) => {
-                setPreOrder( docs.data() )
-            } )
-
-        } catch ( error ) {
-            console.log( error );
-        }
-    }
-
-
-
-
 
 
 
@@ -201,8 +154,6 @@ const CART_REQUESTS = () => {
         decrementQuantityFromItemInCart,
         getIdsFromItensInCart,
         productsInCartIds,
-        addOrderInfos,
-        getPreOrder,preOrder
 
     }
 

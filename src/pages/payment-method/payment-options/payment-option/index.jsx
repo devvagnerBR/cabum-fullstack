@@ -2,10 +2,6 @@ import React from 'react'
 
 const PaymentOption = ( { method,setClickedMethod } ) => {
 
-
-
-
-
     return (
         <div
             onClick={() => setClickedMethod( method )}>

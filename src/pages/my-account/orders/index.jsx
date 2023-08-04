@@ -1,14 +1,14 @@
 import { Basket } from '@phosphor-icons/react'
 import React from 'react'
-import { myContext } from '../../../hooks/useContext'
 import convertTimeInDate from '../../../util/convert-time-in-date'
 import usePaymentCheck from '../../../hooks/usePaymentCheck'
+import { useOrdersContext } from '../../../context/orders-context'
 
 const Orders = () => {
 
     const {
         orders
-    } = myContext()
+    } = useOrdersContext()
 
     return (
         <div className=''>

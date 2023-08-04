@@ -1,18 +1,25 @@
 import { Basket,Trash,FireSimple } from '@phosphor-icons/react'
 import React from 'react'
 import { textLimit } from './../../../util/text-limit';
-import { myContext } from './../../../hooks/useContext';
 import convertToLocaleString from '../../../util/convert-to-locale-string';
+import { useUtilitiesContext } from '../../../context/utilities-context';
+import { useCartContext } from '../../../context/cart-context';
 
 
 const ProductsInCartSection = ( { summaryModal,products } ) => {
 
-    const { size,
+    const {
         removeProductFromCart,
         removeAllProductsFromCart,
         incrementQuantityFromItemInCart,
         decrementQuantityFromItemInCart
-    } = myContext()
+    } = useCartContext()
+
+    const {
+        size
+    } = useUtilitiesContext()
+
+
 
     const handleRemoveProductFromCart = async ( productId ) => {
         await removeProductFromCart( productId )

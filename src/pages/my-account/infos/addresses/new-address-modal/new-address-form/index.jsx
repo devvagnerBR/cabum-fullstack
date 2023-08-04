@@ -3,17 +3,23 @@ import { myContext } from '../../../../../../hooks/useContext'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { v4 as uuidv4 } from 'uuid'
+import { useUtilitiesContext } from '../../../../../../context/utilities-context'
+import { useUserContext } from '../../../../../../context/user-context'
 
 
 const NewAddressForm = () => {
 
     const {
+        saveNewAddress
+    } = useUserContext()
+
+
+    const {
+        setModalNewAddress,
         formNewAddressValidate,
         getCEP,
         fullAddress,
-        saveNewAddress,
-        setModalNewAddress,
-    } = myContext()
+    } = useUtilitiesContext()
 
     const { watch,reset,handleSubmit,register,formState: { errors } } = useForm( { resolver: zodResolver( formNewAddressValidate ) } )
 

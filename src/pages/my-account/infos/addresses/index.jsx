@@ -2,6 +2,8 @@ import { MapPin } from '@phosphor-icons/react'
 import React from 'react'
 import AddressCard from './address-card'
 import { myContext } from './../../../../hooks/useContext';
+import { useUtilitiesContext } from '../../../../context/utilities-context';
+import { useUserContext } from '../../../../context/user-context';
 
 
 const Addresses = () => {
@@ -9,9 +11,12 @@ const Addresses = () => {
 
     const {
         getAddresses,
-        addresses,
+        addresses
+    } = useUserContext()
+
+    const {
         setModalNewAddress
-    } = myContext()
+    } = useUtilitiesContext()
 
     const hasAddress = addresses.length > 0
 
@@ -38,7 +43,7 @@ const Addresses = () => {
             </header>
             {hasAddress ? addresses?.map( ( address,index ) => {
 
-        
+
                 return <AddressCard
                     index={index}
                     key={address.id}

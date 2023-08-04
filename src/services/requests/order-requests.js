@@ -6,7 +6,7 @@ import { db_firestore } from './../firebase/index';
 
 const ORDER_REQUESTS = () => {
 
-
+    const [preOrder,setPreOrder] = React.useState( [] )
     const [orders,setOrders] = React.useState( [] )
     const globalOrdersRefs = db_firestore.collection( "global-orders" )
     const token = getCookie( 'token' )
@@ -100,14 +100,58 @@ const ORDER_REQUESTS = () => {
         }
     };
 
+    const addOrderInfos = async ( body ) => {
 
+        try {
+
+            const orderRef = db_firestore
+                .collection( "users" ).doc( token )
+                .collection( "pre-order" ).doc( token )
+
+            const snapshot = await orderRef.get();
+            if ( snapshot.exists ) {
+                await orderRef.update( body )
+                console.log( 'pre-order atualizado com sucesso' );
+            } else {
+                await orderRef.set( body )
+                console.log( 'pre-order criado com sucesso' );
+            }
+            console.log( 'pre-order atualizado com sucesso' );
+
+        } catch ( error ) {
+            console.log( error );
+        }
+
+
+    }
+
+
+    const getPreOrder = async () => {
+
+        const orderRef = db_firestore
+            .collection( "users" ).doc( token )
+            .collection( "pre-order" ).doc( token )
+
+        try {
+
+            orderRef.onSnapshot( ( docs ) => {
+                setPreOrder( docs.data() )
+            } )
+
+        } catch ( error ) {
+            console.log( error );
+        }
+    }
 
 
     return {
         getGlobalOrdersSize,
         saveNewOrder,
         getOrders,
-        orders
+        orders,
+        addOrderInfos,
+        getPreOrder,
+        preOrder
     }
 }
 

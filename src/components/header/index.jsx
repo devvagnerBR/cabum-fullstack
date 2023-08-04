@@ -10,22 +10,41 @@ import profile_img from '../../assets/images/profile_ninja.png'
 import { getCookie } from '../../hooks/useCookie'
 import ModalSearch from './../modal-search/index';
 import kabum_search from '../../assets/icons/kabum_search.svg'
+import { useUserContext } from '../../context/user-context'
+import { useUtilitiesContext } from '../../context/utilities-context'
+import { useCartContext } from '../../context/cart-context'
+import { useProductsContext } from '../../context/products-context'
+
 const Header = () => {
 
     const navigate = useNavigate()
     const token = getCookie( 'token' )
     const { pathname } = useLocation()
-    const { searchInput,setSearchInput } = myContext()
 
-    const { modalMenu,
+    const {
+        searchInput,
+        setSearchInput,
+        modalMenu,
         setModalMenu,
+    } = useUtilitiesContext()
+
+    const {
         user,
-        userLogOut,
-        productsInCart,
+        userLogOut
+    } = useUserContext()
+
+    const {
+        productsInCart
+    } = useCartContext()
+
+
+    const {
         getSearchProducts,
         researchedProducts,
         setResearchedProducts
-    } = myContext()
+    } = useProductsContext()
+
+
 
     const isLoginAndSignUpPage = pathname === '/entrar' || pathname === '/cadastro'
     const displayName = getCookie( 'username' ) || user?.name

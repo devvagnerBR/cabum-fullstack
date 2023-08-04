@@ -1,14 +1,18 @@
 import React from 'react'
-import { myContext } from '../../../../../hooks/useContext';
+import { useUserContext } from '../../../../../context/user-context';
+import { useUtilitiesContext } from '../../../../../context/utilities-context';
 
 const AddressCard = ( { address,index } ) => {
 
 
     const {
-        deleteAddress,
         setModalEditAddress,
         setEditableAddress
-    } = myContext()
+    } = useUtilitiesContext()
+
+    const {
+        deleteAddress,
+    } = useUserContext()
 
     const handleRemoveAddress = ( address ) => {
         deleteAddress( address.id );

@@ -4,6 +4,9 @@ import { myContext } from '../../../hooks/useContext'
 import convertToLocaleString from '../../../util/convert-to-locale-string'
 import { GO_TO_FAVORITES,GO_TO_HOME,GO_TO_PAYMENT_METHOD } from '../../../router/navigation'
 import { useNavigate } from 'react-router-dom'
+import { useCartContext } from '../../../context/cart-context'
+import { useOrdersContext } from '../../../context/orders-context'
+import { useUserContext } from '../../../context/user-context'
 
 const SummarySection = ( { products } ) => {
 
@@ -12,11 +15,17 @@ const SummarySection = ( { products } ) => {
     const totalPrice = products?.reduce( ( total,product ) => total + ( product.price * product.quantity ),0 )
 
     const {
-        productsInCart,
-        addOrderInfos,
         addresses,
         getAddresses
-    } = myContext()
+    } = useUserContext()
+
+    const {
+        productsInCart
+    } = useCartContext()
+
+    const {
+        addOrderInfos
+    } = useOrdersContext()
 
     React.useEffect( () => {
         getAddresses();

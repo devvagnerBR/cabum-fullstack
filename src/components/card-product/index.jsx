@@ -1,19 +1,35 @@
 import React from 'react'
 import { ShoppingCart,Heart } from '@phosphor-icons/react'
-import { myContext } from '../../hooks/useContext'
 import { useNavigate } from 'react-router-dom'
 import { GO_TO_CART } from '../../router/navigation'
+import { useUtilitiesContext } from '../../context/utilities-context'
+import { useProductsContext } from '../../context/products-context'
+import { useCartContext } from '../../context/cart-context'
+import { useFavoritesContext } from '../../context/favorites-context'
 
 
 
 const CardProduct = ( { product } ) => {
 
-    const { textLimit,
-        transformTittleInSlug,
-        getProductDetails,
-        addProductToCart,
+    const {
         markProductAsFavorite,
-        removeProductFromFavorites } = myContext()
+        removeProductFromFavorites
+    } = useFavoritesContext()
+
+    const {
+        addProductToCart
+    } = useCartContext()
+    const {
+        textLimit
+    } = useUtilitiesContext()
+
+    const {
+        getProductDetails,
+
+    } = useProductsContext()
+
+
+
 
     const navigate = useNavigate()
 

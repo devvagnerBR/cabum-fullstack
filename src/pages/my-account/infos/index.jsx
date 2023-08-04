@@ -2,12 +2,16 @@ import { UserFocus } from '@phosphor-icons/react'
 import React from 'react'
 import BasicInfos from './basic-infos'
 import Addresses from './addresses'
-import { myContext } from '../../../hooks/useContext'
+import { useUtilitiesContext } from '../../../context/utilities-context'
 
 
 const Infos = () => {
 
-    const { modalEditAddress,modalNewAddress,size } = myContext()
+    const {
+        modalEditAddress,
+        modalNewAddress,
+        size } = useUtilitiesContext()
+
     const itsOpen = modalEditAddress || modalNewAddress
     const hiddenBG = itsOpen && size < 900
 

@@ -3,11 +3,15 @@ import React from 'react'
 import { myContext } from '../../../../hooks/useContext'
 import moment from 'moment'
 import InputMask from "react-input-mask";
+import { useUserContext } from '../../../../context/user-context';
 
 
 const BasicInfos = () => {
 
-    const { user,updateNameOrPhoneNumber } = myContext()
+    const {
+        user,
+        updateNameOrPhoneNumber
+    } = useUserContext()
 
     const formattedDate = moment( user?.birthday ).format( 'DD/MM/YYYY' )
     const [newInfos,setNewInfos] = React.useState( {

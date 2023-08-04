@@ -1,15 +1,23 @@
 import React from 'react'
 import { textLimit } from './../../util/text-limit';
-import { myContext } from './../../hooks/useContext';
 import { useNavigate } from 'react-router-dom';
+import { useProductsContext } from '../../context/products-context';
+import { useUtilitiesContext } from '../../context/utilities-context';
 
 const ModalSearch = () => {
 
     const {
+        setSearchInput
+    } = useUtilitiesContext()
+
+    const {
         researchedProducts,
         getProductDetails,
-        setSearchInput
-    } = myContext()
+    } = useProductsContext()
+
+    const {
+
+    } = useProductsContext()
 
     const navigate = useNavigate()
 
@@ -22,7 +30,7 @@ const ModalSearch = () => {
 
     return (
         <div
-            className='absolute w-full z-40   bg-white border'>
+            className='absolute w-full z-40  mt-32  bg-white border'>
 
             {researchedProducts?.map( ( product ) => {
                 return (

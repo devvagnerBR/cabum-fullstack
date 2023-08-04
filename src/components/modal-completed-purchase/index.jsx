@@ -3,7 +3,7 @@ import React from 'react'
 import useFreezeScreen from '../../hooks/useFreezeScreen'
 import { Link,useNavigate } from 'react-router-dom'
 import { GO_TO_HOME } from '../../router/navigation'
-import { myContext } from '../../hooks/useContext'
+import { useUtilitiesContext } from '../../context/utilities-context'
 
 
 
@@ -15,7 +15,9 @@ const ModalCompletedPurchase = () => {
     const {
         modalCompletedPurchase,
         setModalCompletedPurchase
-    } = myContext()
+    } = useUtilitiesContext()
+
+
 
     useFreezeScreen( modalCompletedPurchase )
 

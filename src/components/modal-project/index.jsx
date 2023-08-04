@@ -1,6 +1,6 @@
 import { Warning,X } from '@phosphor-icons/react'
 import React from 'react'
-import { myContext } from './../../hooks/useContext';
+import { useUtilitiesContext } from '../../context/utilities-context';
 
 
 
@@ -8,9 +8,14 @@ const ModalProject = () => {
 
 
     const [modalTerms,setModalTerms] = React.useState( false )
-    const { setCookie,getCookie } = myContext()
+
+    const {
+        setCookie,
+        getCookie
+    } = useUtilitiesContext()
 
     React.useEffect( () => {
+
         const terms = getCookie( 'terms' )
         if ( terms ) setModalTerms( true )
     },[modalTerms] )

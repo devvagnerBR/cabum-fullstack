@@ -3,13 +3,25 @@ import { useNavigate,useParams } from 'react-router-dom'
 import { myContext } from '../../hooks/useContext'
 import { ShoppingCart,WarningCircle } from '@phosphor-icons/react'
 import { GO_TO_CART } from '../../router/navigation'
+import { useProductsContext } from '../../context/products-context'
+import { useCartContext } from '../../context/cart-context'
 
 
 const ProductDetails = () => {
 
     const { id } = useParams()
     const navigate = useNavigate()
-    const { productDetails,getProductDetails,addProductToCart } = myContext()
+
+    const {
+        addProductToCart
+    } = useCartContext()
+
+    const {
+        getProductDetails,
+        productDetails,
+    } = useProductsContext()
+
+    
     const productPrice = productDetails?.price
     const specs = productDetails?.specs
 
